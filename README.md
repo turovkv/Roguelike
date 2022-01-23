@@ -1,3 +1,5 @@
+[Ссылка на диаграмму](https://drive.google.com/file/d/1ugLOWAhoQyYoIes2i5ooCkWwWV5iZhIs/view?usp=sharing)
+
 ## Допущения:
 
 * В команде нет переноса строк
