@@ -35,10 +35,12 @@ class InstructionsView(
     private fun addStringToScreen(i: Int, begin_i: Int, str: String): Int {
         var i1 = i
         while ((i1 - begin_i) * screen.terminalSize.columns < str.length) {
-            for (column in str.subSequence(
-                (i1 - begin_i) * screen.terminalSize.columns,
-                min((i1 - begin_i) * screen.terminalSize.columns + screen.terminalSize.columns, str.length)
-            ).indices) {
+            for (
+                column in str.subSequence(
+                    (i1 - begin_i) * screen.terminalSize.columns,
+                    min((i1 - begin_i) * screen.terminalSize.columns + screen.terminalSize.columns, str.length)
+                ).indices
+            ) {
                 for (row in i1 until i1 + 1) {
                     screen.setCharacter(
                         column, row,

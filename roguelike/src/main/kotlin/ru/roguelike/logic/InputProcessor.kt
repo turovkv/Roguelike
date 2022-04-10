@@ -3,7 +3,6 @@ package ru.roguelike.logic
 import com.googlecode.lanterna.input.KeyStroke
 import com.googlecode.lanterna.input.KeyType
 
-
 class InputProcessor(
     private val logicFacade: LogicFacade
 ) {
@@ -18,7 +17,7 @@ class InputProcessor(
                 'h' -> logicFacade.processHelp()
                 'm' -> logicFacade.processMap()
             }
+            else -> {return}
         }
     }
-
 }

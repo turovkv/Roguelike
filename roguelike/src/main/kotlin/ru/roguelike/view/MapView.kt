@@ -1,11 +1,7 @@
 package ru.roguelike.view
 
-import com.googlecode.lanterna.TerminalSize
 import com.googlecode.lanterna.TextCharacter
-import com.googlecode.lanterna.TextColor
 import com.googlecode.lanterna.screen.Screen
-import com.googlecode.lanterna.screen.TerminalScreen
-import com.googlecode.lanterna.terminal.Terminal
 import ru.roguelike.model.CellType
 import ru.roguelike.model.MapModel
 

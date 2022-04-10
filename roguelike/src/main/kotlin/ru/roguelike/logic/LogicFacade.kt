@@ -13,6 +13,7 @@ class LogicFacade(
         current = instructions
         current.draw()
     }
+
     fun processMap() {
         current = map
         current.draw()
