@@ -1,7 +1,7 @@
+package ru.roguelike.model
+
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import ru.roguelike.model.Character
-import ru.roguelike.model.Coordinates
 
 class CharacterTest {
     @Test

@@ -1,11 +1,14 @@
+package ru.roguelike.view
+
 import com.googlecode.lanterna.TerminalSize
 import com.googlecode.lanterna.screen.TerminalScreen
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import ru.roguelike.model.*
+import ru.roguelike.model.CellType
+import ru.roguelike.model.Character
+import ru.roguelike.model.MapModel
 import ru.roguelike.util.Constants
-import ru.roguelike.view.*
 
 class ViewTest {
     @Test
@@ -24,7 +27,6 @@ class ViewTest {
         val character = Character(coordinates)
         val characterView = CharacterView(character, screen)
         val mapView = MapView(mapModel, screen, characterView)
-
 
         val constMap = mapOf(Pair(CellType.NON_WALKABLE, NON_WALKABLE_CHAR), Pair(CellType.WALKABLE, WALKABLE_CHAR))
         terminal.use {

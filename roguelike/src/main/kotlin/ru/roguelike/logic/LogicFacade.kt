@@ -35,8 +35,8 @@ class LogicFacade(
     }
 
     /**
-    * change current logic onto map and draw it
-    */
+     * change current logic onto map and draw it
+     */
     fun processMap() {
         current = map
         current.draw()

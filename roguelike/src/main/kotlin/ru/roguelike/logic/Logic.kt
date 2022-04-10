@@ -7,8 +7,8 @@ interface Logic {
     fun processLeftArrow()
 
     /**
-    * process Right Arrow
-    **/
+     * process Right Arrow
+     **/
     fun processRightArrow()
 
     /**
