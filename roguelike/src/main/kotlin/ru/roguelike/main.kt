@@ -33,7 +33,7 @@ fun main() {
     val character = Character()
     val mapView = MapView(mapModel, screen, CharacterView(character, screen))
     val mapLogic = MapLogic(character = character, view = mapView)
-    val instructionsLogic = InstructionsLogic()
+    val instructionsLogic = InstructionsLogic(InstructionsView(InstructionModel(mapOf(Pair("A", "B"), Pair("Ac", "B"), Pair("Awec", "B"), Pair("Aewf", "B"), Pair("Aghj", "B"), Pair("Arthj", "B"), Pair("Awop", "B"), Pair("Asgol", "B"), Pair("Awkejfb", "B")), "DESCwgbrehgbwlnfjgnvjhgbewojgbtwehgbewthgbewhigbeiwgbweijfgbejgbewgbetwkhbtekjgbwekjgbdfwkjgb", listOf("A1", "A2", "A1", "A2","A1", "A2","A1", "A2","A1", "A2","A1", "A2","A1", "A2")), screen))
 
     val logicFacade = LogicFacade(map = mapLogic, instructions = instructionsLogic)
 

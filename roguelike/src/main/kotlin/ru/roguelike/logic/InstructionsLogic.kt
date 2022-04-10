@@ -1,6 +1,10 @@
 package ru.roguelike.logic
 
-class InstructionsLogic : Logic {
+import ru.roguelike.view.InstructionsView
+
+class InstructionsLogic(
+    private val view: InstructionsView
+) : Logic {
     override fun processLeftArrow() {
         return
     }
@@ -15,5 +19,9 @@ class InstructionsLogic : Logic {
 
     override fun processDownArrow() {
         return
+    }
+
+    override fun draw() {
+        view.draw()
     }
 }

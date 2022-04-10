@@ -46,4 +46,8 @@ class MapLogic(
         character.moveRight()
         view.draw()
     }
+
+    override fun draw() {
+        view.draw()
+    }
 }

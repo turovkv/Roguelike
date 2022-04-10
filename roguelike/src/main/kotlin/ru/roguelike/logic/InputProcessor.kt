@@ -14,7 +14,7 @@ class InputProcessor(
             KeyType.ArrowRight -> logicFacade.processRightArrow()
             KeyType.ArrowUp -> logicFacade.processUpArrow()
             KeyType.ArrowDown -> logicFacade.processDownArrow()
-            KeyType.Character -> when (keyStroke.character) {
+            KeyType.Character -> when (keyStroke.character.toChar()) {
                 'h' -> logicFacade.processHelp()
                 'm' -> logicFacade.processMap()
             }

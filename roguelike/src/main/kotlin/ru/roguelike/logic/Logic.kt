@@ -5,4 +5,5 @@ interface Logic {
     fun processRightArrow()
     fun processUpArrow()
     fun processDownArrow()
+    fun draw()
 }

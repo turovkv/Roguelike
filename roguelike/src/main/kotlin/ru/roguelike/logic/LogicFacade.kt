@@ -9,6 +9,12 @@ class LogicFacade(
     fun processRightArrow() = current.processRightArrow()
     fun processUpArrow() = current.processUpArrow()
     fun processDownArrow() = current.processDownArrow()
-    fun processHelp() { current = instructions }
-    fun processMap() { current = map }
+    fun processHelp() {
+        current = instructions
+        current.draw()
+    }
+    fun processMap() {
+        current = map
+        current.draw()
+    }
 }
