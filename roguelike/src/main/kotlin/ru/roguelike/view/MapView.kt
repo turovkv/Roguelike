@@ -17,8 +17,8 @@ class MapView(
      */
     override fun draw() {
         screen.clear()
-        for (column in 0 until map.field.size) {
-            for (row in 0 until map.field[0].size) {
+        for (column in 0 until map.getY()) {
+            for (row in 0 until map.getX()) {
                 screen.setCharacter(
                     column, row,
                     when (map.field[column][row].cellType) {
