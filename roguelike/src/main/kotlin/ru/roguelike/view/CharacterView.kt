@@ -1,7 +1,11 @@
 package ru.roguelike.view
 
-class CharacterView : Drawable {
+import com.googlecode.lanterna.screen.Screen
+
+class CharacterView(
+    private val screen: Screen
+) : Drawable {
     override fun draw() {
-        TODO("Not yet implemented")
+
     }
 }
