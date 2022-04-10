@@ -30,6 +30,18 @@ class CharacterView(
                 )
             }
         }
+        screen.setCharacter(
+            character.maxHp, 0,
+            TextCharacter.fromCharacter((character.hp + '0'.code).toChar())[0]
+        )
+        screen.setCharacter(
+            character.maxHp + 1, 0,
+            TextCharacter.fromCharacter('/')[0]
+        )
+        screen.setCharacter(
+            character.maxHp + 2, 0,
+            TextCharacter.fromCharacter((character.maxHp + '0'.code).toChar())[0]
+        )
         for (column in 0 until character.damage) {
             for (row in 1 until 2) {
                 screen.setCharacter(
@@ -38,6 +50,9 @@ class CharacterView(
                 )
             }
         }
-
+        screen.setCharacter(
+            character.damage, 1,
+            TextCharacter.fromCharacter((character.hp + '0'.code).toChar())[0]
+        )
     }
 }
