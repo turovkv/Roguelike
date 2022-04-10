@@ -1,8 +1,8 @@
 package ru.roguelike.model
 
-class Character(
-    private var coordinates: Coordinates,
-    private var hp: Int,
-    private val maxHp: Int,
-    private var damage: Int
+data class Character(
+    var coordinates: Coordinates,
+    var hp: Int,
+    val maxHp: Int,
+    var damage: Int
 )

@@ -2,6 +2,6 @@ package ru.roguelike.model
 
 object BSPFieldGenerator : FieldGenerator {
     override fun generate(): Field {
-        return List(7) { List(5) { Cell(CellType.WALKABLE) } }
+        return List(37) { List(35) { Cell(CellType.WALKABLE) } }
     }
 }

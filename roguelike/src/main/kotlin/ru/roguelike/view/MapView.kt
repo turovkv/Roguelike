@@ -26,6 +26,5 @@ class MapView(
                 )
             }
         }
-        screen.refresh()
     }
 }
