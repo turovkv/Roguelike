@@ -15,12 +15,15 @@ import ru.roguelike.view.*
 
 fun main() {
     val mapModel = MapModel()
-    val defaultTerminalFactory = DefaultTerminalFactory()
-    defaultTerminalFactory.setInitialTerminalSize(TerminalSize(mapModel.field.size, mapModel.field[0].size + 2))
+    val defaultTerminalFactory = DefaultTerminalFactory().also {
+        it.setInitialTerminalSize(
+            TerminalSize(mapModel.field.size, mapModel.field[0].size + 2)
+        )
+    }
     val terminal = defaultTerminalFactory.createTerminal()
-    val screen = TerminalScreen(terminal)
-    screen.startScreen()
-    screen.cursorPosition = null
+    val screen = TerminalScreen(terminal).also {
+        it.startScreen(); it.cursorPosition = null
+    }
     val character = Character()
     val characterView = CharacterView(character, screen)
     val mapView = MapView(mapModel, screen, characterView)
@@ -37,6 +40,7 @@ fun main() {
 
     val logicFacade = LogicFacade(map = mapLogic, instructions = instructionsLogic)
     val inputProcessor = InputProcessor(logicFacade)
+
     terminal.use {
         screen.use {
             mapView.draw()
