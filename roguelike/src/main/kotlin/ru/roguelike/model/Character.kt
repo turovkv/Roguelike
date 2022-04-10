@@ -10,18 +10,18 @@ class Character() {
     val maxHp: Int = 5
 
     fun moveRight() {
-        coordinates = Coordinates(coordinates.x + 1, coordinates.y)
+        coordinates = coordinates.getRight()
     }
 
     fun moveLeft() {
-        coordinates = Coordinates(coordinates.x - 1, coordinates.y)
+        coordinates = coordinates.getLeft()
     }
 
     fun moveUp() {
-        coordinates = Coordinates(coordinates.x, coordinates.y + 1)
+        coordinates = coordinates.getUp()
     }
 
     fun moveDown() {
-        coordinates = Coordinates(coordinates.x, coordinates.y - 1)
+        coordinates = coordinates.getDown()
     }
 }
