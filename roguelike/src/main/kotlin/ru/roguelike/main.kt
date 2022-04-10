@@ -27,13 +27,9 @@ fun main() {
     val mapLogic = MapLogic(character, mapModel, mapView)
 
     val instructionsModel = InstructionModel(
-        mapOf(
-            Pair("H", "Help"),
-            Pair("M", "Map"),
-            Pair("I", "Inventory"),
-        ),
-        "Just nice game bro",
-        listOf("Kirill", "Andrey", "Misha", "Vitya")
+        INSTRUCTIONS,
+        DESCRIPTION,
+        AUTHORS
     )
 
     val instructionsView = InstructionsView(instructionsModel, screen)
