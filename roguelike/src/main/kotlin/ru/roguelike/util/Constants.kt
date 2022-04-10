@@ -1,8 +1,11 @@
 package ru.roguelike.util
 
+/**
+ * Class that stores project constants
+ */
 object Constants {
     const val FIELD_WIDTH = 100
-    const val FIELD_HEIGHT = 100
+    const val FIELD_HEIGHT = 30
     const val CHARACTER_VIEW_HEIGHT = 2
 
     const val MIN_CELL_SIZE = 10
