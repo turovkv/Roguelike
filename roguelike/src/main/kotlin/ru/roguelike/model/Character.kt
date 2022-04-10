@@ -1,13 +1,13 @@
 package ru.roguelike.model
 
 class Character() {
-    var coordinates: Coordinates = Coordinates(0, 0)
+    var coordinates: Coordinates = Coordinates(10, 10)
         private set
-    var damage: Int = 100
+    var damage: Int = 5
         private set
-    var hp: Int = 100
+    var hp: Int = 2
         private set
-    val maxHp: Int = 100
+    val maxHp: Int = 5
 
     fun moveRight() {
         coordinates = Coordinates(coordinates.x + 1, coordinates.y)

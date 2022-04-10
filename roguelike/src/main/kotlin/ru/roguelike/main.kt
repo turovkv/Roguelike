@@ -19,7 +19,7 @@ fun main() {
     screen.startScreen()
     screen.cursorPosition = null
     val mapView = MapView(mapModel, screen)
-    val characterView = CharacterView(Character(Coordinates(2,2), 2, 5 ,5), screen)
+    val characterView = CharacterView(Character(), screen)
     terminal.use {
         screen.use {
             while (true) {
