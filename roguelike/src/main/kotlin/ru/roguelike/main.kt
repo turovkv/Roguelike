@@ -19,13 +19,15 @@ fun main() {
     screen.startScreen()
     screen.cursorPosition = null
     val mapView = MapView(mapModel, screen)
-    val characterView = CharacterView(ru.roguelike.model.Character(Coordinates(2,2), 2, 5 ,5), screen)
+    val characterView = CharacterView(Character(Coordinates(2,2), 2, 5 ,5), screen)
     terminal.use {
-        while (true) {
-            mapView.draw()
-            characterView.draw()
-            screen.refresh()
-            val keyStroke = it.readInput()
+        screen.use {
+            while (true) {
+                mapView.draw()
+                characterView.draw()
+                screen.refresh()
+                val keyStroke = it.readInput()
+            }
         }
     }
 }
