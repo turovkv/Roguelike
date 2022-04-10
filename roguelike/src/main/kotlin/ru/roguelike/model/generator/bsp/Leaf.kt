@@ -97,9 +97,8 @@ internal class Leaf(
                 tunnels += it
             }
         } else {
-            println("Height=$height, Width=$width")
-            val roomWidth = Random.nextInt(3, width - 1)
-            val roomHeight = Random.nextInt(3, height - 1)
+            val roomWidth = Random.nextInt(Constants.ROOM_SIZE, width - 1)
+            val roomHeight = Random.nextInt(Constants.ROOM_SIZE, height - 1)
             val roomCoordinates = Coordinates(
                 Random.nextInt(1, width - roomWidth),
                 Random.nextInt(1, height - roomHeight)
@@ -118,26 +117,26 @@ internal class Leaf(
             }
         }
 
-//        tunnels.forEach { tunnel ->
-//            when (tunnel.direction) {
-//                DirectionType.HORIZONTAL -> {
-//                    check(tunnel.coordinates.x + tunnel.length <= Constants.FIELD_WIDTH) {
-//                        "${tunnel.coordinates.x}, ${tunnel.length}"
-//                    }
-//                    (tunnel.coordinates.x until tunnel.coordinates.x + tunnel.length).forEach { column ->
-//                        field[tunnel.coordinates.y][column] = Cell(CellType.WALKABLE)
-//                    }
-//                }
-//                DirectionType.VERTICAL -> {
-//                    check(tunnel.coordinates.y + tunnel.length <= Constants.FIELD_HEIGHT) {
-//                        "${tunnel.coordinates.y}, ${tunnel.length}"
-//                    }
-//                    (tunnel.coordinates.y until tunnel.coordinates.y + tunnel.length).forEach { row ->
-//                        field[row][tunnel.coordinates.x] = Cell(CellType.WALKABLE)
-//                    }
-//                }
-//            }
-//        }
+        tunnels.forEach { tunnel ->
+            when (tunnel.direction) {
+                DirectionType.HORIZONTAL -> {
+                    check(tunnel.coordinates.x + tunnel.length <= Constants.FIELD_WIDTH) {
+                        "${tunnel.coordinates.x}, ${tunnel.length}"
+                    }
+                    (tunnel.coordinates.x until tunnel.coordinates.x + tunnel.length + 1).forEach { column ->
+                        field[tunnel.coordinates.y][column] = Cell(CellType.WALKABLE)
+                    }
+                }
+                DirectionType.VERTICAL -> {
+                    check(tunnel.coordinates.y + tunnel.length <= Constants.FIELD_HEIGHT) {
+                        "${tunnel.coordinates.y}, ${tunnel.length}"
+                    }
+                    (tunnel.coordinates.y until tunnel.coordinates.y + tunnel.length + 1).forEach { row ->
+                        field[row][tunnel.coordinates.x] = Cell(CellType.WALKABLE)
+                    }
+                }
+            }
+        }
 
         leftChild?.fillField(field)
         rightChild?.fillField(field)

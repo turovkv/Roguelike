@@ -19,7 +19,6 @@ internal data class Tunnel(
             val tunnels = mutableListOf<Tunnel>()
 
             val leftCoordinates = left.randomPoint
-
             val rightCoordinates = right.randomPoint
 
             val width = rightCoordinates.x - leftCoordinates.x
@@ -54,7 +53,7 @@ internal data class Tunnel(
                             tunnels.add(Tunnel(DirectionType.HORIZONTAL, Coordinates(rightCoordinates.x, leftCoordinates.y), -width))
                         }
                     }
-                } else if (height < 0) {
+                } else {
                     when (Random.nextBoolean()) {
                         /**
                          * * l
@@ -110,7 +109,7 @@ internal data class Tunnel(
                              * _ r
                              */
                             tunnels.add(Tunnel(DirectionType.VERTICAL, rightCoordinates, -height))
-                            tunnels.add(Tunnel(DirectionType.HORIZONTAL, Coordinates(rightCoordinates.x, leftCoordinates.y), width))
+                            tunnels.add(Tunnel(DirectionType.HORIZONTAL, leftCoordinates, width))
                         }
                     }
                 }
