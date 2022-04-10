@@ -24,48 +24,38 @@ class InstructionsView(
             instructionPairs.add(i + ": " + instructions.instructions[i])
         }
         var i = 0
-        while (i * screen.terminalSize.columns < description.length) {
-            for (column in description.subSequence(i * screen.terminalSize.columns, min(i * screen.terminalSize.columns + screen.terminalSize.columns, description.length)).indices) {
-                for (row in i until i + 1) {
-                    screen.setCharacter(
-                        column, row,
-                        TextCharacter.fromCharacter(description.subSequence(i * screen.terminalSize.columns, min(i * screen.terminalSize.columns + screen.terminalSize.columns, description.length))[column])[0]
-                    )
-                }
-                println((description[column]))
-            }
-            i += 1
-        }
-        i += 1
-        var begin_i = i
-        println(authors)
-        while ((i - begin_i) * screen.terminalSize.columns < authors.length) {
-            for (column in authors.subSequence((i - begin_i) * screen.terminalSize.columns, min((i - begin_i) * screen.terminalSize.columns + screen.terminalSize.columns, authors.length)).indices) {
-                for (row in i  until i + 1) {
-                    screen.setCharacter(
-                        column, row,
-                        TextCharacter.fromCharacter(authors.subSequence((i - begin_i) * screen.terminalSize.columns, min((i - begin_i) * screen.terminalSize.columns + screen.terminalSize.columns, authors.length))[column])[0]
-                    )
-                    println(1)
-                }
-            }
-            i += 1
-        }
-        i += 1
-        for (j in instructionPairs) {
-            begin_i = i
-            while ((i - begin_i)  * screen.terminalSize.columns< j.length) {
-                for (column in j.subSequence((i - begin_i) * screen.terminalSize.columns, min((i - begin_i) * screen.terminalSize.columns + screen.terminalSize.columns, j.length)).indices) {
-                    for (row in i until i + 1) {
-                        screen.setCharacter(
-                            column, row,
-                            TextCharacter.fromCharacter(j.subSequence((i - begin_i) * screen.terminalSize.columns, min((i - begin_i) * screen.terminalSize.columns + screen.terminalSize.columns, j.length))[column])[0]
-                        )
-                    }
-                }
-                i += 1
-            }
+        i = addStringToScreen(i, 0, description) + 1
+        i = addStringToScreen(i, i, authors) + 1
+        for (str in instructionPairs) {
+            i = addStringToScreen(i, i, str)
         }
         screen.refresh()
+    }
+
+    private fun addStringToScreen(i: Int, begin_i: Int, str: String): Int {
+        var i1 = i
+        while ((i1 - begin_i) * screen.terminalSize.columns < str.length) {
+            for (column in str.subSequence(
+                (i1 - begin_i) * screen.terminalSize.columns,
+                min((i1 - begin_i) * screen.terminalSize.columns + screen.terminalSize.columns, str.length)
+            ).indices) {
+                for (row in i1 until i1 + 1) {
+                    screen.setCharacter(
+                        column, row,
+                        TextCharacter.fromCharacter(
+                            str.subSequence(
+                                (i1 - begin_i) * screen.terminalSize.columns,
+                                min(
+                                    (i1 - begin_i) * screen.terminalSize.columns + screen.terminalSize.columns,
+                                    str.length
+                                )
+                            )[column]
+                        )[0]
+                    )
+                }
+            }
+            i1 += 1
+        }
+        return i1
     }
 }

@@ -13,12 +13,12 @@ class CharacterView(
             character.coordinates.y, character.coordinates.x,
             TextCharacter.fromCharacter('*')[0]
         )
-        val helth = "HEALTH" + " " + character.hp.toString() + "/" + character.maxHp.toString()
-        for (column in helth.indices) {
+        val health = "HEALTH" + " " + character.hp.toString() + "/" + character.maxHp.toString()
+        for (column in health.indices) {
             for (row in screen.terminalSize.rows - 2 until screen.terminalSize.rows - 1) {
                 screen.setCharacter(
                     column, row,
-                    TextCharacter.fromCharacter(helth[column])[0]
+                    TextCharacter.fromCharacter(health[column])[0]
                 )
             }
         }

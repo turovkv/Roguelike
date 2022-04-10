@@ -15,7 +15,6 @@ class MapView(
     private val characterView: CharacterView
 ) : Drawable {
     override fun draw() {
-        println("m")
         screen.clear()
         for (column in 0 until map.field.size) {
             for (row in 0 until map.field[0].size) {
