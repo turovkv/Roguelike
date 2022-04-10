@@ -13,7 +13,7 @@ import ru.roguelike.view.MapView
 fun main() {
     val mapModel = MapModel()
     val defaultTerminalFactory = DefaultTerminalFactory()
-    defaultTerminalFactory.setInitialTerminalSize(TerminalSize(mapModel.field.size, mapModel.field[0].size))
+    defaultTerminalFactory.setInitialTerminalSize(TerminalSize(mapModel.field.size, mapModel.field[0].size + 2))
     val terminal = defaultTerminalFactory.createTerminal()
     val screen = TerminalScreen(terminal)
     screen.startScreen()

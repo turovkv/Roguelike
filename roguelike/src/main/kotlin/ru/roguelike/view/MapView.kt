@@ -15,8 +15,8 @@ class MapView(
 ) : Drawable {
     override fun draw() {
         val terminalSize: TerminalSize = screen.terminalSize
-        for (column in 0 until terminalSize.columns) {
-            for (row in 0 until terminalSize.rows) {
+        for (column in 0 until map.field.size) {
+            for (row in 0 until map.field[0].size) {
                 screen.setCharacter(
                     column, row,
                     when (map.field[column][row].cellType) {

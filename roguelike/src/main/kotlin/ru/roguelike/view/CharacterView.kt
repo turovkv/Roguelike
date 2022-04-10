@@ -14,45 +14,23 @@ class CharacterView(
             character.coordinates.y, character.coordinates.x,
             TextCharacter.fromCharacter('*')[0]
         )
-        for (column in 0 until character.maxHp) {
-            for (row in 0 until 1) {
+        val helth = "HEALTH" + " " + character.hp.toString() + "/" + character.maxHp.toString()
+        for (column in helth.indices) {
+            for (row in screen.terminalSize.rows - 2 until screen.terminalSize.rows - 1) {
                 screen.setCharacter(
                     column, row,
-                    TextCharacter.fromCharacter('_')[0]
+                    TextCharacter.fromCharacter(helth[column])[0]
                 )
             }
         }
-        for (column in 0 until character.hp) {
-            for (row in 0 until 1) {
+        val damage = "DAMGE" + " " + character.damage.toString()
+        for (column in damage.indices) {
+            for (row in screen.terminalSize.rows - 1 until screen.terminalSize.rows) {
                 screen.setCharacter(
                     column, row,
-                    TextCharacter.fromCharacter('\\')[0]
+                    TextCharacter.fromCharacter(damage[column])[0]
                 )
             }
         }
-        screen.setCharacter(
-            character.maxHp, 0,
-            TextCharacter.fromCharacter((character.hp + '0'.code).toChar())[0]
-        )
-        screen.setCharacter(
-            character.maxHp + 1, 0,
-            TextCharacter.fromCharacter('/')[0]
-        )
-        screen.setCharacter(
-            character.maxHp + 2, 0,
-            TextCharacter.fromCharacter((character.maxHp + '0'.code).toChar())[0]
-        )
-        for (column in 0 until character.damage) {
-            for (row in 1 until 2) {
-                screen.setCharacter(
-                    column, row,
-                    TextCharacter.fromCharacter('/')[0]
-                )
-            }
-        }
-        screen.setCharacter(
-            character.damage, 1,
-            TextCharacter.fromCharacter((character.damage + '0'.code).toChar())[0]
-        )
     }
 }
