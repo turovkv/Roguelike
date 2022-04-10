@@ -5,6 +5,6 @@ typealias Field = List<List<Cell>>
 class MapModel(
     val field: Field = BSPFieldGenerator.generate()
 ) {
-    fun getX() = field.size
-    fun getY() = field[0].size
+    fun getX() = field[0].size
+    fun getY() = field.size
 }

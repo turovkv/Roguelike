@@ -16,22 +16,6 @@ class MapLogic(
     }
 
     override fun processLeftArrow() {
-        if (!checkCoordinates(character.coordinates.getLeft())) {
-            return
-        }
-        character.moveLeft()
-        view.draw()
-    }
-
-    override fun processRightArrow() {
-        if (!checkCoordinates(character.coordinates.getRight())) {
-            return
-        }
-        character.moveRight()
-        view.draw()
-    }
-
-    override fun processUpArrow() {
         if (!checkCoordinates(character.coordinates.getUp())) {
             return
         }
@@ -39,11 +23,27 @@ class MapLogic(
         view.draw()
     }
 
-    override fun processDownArrow() {
+    override fun processRightArrow() {
         if (!checkCoordinates(character.coordinates.getDown())) {
             return
         }
         character.moveDown()
+        view.draw()
+    }
+
+    override fun processUpArrow() {
+        if (!checkCoordinates(character.coordinates.getLeft())) {
+            return
+        }
+        character.moveLeft()
+        view.draw()
+    }
+
+    override fun processDownArrow() {
+        if (!checkCoordinates(character.coordinates.getRight())) {
+            return
+        }
+        character.moveRight()
         view.draw()
     }
 }

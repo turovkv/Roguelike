@@ -1,7 +1,7 @@
 package ru.roguelike.model
 
 class InstructionModel(
-    private val instructions: Map<String, String>,
-    private val description: String,
-    private val authors: List<String>
+    val instructions: Map<String, String>,
+    val description: String,
+    val authors: List<String>
 )

@@ -11,9 +11,13 @@ import ru.roguelike.model.MapModel
 
 class MapView(
     private val map: MapModel,
-    private val screen: Screen
+    private val screen: Screen,
+    private val characterView: CharacterView
 ) : Drawable {
     override fun draw() {
+        println("m")
+        screen.clear()
+        screen.refresh()
         for (column in 0 until map.field.size) {
             for (row in 0 until map.field[0].size) {
                 screen.setCharacter(
@@ -25,5 +29,7 @@ class MapView(
                 )
             }
         }
+        characterView.draw()
+        screen.refresh()
     }
 }
