@@ -6,37 +6,37 @@ class LogicFacade(
     private var current: Logic = map,
 ) {
 
-    /*
-    * обработка движения влево
-    * */
+    /**
+     * process Left Arrow
+     */
     fun processLeftArrow() = current.processLeftArrow()
 
-    /*
-    * обработка движения вправо
-    * */
+    /**
+     * process Right Arrow
+     */
     fun processRightArrow() = current.processRightArrow()
 
-    /*
-    * обработка движения вверх
-    * */
+    /**
+     * process Up Arrow
+     */
     fun processUpArrow() = current.processUpArrow()
 
-    /*
-    * обработка движения вниз
-    * */
+    /**
+     * process Down Arrow
+     */
     fun processDownArrow() = current.processDownArrow()
 
-    /*
-    * сменить текущую логику на instructions и нарисовать ее
-    * */
+    /**
+     * change current logic onto instructions and draw it
+     */
     fun processHelp() {
         current = instructions
         current.draw()
     }
 
-    /*
-    * сменить текущую логику на map и нарисовать ее
-    * */
+    /**
+    * change current logic onto map and draw it
+    */
     fun processMap() {
         current = map
         current.draw()

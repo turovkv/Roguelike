@@ -7,6 +7,9 @@ class InputProcessor(
     private val logicFacade: LogicFacade
 ) {
 
+    /**
+     *  process user actions
+     */
     fun process(keyStroke: KeyStroke): Boolean {
         when (keyStroke.keyType) {
             KeyType.ArrowLeft -> logicFacade.processLeftArrow()

@@ -1,28 +1,28 @@
 package ru.roguelike.logic
 
 interface Logic {
-    /*
-    * обработка движения влево
-    * */
+    /**
+     * process Left Arrow
+     */
     fun processLeftArrow()
 
-    /*
-    * обработка движения вправо
-    * */
+    /**
+    * process Right Arrow
+    **/
     fun processRightArrow()
 
-    /*
-    * обработка движения вверх
-    * */
+    /**
+     * process Up Arrow
+     **/
     fun processUpArrow()
 
-    /*
-    * обработка движения вниз
-    * */
+    /**
+     * process Down Arrow
+     **/
     fun processDownArrow()
 
-    /*
-    * отрисовать текущую логику
-    * */
+    /**
+     * draw current logic
+     **/
     fun draw()
 }

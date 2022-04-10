@@ -15,6 +15,9 @@ class MapLogic(
         return 0 <= c.x && c.x < mapModel.getX() && 0 <= c.y && c.y < mapModel.getY() && mapModel.isWalkable(c)
     }
 
+    /**
+     * process Left Arrow, move character to the adjacent left cell
+     */
     override fun processLeftArrow() {
         if (!checkCoordinates(character.coordinates.getLeft())) {
             return
@@ -23,6 +26,9 @@ class MapLogic(
         view.draw()
     }
 
+    /**
+     * process Right Arrow, move character to the adjacent Right cell
+     **/
     override fun processRightArrow() {
         if (!checkCoordinates(character.coordinates.getRight())) {
             return
@@ -31,6 +37,9 @@ class MapLogic(
         view.draw()
     }
 
+    /**
+     * process Up Arrow, move character to the adjacent Up cell
+     **/
     override fun processUpArrow() {
         if (!checkCoordinates(character.coordinates.getUp())) {
             return
@@ -39,6 +48,9 @@ class MapLogic(
         view.draw()
     }
 
+    /**
+     * process Down Arrow, move character to the adjacent Down cell
+     **/
     override fun processDownArrow() {
         if (!checkCoordinates(character.coordinates.getDown())) {
             return
@@ -47,6 +59,9 @@ class MapLogic(
         view.draw()
     }
 
+    /**
+     * draw current map
+     **/
     override fun draw() {
         view.draw()
     }
