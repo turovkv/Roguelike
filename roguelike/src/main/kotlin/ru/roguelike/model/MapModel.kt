@@ -1,4 +1,7 @@
 package ru.roguelike.model
 
-class MapModel {
-}
+typealias Field = List<List<Cell>>
+
+class MapModel(
+    private val field: Field = BSPFieldGenerator.generate()
+)

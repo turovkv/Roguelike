@@ -1,4 +1,3 @@
 package ru.roguelike.logic
 
-interface Logic {
-}
+interface Logic
