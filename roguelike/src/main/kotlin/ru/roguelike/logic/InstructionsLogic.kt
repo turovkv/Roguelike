@@ -2,18 +2,18 @@ package ru.roguelike.logic
 
 class InstructionsLogic : Logic {
     override fun processLeftArrow() {
-        TODO("Not yet implemented")
+        return
     }
 
     override fun processRightArrow() {
-        TODO("Not yet implemented")
+        return
     }
 
     override fun processUpArrow() {
-        TODO("Not yet implemented")
+        return
     }
 
     override fun processDownArrow() {
-        TODO("Not yet implemented")
+        return
     }
 }
