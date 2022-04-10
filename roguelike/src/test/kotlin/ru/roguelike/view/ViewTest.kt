@@ -3,8 +3,8 @@ package ru.roguelike.view
 import com.googlecode.lanterna.TerminalSize
 import com.googlecode.lanterna.screen.TerminalScreen
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory
-import org.junit.Ignore
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import ru.roguelike.model.CellType
 import ru.roguelike.model.Character
@@ -12,8 +12,8 @@ import ru.roguelike.model.MapModel
 import ru.roguelike.util.Constants
 
 class ViewTest {
+    @Disabled("Can't create terminal in CI")
     @Test
-    @Ignore
     fun testLeft() {
         val mapModel = MapModel()
         val defaultTerminalFactory = DefaultTerminalFactory().also {

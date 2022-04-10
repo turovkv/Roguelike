@@ -25,10 +25,8 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation("com.googlecode.lanterna:lanterna:3.1.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
-    implementation("junit:junit:4.13.1")
-    implementation("junit:junit:4.13.1")
-    implementation("junit:junit:4.13.1")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+    implementation("junit:junit:4.13.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 

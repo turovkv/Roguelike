@@ -14,7 +14,7 @@ object BSPFieldGenerator : FieldGenerator {
         val field = MutableList(Constants.FIELD_HEIGHT) {
             MutableList(Constants.FIELD_WIDTH) { Cell(CellType.NON_WALKABLE) }
         }
-        val root = Leaf(0, 0, Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT)
+        val root = Node(0, 0, Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT)
         root.split()
         root.createRooms()
         root.fillField(field)

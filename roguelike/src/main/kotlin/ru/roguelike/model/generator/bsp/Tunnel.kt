@@ -4,17 +4,27 @@ import ru.roguelike.model.Coordinates
 import kotlin.math.abs
 import kotlin.random.Random
 
+/**
+ * Direction of tunnel
+ */
 internal enum class DirectionType {
     VERTICAL,
     HORIZONTAL
 }
 
+/**
+ * Class that represents tunnel between two rooms
+ */
 internal data class Tunnel(
     val direction: DirectionType,
     val coordinates: Coordinates,
     val length: Int
 ) {
     companion object {
+        /**
+         * Create path between two rooms. If it is impossible to create path by one tunnel
+         * then create right corner using two tunnels
+         */
         internal fun createTunnels(left: Room, right: Room): List<Tunnel> {
             val tunnels = mutableListOf<Tunnel>()
 

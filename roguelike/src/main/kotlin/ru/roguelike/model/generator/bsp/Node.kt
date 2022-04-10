@@ -8,14 +8,17 @@ import ru.roguelike.util.Constants
 import kotlin.random.Random
 import kotlin.random.nextInt
 
-internal class Leaf(
+/**
+ * Class that represents node of BSPTree
+ */
+internal class Node(
     private val x: Int,
     private val y: Int,
     private val width: Int,
     private val height: Int
 ) {
-    private var leftChild: Leaf? = null
-    private var rightChild: Leaf? = null
+    private var leftChild: Node? = null
+    private var rightChild: Node? = null
     private val tunnels: MutableList<Tunnel> = mutableListOf()
     private var _room: Room? = null
     private val room: Room?
@@ -48,6 +51,9 @@ internal class Leaf(
         splitType
     }
 
+    /**
+     * Split space in two subspaces
+     */
     fun split() {
         val max = when (splitType) {
             SplitType.HORIZONTALLY -> height
@@ -64,13 +70,13 @@ internal class Leaf(
         when (splitType) {
             SplitType.HORIZONTALLY -> {
                 check(height - splitSize >= Constants.MIN_CELL_SIZE) { "$height, $splitSize" }
-                leftChild = Leaf(x, y, width, splitSize)
-                rightChild = Leaf(x, y + splitSize, width, height - splitSize)
+                leftChild = Node(x, y, width, splitSize)
+                rightChild = Node(x, y + splitSize, width, height - splitSize)
             }
             SplitType.VERTICALLY -> {
                 check(width - splitSize >= Constants.MIN_CELL_SIZE) { "$width, $splitSize" }
-                leftChild = Leaf(x, y, splitSize, height)
-                rightChild = Leaf(x + splitSize, y, width - splitSize, height)
+                leftChild = Node(x, y, splitSize, height)
+                rightChild = Node(x + splitSize, y, width - splitSize, height)
             }
         }
         leftChild?.trySplit()
@@ -84,6 +90,9 @@ internal class Leaf(
             split()
     }
 
+    /**
+     * Create rooms in leaves of BSPTree
+     */
     fun createRooms() {
         if (leftChild != null || rightChild != null) {
             leftChild?.createRooms()
@@ -108,6 +117,9 @@ internal class Leaf(
         }
     }
 
+    /**
+     * Traverse BSPTree and fill field with walkable cells
+     */
     fun fillField(field: Field) {
         _room?.let {
             (it.leftBottom.y until (it.leftBottom.y + it.height)).forEach { row ->
