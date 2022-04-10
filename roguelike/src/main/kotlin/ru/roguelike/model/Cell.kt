@@ -1,7 +1,9 @@
 package ru.roguelike.model
 
-interface Cell
+enum class CellType {
+    WALKABLE,
+    NON_WALKABLE
+}
 
-class NonWalkableCell : Cell
-
-class WalkableCell : Cell
+@kotlinx.serialization.Serializable
+data class Cell(val cellType: CellType)

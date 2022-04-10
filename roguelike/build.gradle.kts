@@ -1,5 +1,6 @@
 plugins {
-    kotlin("jvm") version "1.5.10"
+    kotlin("jvm") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
     application
 }
@@ -22,6 +23,8 @@ tasks.named<JavaExec>("run") {
 
 dependencies {
     implementation(kotlin("stdlib"))
+    implementation("com.googlecode.lanterna:lanterna:3.1.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }

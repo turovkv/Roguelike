@@ -1,6 +1,10 @@
 package ru.roguelike.view
 
-class InstructionsView : Drawable {
+import ru.roguelike.model.InstructionModel
+
+class InstructionsView(
+    private val instructions: InstructionModel
+) : Drawable {
     override fun draw() {
         TODO("Not yet implemented")
     }
