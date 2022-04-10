@@ -5,15 +5,15 @@ import com.googlecode.lanterna.screen.Screen
 import ru.roguelike.model.InstructionModel
 import java.lang.Integer.min
 
-/*
- This class provides one method which draws instructions.
+/**
+ * This interface provides single function for drawing object.
  */
 class InstructionsView(
     private val instructions: InstructionModel,
     private val screen: Screen
 ) : Drawable {
-    /*
-     This method draws the instructions.
+    /**
+     * This method draws the instructions.
      */
     override fun draw() {
         screen.clear()

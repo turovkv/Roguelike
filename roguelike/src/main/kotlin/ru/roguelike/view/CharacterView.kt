@@ -4,15 +4,15 @@ import com.googlecode.lanterna.TextCharacter
 import com.googlecode.lanterna.screen.Screen
 import ru.roguelike.model.Character
 
-/*
- This class provides one method which draws character.
+/**
+ * This class provides one method which draws character
  */
 class CharacterView(
     private val character: Character,
     private val screen: Screen
 ) : Drawable {
-    /*
-     This method draws the character.
+    /**
+     * This method draws the character.
      */
     override fun draw() {
         screen.setCharacter(

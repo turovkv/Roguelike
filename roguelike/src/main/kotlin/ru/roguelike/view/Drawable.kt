@@ -1,7 +1,7 @@
 package ru.roguelike.view
 
-/*
- This interface provides single function for drawing object.
+/**
+ * This interface provides single function for drawing object.
  */
 interface Drawable {
     fun draw()
