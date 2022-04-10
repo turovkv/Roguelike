@@ -3,7 +3,6 @@ import com.googlecode.lanterna.screen.TerminalScreen
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import ru.roguelike.logic.MapLogic
 import ru.roguelike.model.*
 import ru.roguelike.util.Constants
 import ru.roguelike.view.*
@@ -21,7 +20,8 @@ class ViewTest {
         val screen = TerminalScreen(terminal).also {
             it.startScreen(); it.cursorPosition = null
         }
-        val character = Character()
+        val coordinates = mapModel.getRandomWalkableCoordinates()
+        val character = Character(coordinates)
         val characterView = CharacterView(character, screen)
         val mapView = MapView(mapModel, screen, characterView)
 
@@ -32,7 +32,7 @@ class ViewTest {
                 mapView.draw()
                 for (row in 0 until screen.terminal.terminalSize.rows - 2) {
                     for (column in 0 until screen.terminal.terminalSize.columns) {
-                        if (character.coordinates.x == row && character.coordinates.y == column)
+                        if (character.coordinates.x == column && character.coordinates.y == row)
                             Assertions.assertEquals(
                                 screen.getBackCharacter(column, row).characterString[0],
                                 CHARACTER_CHAR
@@ -47,5 +47,4 @@ class ViewTest {
             }
         }
     }
-
 }
