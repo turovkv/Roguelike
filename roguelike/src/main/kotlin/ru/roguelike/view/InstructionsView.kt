@@ -10,10 +10,7 @@ class InstructionsView(
     private val screen: Screen
 ) : Drawable {
     override fun draw() {
-        println("i")
-
         screen.clear()
-        screen.refresh()
         val description = instructions.description
         var authors = ""
         for (i in instructions.authors) {
@@ -32,7 +29,7 @@ class InstructionsView(
                 for (row in i until i + 1) {
                     screen.setCharacter(
                         column, row,
-                        TextCharacter.fromCharacter(description[column])[0]
+                        TextCharacter.fromCharacter(description.subSequence(i * screen.terminalSize.columns, min(i * screen.terminalSize.columns + screen.terminalSize.columns, description.length))[column])[0]
                     )
                 }
                 println((description[column]))
@@ -47,22 +44,22 @@ class InstructionsView(
                 for (row in i  until i + 1) {
                     screen.setCharacter(
                         column, row,
-                        TextCharacter.fromCharacter(authors[column])[0]
+                        TextCharacter.fromCharacter(authors.subSequence((i - begin_i) * screen.terminalSize.columns, min((i - begin_i) * screen.terminalSize.columns + screen.terminalSize.columns, authors.length))[column])[0]
                     )
                     println(1)
                 }
             }
             i += 1
         }
+        i += 1
         for (j in instructionPairs) {
-            i += 1
             begin_i = i
             while ((i - begin_i)  * screen.terminalSize.columns< j.length) {
                 for (column in j.subSequence((i - begin_i) * screen.terminalSize.columns, min((i - begin_i) * screen.terminalSize.columns + screen.terminalSize.columns, j.length)).indices) {
                     for (row in i until i + 1) {
                         screen.setCharacter(
                             column, row,
-                            TextCharacter.fromCharacter(j[column])[0]
+                            TextCharacter.fromCharacter(j.subSequence((i - begin_i) * screen.terminalSize.columns, min((i - begin_i) * screen.terminalSize.columns + screen.terminalSize.columns, j.length))[column])[0]
                         )
                     }
                 }

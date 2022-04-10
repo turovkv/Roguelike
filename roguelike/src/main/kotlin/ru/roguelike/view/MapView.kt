@@ -17,7 +17,6 @@ class MapView(
     override fun draw() {
         println("m")
         screen.clear()
-        screen.refresh()
         for (column in 0 until map.field.size) {
             for (row in 0 until map.field[0].size) {
                 screen.setCharacter(
