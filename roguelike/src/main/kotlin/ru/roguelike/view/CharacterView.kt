@@ -2,7 +2,6 @@ package ru.roguelike.view
 
 import com.googlecode.lanterna.TextCharacter
 import com.googlecode.lanterna.screen.Screen
-import ru.roguelike.model.CellType
 import ru.roguelike.model.Character
 
 class CharacterView(
@@ -23,7 +22,7 @@ class CharacterView(
                 )
             }
         }
-        val damage = "DAMGE" + " " + character.damage.toString()
+        val damage = "DAMAGE" + " " + character.damage.toString()
         for (column in damage.indices) {
             for (row in screen.terminalSize.rows - 1 until screen.terminalSize.rows) {
                 screen.setCharacter(
