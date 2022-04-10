@@ -22,9 +22,23 @@ fun main() {
     screen.startScreen()
     screen.cursorPosition = null
     val character = Character()
-    val mapView = MapView(mapModel, screen, CharacterView(character, screen))
-    val mapLogic = MapLogic(character = character, view = mapView)
-    val instructionsLogic = InstructionsLogic(InstructionsView(InstructionModel(AUTHORS, DESCRIPTION, INSTRUCTIONS), screen))
+    val characterView = CharacterView(character, screen)
+    val mapView = MapView(mapModel, screen, characterView)
+    val mapLogic = MapLogic(character, mapModel, mapView)
+
+    val instructionsModel = InstructionModel(
+        mapOf(
+            Pair("H", "Help"),
+            Pair("M", "Map"),
+            Pair("I", "Inventory"),
+        ),
+        "Just nice game bro",
+        listOf("Kirill", "Andrey", "Misha", "Vitya")
+    )
+
+    val instructionsView = InstructionsView(instructionsModel, screen)
+    val instructionsLogic = InstructionsLogic(instructionsView)
+
     val logicFacade = LogicFacade(map = mapLogic, instructions = instructionsLogic)
     val inputProcessor = InputProcessor(logicFacade)
     terminal.use {
@@ -32,7 +46,10 @@ fun main() {
             mapView.draw()
             while (true) {
                 val keyStroke = it.readInput()
-                inputProcessor.process(keyStroke)
+                val isNotTerminated = inputProcessor.process(keyStroke)
+                if (!isNotTerminated) {
+                    break
+                }
             }
         }
     }

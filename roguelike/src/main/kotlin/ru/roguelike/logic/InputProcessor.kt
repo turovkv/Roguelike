@@ -7,7 +7,7 @@ class InputProcessor(
     private val logicFacade: LogicFacade
 ) {
 
-    fun process(keyStroke: KeyStroke) {
+    fun process(keyStroke: KeyStroke): Boolean {
         when (keyStroke.keyType) {
             KeyType.ArrowLeft -> logicFacade.processLeftArrow()
             KeyType.ArrowRight -> logicFacade.processRightArrow()
@@ -17,7 +17,9 @@ class InputProcessor(
                 'h' -> logicFacade.processHelp()
                 'm' -> logicFacade.processMap()
             }
-            else -> {return}
+            KeyType.EOF -> return false
+            else -> return true
         }
+        return true
     }
 }

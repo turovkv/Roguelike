@@ -7,7 +7,7 @@ import ru.roguelike.view.Drawable
 
 class MapLogic(
     private val character: Character,
-    private val mapModel: MapModel = MapModel(),
+    private val mapModel: MapModel,
     private val view: Drawable
 ) : Logic {
 
