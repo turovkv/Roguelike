@@ -6,6 +6,9 @@ import ru.roguelike.model.Field
 import ru.roguelike.model.generator.FieldGenerator
 import ru.roguelike.util.Constants
 
+/**
+ * Class that generate field using BSPTree
+ */
 object BSPFieldGenerator : FieldGenerator {
     override fun generate(): Field {
         val field = MutableList(Constants.FIELD_HEIGHT) {

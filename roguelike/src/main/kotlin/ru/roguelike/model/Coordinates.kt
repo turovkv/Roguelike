@@ -1,5 +1,8 @@
 package ru.roguelike.model
 
+/**
+ * Class that store coordinates and support operations with them
+ */
 data class Coordinates(private var _x: Int, private var _y: Int) {
     val x get() = _x
     val y get() = _y
