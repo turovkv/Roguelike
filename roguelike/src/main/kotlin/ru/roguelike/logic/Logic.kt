@@ -1,3 +1,8 @@
 package ru.roguelike.logic
 
-interface Logic
+interface Logic {
+    fun processLeftArrow()
+    fun processRightArrow()
+    fun processUpArrow()
+    fun processDownArrow()
+}
