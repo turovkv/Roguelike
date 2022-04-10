@@ -52,7 +52,7 @@ class CharacterView(
         }
         screen.setCharacter(
             character.damage, 1,
-            TextCharacter.fromCharacter((character.hp + '0'.code).toChar())[0]
+            TextCharacter.fromCharacter((character.damage + '0'.code).toChar())[0]
         )
     }
 }
