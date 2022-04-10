@@ -123,7 +123,7 @@ internal class Leaf(
                     check(tunnel.coordinates.x + tunnel.length <= Constants.FIELD_WIDTH) {
                         "${tunnel.coordinates.x}, ${tunnel.length}"
                     }
-                    (tunnel.coordinates.x until tunnel.coordinates.x + tunnel.length + 1).forEach { column ->
+                    (tunnel.coordinates.x until tunnel.coordinates.x + tunnel.length).forEach { column ->
                         field[tunnel.coordinates.y][column] = Cell(CellType.WALKABLE)
                     }
                 }
@@ -131,7 +131,7 @@ internal class Leaf(
                     check(tunnel.coordinates.y + tunnel.length <= Constants.FIELD_HEIGHT) {
                         "${tunnel.coordinates.y}, ${tunnel.length}"
                     }
-                    (tunnel.coordinates.y until tunnel.coordinates.y + tunnel.length + 1).forEach { row ->
+                    (tunnel.coordinates.y until tunnel.coordinates.y + tunnel.length).forEach { row ->
                         field[row][tunnel.coordinates.x] = Cell(CellType.WALKABLE)
                     }
                 }

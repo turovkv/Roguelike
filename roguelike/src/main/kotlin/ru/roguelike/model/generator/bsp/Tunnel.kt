@@ -90,7 +90,7 @@ internal data class Tunnel(
                              * l _
                              */
                             tunnels.add(Tunnel(DirectionType.VERTICAL, leftCoordinates, height))
-                            tunnels.add(Tunnel(DirectionType.HORIZONTAL, Coordinates(leftCoordinates.x, rightCoordinates.y), height))
+                            tunnels.add(Tunnel(DirectionType.HORIZONTAL, Coordinates(leftCoordinates.x, rightCoordinates.y), width))
                         }
                     }
                 } else {
