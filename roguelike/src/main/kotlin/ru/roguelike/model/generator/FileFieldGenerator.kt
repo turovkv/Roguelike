@@ -1,4 +1,6 @@
-package ru.roguelike.model
+package ru.roguelike.model.generator
+
+import ru.roguelike.model.Field
 
 object FileFieldGenerator : FieldGenerator {
     override fun generate(): Field {

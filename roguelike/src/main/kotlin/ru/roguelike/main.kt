@@ -10,14 +10,19 @@ import ru.roguelike.logic.MapLogic
 import ru.roguelike.model.Character
 import ru.roguelike.model.InstructionModel
 import ru.roguelike.model.MapModel
-import ru.roguelike.view.*
-
+import ru.roguelike.util.Constants
+import ru.roguelike.view.AUTHORS
+import ru.roguelike.view.CharacterView
+import ru.roguelike.view.DESCRIPTION
+import ru.roguelike.view.INSTRUCTIONS
+import ru.roguelike.view.InstructionsView
+import ru.roguelike.view.MapView
 
 fun main() {
     val mapModel = MapModel()
     val defaultTerminalFactory = DefaultTerminalFactory().also {
         it.setInitialTerminalSize(
-            TerminalSize(mapModel.field.size, mapModel.field[0].size + 2)
+            TerminalSize(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT + Constants.CHARACTER_VIEW_HEIGHT)
         )
     }
     val terminal = defaultTerminalFactory.createTerminal()

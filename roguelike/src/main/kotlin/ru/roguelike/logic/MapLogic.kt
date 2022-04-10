@@ -12,26 +12,10 @@ class MapLogic(
 ) : Logic {
 
     private fun checkCoordinates(c: Coordinates): Boolean {
-        return 0 <= c.x && c.x < mapModel.getX() && 0 <= c.y && c.y < mapModel.getY()
+        return 0 <= c.x && c.x < mapModel.getX() && 0 <= c.y && c.y < mapModel.getY() && mapModel.isWalkable(c)
     }
 
     override fun processLeftArrow() {
-        if (!checkCoordinates(character.coordinates.getUp())) {
-            return
-        }
-        character.moveUp()
-        view.draw()
-    }
-
-    override fun processRightArrow() {
-        if (!checkCoordinates(character.coordinates.getDown())) {
-            return
-        }
-        character.moveDown()
-        view.draw()
-    }
-
-    override fun processUpArrow() {
         if (!checkCoordinates(character.coordinates.getLeft())) {
             return
         }
@@ -39,11 +23,27 @@ class MapLogic(
         view.draw()
     }
 
-    override fun processDownArrow() {
+    override fun processRightArrow() {
         if (!checkCoordinates(character.coordinates.getRight())) {
             return
         }
         character.moveRight()
+        view.draw()
+    }
+
+    override fun processUpArrow() {
+        if (!checkCoordinates(character.coordinates.getUp())) {
+            return
+        }
+        character.moveUp()
+        view.draw()
+    }
+
+    override fun processDownArrow() {
+        if (!checkCoordinates(character.coordinates.getDown())) {
+            return
+        }
+        character.moveDown()
         view.draw()
     }
 

@@ -9,9 +9,9 @@ val INSTRUCTIONS = mapOf(
     Pair("I", "Inventory"),
 )
 
-//MAP
+// MAP
 const val WALKABLE_CHAR = '.'
 const val NON_WALKABLE_CHAR = '#'
 
-//CHARACTER
+// CHARACTER
 const val CHARACTER_CHAR = '*'

@@ -17,11 +17,11 @@ class MapView(
      */
     override fun draw() {
         screen.clear()
-        for (column in 0 until map.getY()) {
-            for (row in 0 until map.getX()) {
+        for (row in 0 until map.getY()) {
+            for (column in 0 until map.getX()) {
                 screen.setCharacter(
                     column, row,
-                    when (map.field[column][row].cellType) {
+                    when (map.field[row][column].cellType) {
                         CellType.WALKABLE -> TextCharacter.fromCharacter(WALKABLE_CHAR)[0]
                         CellType.NON_WALKABLE -> TextCharacter.fromCharacter(NON_WALKABLE_CHAR)[0]
                     }
