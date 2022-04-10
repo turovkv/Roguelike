@@ -29,7 +29,10 @@ fun main() {
     val screen = TerminalScreen(terminal).also {
         it.startScreen(); it.cursorPosition = null
     }
-    val character = Character()
+
+    val coordinates = mapModel.getRandomWalkableCoordinates()
+
+    val character = Character(coordinates = coordinates)
     val characterView = CharacterView(character, screen)
     val mapView = MapView(mapModel, screen, characterView)
     val mapLogic = MapLogic(character, mapModel, mapView)

@@ -1,7 +1,7 @@
 package ru.roguelike.model
 
-class Character() {
-    var coordinates: Coordinates = Coordinates(10, 10)
+class Character(coordinates: Coordinates) {
+    var coordinates: Coordinates = coordinates
         private set
     var damage: Int = 5
         private set
