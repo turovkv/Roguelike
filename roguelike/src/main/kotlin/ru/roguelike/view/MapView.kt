@@ -22,8 +22,8 @@ class MapView(
                 screen.setCharacter(
                     column, row,
                     when (map.field[column][row].cellType) {
-                        CellType.WALKABLE -> TextCharacter.fromCharacter('.')[0]
-                        CellType.NON_WALKABLE -> TextCharacter.fromCharacter('#')[0]
+                        CellType.WALKABLE -> TextCharacter.fromCharacter(WALKABLE_CHAR)[0]
+                        CellType.NON_WALKABLE -> TextCharacter.fromCharacter(NON_WALKABLE_CHAR)[0]
                     }
                 )
             }

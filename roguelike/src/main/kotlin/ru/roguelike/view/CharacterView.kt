@@ -17,7 +17,7 @@ class CharacterView(
     override fun draw() {
         screen.setCharacter(
             character.coordinates.y, character.coordinates.x,
-            TextCharacter.fromCharacter('*')[0]
+            TextCharacter.fromCharacter(CHARACTER_CHAR)[0]
         )
         val health = "HEALTH" + " " + character.hp.toString() + "/" + character.maxHp.toString()
         for (column in health.indices) {
