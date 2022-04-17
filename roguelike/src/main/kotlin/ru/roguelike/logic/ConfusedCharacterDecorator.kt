@@ -6,12 +6,12 @@ import kotlin.random.Random
 class ConfusedCharacterDecorator(
     private val characterStrategy: CharacterStrategy
 ) : CharacterStrategy {
-    override fun move(coord: Coordinates, mapLogic: MapLogic): Coordinates {
+    override fun move(enemyCoord: Coordinates, heroCoord: Coordinates): Coordinates {
         val possible = arrayOf(
-            Coordinates(coord.x - 1, coord.y),
-            Coordinates(coord.x, coord.y - 1),
-            Coordinates(coord.x, coord.y + 1),
-            Coordinates(coord.x + 1, coord.y),
+            Coordinates(enemyCoord.x - 1, enemyCoord.y),
+            Coordinates(enemyCoord.x, enemyCoord.y - 1),
+            Coordinates(enemyCoord.x, enemyCoord.y + 1),
+            Coordinates(enemyCoord.x + 1, enemyCoord.y),
         )
         return possible[Random.nextInt(possible.size)]
     }

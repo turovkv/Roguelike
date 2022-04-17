@@ -4,7 +4,6 @@ import ru.roguelike.model.*
 import ru.roguelike.view.MapView
 import kotlin.math.max
 import kotlin.math.min
-import kotlin.math.sign
 
 @kotlinx.serialization.Serializable
 class MapLogic(
@@ -83,22 +82,11 @@ class MapLogic(
 
     fun isHeroVisible(c: Coordinates) = isVisible(hero.coordinates, c)
 
-    fun visibleDirVectorToHero(c: Coordinates): Coordinates? {
-        if (!isHeroVisible(c)) {
-            return null
-        }
-
-        return Coordinates(
-            sign((hero.coordinates.x - c.x).toDouble()).toInt(),
-            sign((hero.coordinates.y - c.y).toDouble()).toInt()
-        )
-    }
-
     private fun updateNPCs() {
         for (row in mapModel.field) {
             for (cell in row) {
-                cell.enemy?.let {
-                    enemy: Enemy -> enemy.act(this)
+                cell.enemy?.let { enemy: Enemy ->
+                    enemy.act(this, hero.coordinates)
                 }
             }
         }

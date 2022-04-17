@@ -10,8 +10,12 @@ class Enemy(
     override var _coordinates: Coordinates,
     private val strategy: CharacterStrategy,
 ) : Character() {
-    fun act(mapLogic: MapLogic) {
-        _coordinates = strategy.move(coordinates, mapLogic)
+    fun act(mapLogic: MapLogic, heroCoordinates: Coordinates) {
+        if (!mapLogic.isHeroVisible(coordinates)) {
+            return
+        }
+
+        val newCoordinates = strategy.move(coordinates, heroCoordinates)
     }
 
     override fun toString(): String {
@@ -25,5 +29,8 @@ class Enemy(
             return PASSIVE_CHAR.toString()
         }
         return ""
+    }
+
+    companion object {
     }
 }
