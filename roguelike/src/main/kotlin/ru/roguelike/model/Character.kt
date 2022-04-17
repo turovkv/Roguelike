@@ -15,8 +15,10 @@ abstract class Character {
     var damage: Int = 5
         protected set
     var hp: Int = 2
+        protected set
     val maxHp: Int = 5
     var armor: Int = 0
+        protected set
 
     /**
      * Move character to one cell right

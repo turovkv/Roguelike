@@ -1,5 +1,7 @@
 package ru.roguelike.model
 
+import kotlin.random.Random
+
 /**
  * Class that store coordinates and support operations with them
  */
@@ -22,5 +24,11 @@ data class Coordinates(private var _x: Int, private var _y: Int) {
 
     fun swapY(other: Coordinates) {
         _y = other._y.also { other._y = _y }
+    }
+
+    companion object {
+        fun createRandomCoordinates(x: Int, y: Int, width: Int, height: Int): Coordinates {
+            return Coordinates(x + Random.nextInt(width), y + Random.nextInt(height))
+        }
     }
 }

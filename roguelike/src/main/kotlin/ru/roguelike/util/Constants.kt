@@ -15,4 +15,11 @@ object Constants {
 
     const val INVENTORY_SIZE = 5
     const val MAXIMUM_EQUIPPED_ITEMS = 2
+
+    const val ROOM_ENEMY_COUNT = 2
+    const val ROOM_ITEMS_COUNT = 3
+
+    const val MAX_HP = 70
+    const val MAX_DAMAGE = 30
+    const val MAX_ARMOR = 50
 }
