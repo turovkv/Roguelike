@@ -18,9 +18,9 @@ import ru.roguelike.model.Sword
 import ru.roguelike.util.Constants
 
 class ViewTest {
-//    @Disabled("Can't create terminal in CI")
+    @Disabled("Can't create terminal in CI")
     @Test
-    fun testLeft() {
+    fun testMapView() {
         val mapModel = MapModel()
         val defaultTerminalFactory = DefaultTerminalFactory().also {
             it.setInitialTerminalSize(
@@ -58,7 +58,7 @@ class ViewTest {
                                         else -> { TextCharacter.fromCharacter(NON_WALKABLE_CHAR)[0].characterString[0] }
                                     }
                                 )
-                            } else if (mapModel.field[row - 1][column].enemy != null){
+                            } else if (mapModel.field[row - 1][column].enemy != null) {
                                 Assertions.assertEquals(
                                     screen.getBackCharacter(column, row).characterString[0],
                                     TextCharacter.fromCharacter(mapModel.field[row - 1][column].enemy.toString()[0])[0].characterString[0]
@@ -76,7 +76,7 @@ class ViewTest {
         }
     }
 
-//    @Disabled("Can't create terminal in CI")
+    @Disabled("Can't create terminal in CI")
     @Test
     fun testInventoryView() {
         val defaultTerminalFactory = DefaultTerminalFactory().also {

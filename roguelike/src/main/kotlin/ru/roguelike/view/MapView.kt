@@ -2,7 +2,11 @@ package ru.roguelike.view
 
 import com.googlecode.lanterna.TextCharacter
 import com.googlecode.lanterna.screen.Screen
-import ru.roguelike.model.*
+import ru.roguelike.model.Apple
+import ru.roguelike.model.CellType
+import ru.roguelike.model.MapModel
+import ru.roguelike.model.Shield
+import ru.roguelike.model.Sword
 import ru.roguelike.util.Constants.ERROR_VIEW_HEIGHT
 
 /**
@@ -14,7 +18,7 @@ class MapView(
     private val characterView: CharacterView
 ) : Drawable {
     private val errorView = ErrorView(screen)
-    fun setError(message:String) {
+    fun setError(message: String) {
         errorView.message = message
     }
     /**

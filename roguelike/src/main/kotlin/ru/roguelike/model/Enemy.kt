@@ -1,6 +1,10 @@
 package ru.roguelike.model
 
-import ru.roguelike.logic.*
+import ru.roguelike.logic.AgressiveStrategy
+import ru.roguelike.logic.CharacterStrategy
+import ru.roguelike.logic.MapLogic
+import ru.roguelike.logic.PassiveStrategy
+import ru.roguelike.logic.SneakyStrategy
 import ru.roguelike.util.Constants
 import ru.roguelike.view.AGRESSIVE_CHAR
 import ru.roguelike.view.PASSIVE_CHAR

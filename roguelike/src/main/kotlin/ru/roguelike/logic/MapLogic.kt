@@ -1,6 +1,10 @@
 package ru.roguelike.logic
 
-import ru.roguelike.model.*
+import ru.roguelike.model.Coordinates
+import ru.roguelike.model.Enemy
+import ru.roguelike.model.Hero
+import ru.roguelike.model.InventoryModel
+import ru.roguelike.model.MapModel
 import ru.roguelike.view.MapView
 import kotlin.math.max
 import kotlin.math.min

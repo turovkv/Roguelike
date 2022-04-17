@@ -2,7 +2,6 @@ package ru.roguelike.model.generator.bsp
 
 import ru.roguelike.model.Cell
 import ru.roguelike.model.CellType
-import ru.roguelike.model.Coordinates
 import ru.roguelike.model.Field
 import ru.roguelike.util.Constants
 import kotlin.random.Random

@@ -3,9 +3,9 @@ package ru.roguelike.logic
 import ru.roguelike.model.Coordinates
 import kotlin.math.sign
 
-class AgressiveStrategy: CharacterStrategy {
+class AgressiveStrategy : CharacterStrategy {
     override fun move(enemyCoord: Coordinates, heroCoord: Coordinates): Coordinates {
-        val vec =  Coordinates(
+        val vec = Coordinates(
             sign((heroCoord.x - enemyCoord.x).toDouble()).toInt(),
             sign((heroCoord.y - enemyCoord.y).toDouble()).toInt()
         )
