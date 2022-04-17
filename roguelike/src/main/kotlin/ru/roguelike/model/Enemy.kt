@@ -27,6 +27,7 @@ class Enemy(
         val newCoordinates = strategy.move(coordinates, heroCoordinates)
 
         if (mapLogic.checkCoordinates(newCoordinates)) {
+            _coordinates = newCoordinates
             return newCoordinates
         }
         return coordinates
