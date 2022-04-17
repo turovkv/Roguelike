@@ -1,9 +1,6 @@
 package ru.roguelike.model
 
-import ru.roguelike.logic.AgressiveStrategy
-import ru.roguelike.logic.CharacterStrategy
-import ru.roguelike.logic.PassiveStrategy
-import ru.roguelike.logic.SneakyStrategy
+import ru.roguelike.logic.*
 import ru.roguelike.view.AGRESSIVE_CHAR
 import ru.roguelike.view.PASSIVE_CHAR
 import ru.roguelike.view.SNEAKY_CHAR
@@ -13,8 +10,8 @@ class Enemy(
     override var _coordinates: Coordinates,
     private val strategy: CharacterStrategy,
 ) : Character() {
-    fun act() {
-        _coordinates = strategy.move(coordinates)
+    fun act(mapLogic: MapLogic) {
+        _coordinates = strategy.move(coordinates, mapLogic)
     }
 
     override fun toString(): String {

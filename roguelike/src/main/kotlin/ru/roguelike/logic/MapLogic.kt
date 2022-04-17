@@ -94,11 +94,11 @@ class MapLogic(
         )
     }
 
-    fun updateNPCs() {
+    private fun updateNPCs() {
         for (row in mapModel.field) {
             for (cell in row) {
                 cell.enemy?.let {
-                    enemy: Enemy -> enemy.act()
+                    enemy: Enemy -> enemy.act(this)
                 }
             }
         }

@@ -2,10 +2,8 @@ package ru.roguelike.logic
 
 import ru.roguelike.model.Coordinates
 
-class AgressiveStrategy(
-    private val mapLogic: MapLogic,
-) : CharacterStrategy(mapLogic = mapLogic) {
-    override fun move(coord: Coordinates): Coordinates {
+class AgressiveStrategy: CharacterStrategy {
+    override fun move(coord: Coordinates, mapLogic: MapLogic): Coordinates {
         val vec = mapLogic.visibleDirVectorToHero(coord) ?: return coord
 
         val dxdy = listOf(
