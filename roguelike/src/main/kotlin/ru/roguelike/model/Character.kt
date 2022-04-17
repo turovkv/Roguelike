@@ -1,7 +1,6 @@
 package ru.roguelike.model
 
 import kotlin.math.max
-import kotlin.math.min
 
 /**
  * Class that stores information about characters
