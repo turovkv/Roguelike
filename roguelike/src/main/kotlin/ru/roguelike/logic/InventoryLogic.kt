@@ -31,14 +31,14 @@ class InventoryLogic(
     }
 
     override fun processDrop() {
-        if (mapModel.field[character.coordinates.x][character.coordinates.y].item != null) {
+        if (mapModel.field[character.coordinates.y][character.coordinates.x].item != null) {
             return
         }
 
         inventoryModel.getCurrentItem().let { item ->
             if (!inventoryModel.isCurrentItemEquipped()) {
                 inventoryModel.dropCurrentItem()
-                mapModel.field[character.coordinates.x][character.coordinates.y].item = item
+                mapModel.field[character.coordinates.y][character.coordinates.x].item = item
             }
         }
     }

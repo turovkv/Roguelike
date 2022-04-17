@@ -142,10 +142,10 @@ class MapLogic(
     }
 
     override fun processEquip() {
-        mapModel.field[hero.coordinates.x][hero.coordinates.y].item?.let {
+        mapModel.field[hero.coordinates.y][hero.coordinates.x].item?.let {
             inventoryModel.addItem(it)
         }
-        mapModel.field[hero.coordinates.x][hero.coordinates.y].item = null
+        mapModel.field[hero.coordinates.y][hero.coordinates.x].item = null
     }
 
     /**
