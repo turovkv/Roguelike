@@ -19,6 +19,8 @@ class MapModel(
      */
     fun isWalkable(coordinates: Coordinates) = field[coordinates.y][coordinates.x].cellType == CellType.WALKABLE
 
+    fun isWithoutEnemy(coordinates: Coordinates) = field[coordinates.y][coordinates.x].enemy == null
+
     /**
      * Find first walkable cell
      */

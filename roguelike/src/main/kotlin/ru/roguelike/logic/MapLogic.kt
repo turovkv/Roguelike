@@ -14,7 +14,7 @@ class MapLogic(
 ) : Logic {
 
     fun checkCoordinates(c: Coordinates): Boolean {
-        return 0 <= c.x && c.x < mapModel.getX() && 0 <= c.y && c.y < mapModel.getY() && mapModel.isWalkable(c)
+        return 0 <= c.x && c.x < mapModel.getX() && 0 <= c.y && c.y < mapModel.getY() && mapModel.isWalkable(c) && mapModel.isWithoutEnemy(c)
     }
 
     private fun isVisible(c1: Coordinates, c2: Coordinates): Boolean {
