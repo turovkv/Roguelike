@@ -5,12 +5,17 @@ import com.googlecode.lanterna.TextColor
 import com.googlecode.lanterna.screen.Screen
 import ru.roguelike.model.*
 
-
+/**
+ * This class provides one method which draws inventory.
+ */
 class InventoryView(
     private val inventory: InventoryModel,
     private val characterView: CharacterView,
     private val screen: Screen
 ) : Drawable {
+    /**
+     * This method draws inventory.
+     */
     override fun draw() {
         screen.clear()
 
