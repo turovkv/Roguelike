@@ -83,16 +83,25 @@ class MapLogic(
     fun isHeroVisible(c: Coordinates) = isVisible(hero.coordinates, c)
 
     private fun updateNPCs() {
+        val enemies = mutableListOf<Enemy?>()
+
         for (row in mapModel.field) {
             for (cell in row) {
                 cell.enemy?.let { enemy: Enemy ->
                     val oldCoordinates = enemy.coordinates
                     val newCoordinates = enemy.act(this, hero.coordinates)
                     if (oldCoordinates != newCoordinates) {
-                        mapModel.field[newCoordinates.y][newCoordinates.x].enemy = cell.enemy
+                        enemies.add(cell.enemy)
                         mapModel.field[oldCoordinates.y][oldCoordinates.x].enemy = null
                     }
                 }
+            }
+        }
+
+        for (enemy in enemies) {
+            enemy?.let { enemy: Enemy ->
+                val coordinates = enemy.coordinates
+                mapModel.field[coordinates.y][coordinates.x].enemy = enemy
             }
         }
     }
