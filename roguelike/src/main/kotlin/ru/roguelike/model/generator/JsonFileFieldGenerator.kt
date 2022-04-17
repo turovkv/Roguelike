@@ -6,9 +6,9 @@ import ru.roguelike.model.Field
 import java.io.FileInputStream
 
 /**
- * Class that generate field by reading it from file
+ * Class that generate field by reading it from json file
  */
-class FileFieldGenerator(private val path: String) : FieldGenerator {
+class JsonFileFieldGenerator(private val path: String) : FieldGenerator {
     override fun generate(): Field =
         FileInputStream(path).use {
             Json.decodeFromString(it.bufferedReader().readText())

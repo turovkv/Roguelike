@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 import ru.roguelike.model.Field
 import java.nio.file.Paths
 
-internal class FileFieldGeneratorTest {
+internal class JsonFileFieldGeneratorTest {
     @Test
     fun simpleTest() {
         val fieldPath = Paths.get("src", "test", "resources", "field.json")
@@ -15,6 +15,6 @@ internal class FileFieldGeneratorTest {
             Json.decodeFromString(it.readText())
         }
 
-        Assertions.assertEquals(expectedField, FileFieldGenerator(fieldPath.toFile().absolutePath).generate())
+        Assertions.assertEquals(expectedField, JsonFileFieldGenerator(fieldPath.toFile().absolutePath).generate())
     }
 }
