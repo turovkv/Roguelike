@@ -1,14 +1,13 @@
 package ru.roguelike.view
 
 import com.googlecode.lanterna.TerminalSize
+import com.googlecode.lanterna.TextCharacter
 import com.googlecode.lanterna.screen.TerminalScreen
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import ru.roguelike.model.CellType
-import ru.roguelike.model.Character
-import ru.roguelike.model.MapModel
+import ru.roguelike.model.*
 import ru.roguelike.util.Constants
 
 class ViewTest {
@@ -46,6 +45,45 @@ class ViewTest {
                                 screen.getBackCharacter(column, row).characterString[0],
                                 constMap[mapModel.field[row][column].cellType]
                             )
+                    }
+                }
+            }
+        }
+    }
+
+    @Disabled("Can't create terminal in CI")
+    @Test
+    fun testInventoryView() {
+        val defaultTerminalFactory = DefaultTerminalFactory().also {
+            it.setInitialTerminalSize(
+                TerminalSize(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT + Constants.CHARACTER_VIEW_HEIGHT)
+            )
+        }
+        val terminal = defaultTerminalFactory.createTerminal()
+        val screen = TerminalScreen(terminal).also {
+            it.startScreen(); it.cursorPosition = null
+        }
+        val inventoryModel = InventoryModel(listOf(Shield(2), Sword(3), Apple(4)))
+        val inventoryView = InventoryView(inventoryModel, screen)
+        terminal.use {
+            screen.use {
+                inventoryView.draw()
+                for (row in 0 until inventoryModel.items.size) {
+                    Assertions.assertEquals(
+                        screen.getBackCharacter(0, row).characterString[0],
+                        when (inventoryModel.items[row]) {
+                            is Shield -> TextCharacter.fromCharacter(SHIELD_CHAR)[0].characterString[0]
+                            is Sword -> TextCharacter.fromCharacter(SWORD_CHAR)[0].characterString[0]
+                            is Apple -> TextCharacter.fromCharacter(APPLE_CHAR)[0].characterString[0]
+                            else -> {
+                                TextCharacter.fromCharacter(NON_WALKABLE_CHAR)[0].characterString[0]}
+                        }
+                    )
+                    for (column in 2 until inventoryModel.items[row].toString().length) {
+                        Assertions.assertEquals(
+                            screen.getBackCharacter(column, row).characterString[0],
+                            inventoryModel.items[row].toString()[column - 2]
+                        )
                     }
                 }
             }

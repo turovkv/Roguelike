@@ -7,16 +7,9 @@ import ru.roguelike.logic.InputProcessor
 import ru.roguelike.logic.InstructionsLogic
 import ru.roguelike.logic.LogicFacade
 import ru.roguelike.logic.MapLogic
-import ru.roguelike.model.Character
-import ru.roguelike.model.InstructionModel
-import ru.roguelike.model.MapModel
+import ru.roguelike.model.*
 import ru.roguelike.util.Constants
-import ru.roguelike.view.AUTHORS
-import ru.roguelike.view.CharacterView
-import ru.roguelike.view.DESCRIPTION
-import ru.roguelike.view.INSTRUCTIONS
-import ru.roguelike.view.InstructionsView
-import ru.roguelike.view.MapView
+import ru.roguelike.view.*
 
 fun main() {
     val mapModel = MapModel()
@@ -49,9 +42,13 @@ fun main() {
     val logicFacade = LogicFacade(map = mapLogic, instructions = instructionsLogic)
     val inputProcessor = InputProcessor(logicFacade)
 
+
+    val inventoryView = InventoryView(InventoryModel(listOf(Shield(2), Sword(3), Apple(4))), screen)
+
     terminal.use {
         screen.use {
-            mapView.draw()
+            inventoryView.draw()
+//            mapView.draw()
             while (true) {
                 val keyStroke = it.readInput()
                 val isNotTerminated = inputProcessor.process(keyStroke)

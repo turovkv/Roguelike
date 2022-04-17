@@ -3,6 +3,7 @@ package ru.roguelike.logic
 class LogicFacade(
     private val map: MapLogic,
     private val instructions: InstructionsLogic,
+//    private val inventory: InventoryLogic,
     private var current: Logic = map,
 ) {
 
@@ -41,4 +42,9 @@ class LogicFacade(
         current = map
         current.draw()
     }
+
+//    fun processInventory() {
+//        current = inventory
+//        current.draw()
+//    }
 }

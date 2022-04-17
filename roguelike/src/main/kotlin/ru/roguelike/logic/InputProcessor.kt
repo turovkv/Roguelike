@@ -19,6 +19,7 @@ class InputProcessor(
             KeyType.Character -> when (keyStroke.character.toChar()) {
                 'h' -> logicFacade.processHelp()
                 'm' -> logicFacade.processMap()
+//                'i' -> logicFacade.processInventory()
             }
             KeyType.EOF -> return false
             else -> return true
