@@ -36,6 +36,9 @@ data class Coordinates(private var _x: Int, private var _y: Int) {
     }
 
     companion object {
+        /**
+         * Create random coordinates
+         */
         fun createRandomCoordinates(x: Int, y: Int, width: Int, height: Int): Coordinates {
             return Coordinates(x + Random.nextInt(width), y + Random.nextInt(height))
         }

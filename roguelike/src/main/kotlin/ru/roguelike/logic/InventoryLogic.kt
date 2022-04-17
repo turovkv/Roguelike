@@ -15,6 +15,9 @@ class InventoryLogic(
     private val mapModel: MapModel,
     private val view: Drawable
 ) : Logic {
+    /**
+     * processing equip current item
+     */
     override fun processEquip() {
         inventoryModel.getCurrentItem().let { item ->
             if (!inventoryModel.isCurrentItemEquipped()) {
@@ -24,6 +27,9 @@ class InventoryLogic(
         }
     }
 
+    /**
+     * processing unequip current item
+     */
     override fun processUnEquip() {
         inventoryModel.getCurrentItem().let { item ->
             if (item is NonDisposableItem && inventoryModel.isCurrentItemEquipped()) {
@@ -33,6 +39,9 @@ class InventoryLogic(
         }
     }
 
+    /**
+     * processing dropping item from inventory
+     */
     override fun processDrop() {
         if (mapModel.field[character.coordinates.y][character.coordinates.x].item != null) {
             return
@@ -46,14 +55,23 @@ class InventoryLogic(
         }
     }
 
+    /**
+     * processing moving up in inventory
+     */
     override fun moveUp() {
         inventoryModel.moveUp()
     }
 
+    /**
+     * processing moving down in inventory
+     */
     override fun moveDown() {
         inventoryModel.moveDown()
     }
 
+    /**
+     * Draw inventory
+     */
     override fun draw() {
         view.draw()
     }

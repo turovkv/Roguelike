@@ -23,18 +23,18 @@ const val SWORD_CHAR = '$'
 const val SHIELD_CHAR = '-'
 const val APPLE_CHAR = '@'
 
-//ENEMY
+// ENEMY
 const val AGRESSIVE_CHAR = 'A'
 const val PASSIVE_CHAR = 'P'
 const val SNEAKY_CHAR = 'S'
 
 const val DESCRIPTION =
-            "Main character  " + CHARACTER_CHAR +
-            ",Can walk        " + WALKABLE_CHAR +
-            ",Can't walk      " + NON_WALKABLE_CHAR +
-            ",Sword           " + SWORD_CHAR +
-            ",Shield          " + SHIELD_CHAR +
-            ",Apple           " + APPLE_CHAR +
-            ",Agressive enemy " + AGRESSIVE_CHAR +
-            ",Passive enemy   " + PASSIVE_CHAR +
-            ",Sneaky enemy    " + SNEAKY_CHAR
+    "Main character  " + CHARACTER_CHAR +
+        ",Can walk        " + WALKABLE_CHAR +
+        ",Can't walk      " + NON_WALKABLE_CHAR +
+        ",Sword           " + SWORD_CHAR +
+        ",Shield          " + SHIELD_CHAR +
+        ",Apple           " + APPLE_CHAR +
+        ",Agressive enemy " + AGRESSIVE_CHAR +
+        ",Passive enemy   " + PASSIVE_CHAR +
+        ",Sneaky enemy    " + SNEAKY_CHAR

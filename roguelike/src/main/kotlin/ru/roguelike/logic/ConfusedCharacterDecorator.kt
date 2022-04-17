@@ -3,6 +3,9 @@ package ru.roguelike.logic
 import ru.roguelike.model.Coordinates
 import kotlin.random.Random
 
+/**
+ * Decorator for confusion
+ */
 class ConfusedCharacterDecorator(
     private val characterStrategy: CharacterStrategy
 ) : CharacterStrategy {

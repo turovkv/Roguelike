@@ -24,10 +24,19 @@ interface Logic {
      **/
     fun moveDown() {}
 
+    /**
+     * process drop
+     */
     fun processDrop() {}
 
+    /**
+     * process equip
+     */
     fun processEquip() {}
 
+    /**
+     * process unequip
+     */
     fun processUnEquip() {}
     /**
      * draw current logic

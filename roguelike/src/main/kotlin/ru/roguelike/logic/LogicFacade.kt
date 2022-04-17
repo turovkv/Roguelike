@@ -54,21 +54,33 @@ class LogicFacade(
         current.draw()
     }
 
+    /**
+     * change current logic onto inventory and draw it
+     */
     fun processInventory() {
         current = inventory
         current.draw()
     }
 
+    /**
+     * process equip item
+     */
     fun processEquip() {
         current.processEquip()
         current.draw()
     }
 
+    /**
+     * process unequip item
+     */
     fun processUnEquip() {
         current.processUnEquip()
         current.draw()
     }
 
+    /**
+     * process drop item
+     */
     fun processDrop() {
         current.processDrop()
         current.draw()

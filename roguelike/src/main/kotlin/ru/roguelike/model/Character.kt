@@ -47,6 +47,9 @@ abstract class Character {
         _coordinates = coordinates.getDown()
     }
 
+    /**
+     * Attack another character
+     */
     fun attack(character: Character) {
         character.armor = max(0, character.armor - damage)
         character.hp -= min(0, damage - character.armor)

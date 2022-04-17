@@ -3,6 +3,9 @@ package ru.roguelike.logic
 import ru.roguelike.model.Coordinates
 import kotlin.math.sign
 
+/**
+ * Aggresive strategy, enemy try to be as close as possible to hero
+ */
 class AgressiveStrategy : CharacterStrategy {
     override fun move(enemyCoord: Coordinates, heroCoord: Coordinates): Coordinates {
         val vec = Coordinates(
