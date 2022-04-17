@@ -6,18 +6,19 @@ import ru.roguelike.model.MapModel
 import ru.roguelike.view.Drawable
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.math.sign
 
 class MapLogic(
-    private val character: Character,
+    private val hero: Character,
     private val mapModel: MapModel,
     private val view: Drawable
 ) : Logic {
 
-    private fun checkCoordinates(c: Coordinates): Boolean {
+    fun checkCoordinates(c: Coordinates): Boolean {
         return 0 <= c.x && c.x < mapModel.getX() && 0 <= c.y && c.y < mapModel.getY() && mapModel.isWalkable(c)
     }
 
-    fun isVisible(c1: Coordinates, c2: Coordinates): Boolean {
+    private fun isVisible(c1: Coordinates, c2: Coordinates): Boolean {
         if (c1 == c2) {
             return true
         }
@@ -80,6 +81,15 @@ class MapLogic(
         return true
     }
 
+    fun isHeroVisible(c: Coordinates) = isVisible(hero.coordinates, c)
+
+    fun directionVectorToHero(c: Coordinates): Coordinates {
+        return Coordinates(
+            sign((hero.coordinates.x - c.x).toDouble()).toInt(),
+            sign((hero.coordinates.y - c.y).toDouble()).toInt()
+        )
+    }
+
     fun updateNPCs() {
 
     }
@@ -88,10 +98,10 @@ class MapLogic(
      * process moving left, move character to the adjacent left cell
      */
     override fun moveLeft() {
-        if (!checkCoordinates(character.coordinates.getLeft())) {
+        if (!checkCoordinates(hero.coordinates.getLeft())) {
             return
         }
-        character.moveLeft()
+        hero.moveLeft()
         view.draw()
     }
 
@@ -99,10 +109,10 @@ class MapLogic(
      * process moving right, move character to the adjacent Right cell
      **/
     override fun moveRight() {
-        if (!checkCoordinates(character.coordinates.getRight())) {
+        if (!checkCoordinates(hero.coordinates.getRight())) {
             return
         }
-        character.moveRight()
+        hero.moveRight()
         view.draw()
     }
 
@@ -110,10 +120,10 @@ class MapLogic(
      * process moving up, move character to the adjacent Up cell
      **/
     override fun moveUp() {
-        if (!checkCoordinates(character.coordinates.getUp())) {
+        if (!checkCoordinates(hero.coordinates.getUp())) {
             return
         }
-        character.moveUp()
+        hero.moveUp()
         view.draw()
     }
 
@@ -121,10 +131,10 @@ class MapLogic(
      * process moving down, move character to the adjacent Down cell
      **/
     override fun moveDown() {
-        if (!checkCoordinates(character.coordinates.getDown())) {
+        if (!checkCoordinates(hero.coordinates.getDown())) {
             return
         }
-        character.moveDown()
+        hero.moveDown()
         view.draw()
     }
 

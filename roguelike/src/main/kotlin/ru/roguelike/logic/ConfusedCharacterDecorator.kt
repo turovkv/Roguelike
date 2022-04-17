@@ -7,12 +7,12 @@ class ConfusedCharacterDecorator(
     private val mapLogic: MapLogic,
     private val characterStrategy: CharacterStrategy
 ) : CharacterStrategy(mapLogic = mapLogic) {
-    override fun move(coordinates: Coordinates): Coordinates {
+    override fun move(coord: Coordinates): Coordinates {
         val possible = arrayOf(
-            Coordinates(coordinates.x - 1, coordinates.y),
-            Coordinates(coordinates.x, coordinates.y - 1),
-            Coordinates(coordinates.x, coordinates.y + 1),
-            Coordinates(coordinates.x + 1, coordinates.y),
+            Coordinates(coord.x - 1, coord.y),
+            Coordinates(coord.x, coord.y - 1),
+            Coordinates(coord.x, coord.y + 1),
+            Coordinates(coord.x + 1, coord.y),
         )
         return possible[Random.nextInt(possible.size)]
     }

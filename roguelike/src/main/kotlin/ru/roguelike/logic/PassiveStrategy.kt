@@ -5,7 +5,7 @@ import ru.roguelike.model.Coordinates
 class PassiveStrategy(
     private val mapLogic: MapLogic,
 ) : CharacterStrategy(mapLogic = mapLogic) {
-    override fun move(coordinates: Coordinates): Coordinates {
-        TODO("Not yet implemented")
+    override fun move(coord: Coordinates): Coordinates {
+        return coord
     }
 }
