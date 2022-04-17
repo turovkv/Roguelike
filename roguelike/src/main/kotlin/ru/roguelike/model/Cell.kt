@@ -13,4 +13,4 @@ enum class CellType {
  */
 @kotlinx.serialization.Serializable
 // TODO(): на клетке не больше одного предмета
-data class Cell(val cellType: CellType, val item: Item? = null)
+data class Cell(val cellType: CellType, var item: Item? = null)

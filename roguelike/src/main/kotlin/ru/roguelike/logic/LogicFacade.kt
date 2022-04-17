@@ -3,29 +3,40 @@ package ru.roguelike.logic
 class LogicFacade(
     private val map: MapLogic,
     private val instructions: InstructionsLogic,
-//    private val inventory: InventoryLogic,
+    private val inventory: InventoryLogic,
     private var current: Logic = map,
 ) {
-
     /**
      * process moving left
      */
-    fun moveLeft() = current.moveLeft()
+    fun moveLeft() {
+        current.moveLeft()
+        current.draw()
+    }
 
     /**
      * process moving right
      */
-    fun moveRight() = current.moveRight()
+    fun moveRight() {
+        current.moveRight()
+        current.draw()
+    }
 
     /**
      * process moving up
      */
-    fun moveUp() = current.moveUp()
+    fun moveUp() {
+        current.moveUp()
+        current.draw()
+    }
 
     /**
      * process moving down
      */
-    fun moveDown() = current.moveDown()
+    fun moveDown() {
+        current.moveDown()
+        current.draw()
+    }
 
     /**
      * change current logic onto instructions and draw it
@@ -43,8 +54,23 @@ class LogicFacade(
         current.draw()
     }
 
-//    fun processInventory() {
-//        current = inventory
-//        current.draw()
-//    }
+    fun processInventory() {
+        current = inventory
+        current.draw()
+    }
+
+    fun processEquip() {
+        current.processEquip()
+        current.draw()
+    }
+
+    fun processUnEquip() {
+        current.processUnEquip()
+        current.draw()
+    }
+
+    fun processDrop() {
+        current.processDrop()
+        current.draw()
+    }
 }

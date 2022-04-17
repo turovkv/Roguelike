@@ -2,8 +2,9 @@ package ru.roguelike.logic
 
 import ru.roguelike.model.Character
 import ru.roguelike.model.Coordinates
+import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.MapModel
-import ru.roguelike.view.Drawable
+import ru.roguelike.view.MapView
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.sign
@@ -11,7 +12,8 @@ import kotlin.math.sign
 class MapLogic(
     private val hero: Character,
     private val mapModel: MapModel,
-    private val view: Drawable
+    private val inventoryModel: InventoryModel,
+    private val view: MapView
 ) : Logic {
 
     fun checkCoordinates(c: Coordinates): Boolean {
@@ -101,8 +103,8 @@ class MapLogic(
         if (!checkCoordinates(hero.coordinates.getLeft())) {
             return
         }
+
         hero.moveLeft()
-        view.draw()
     }
 
     /**
@@ -113,7 +115,6 @@ class MapLogic(
             return
         }
         hero.moveRight()
-        view.draw()
     }
 
     /**
@@ -124,7 +125,6 @@ class MapLogic(
             return
         }
         hero.moveUp()
-        view.draw()
     }
 
     /**
@@ -135,7 +135,13 @@ class MapLogic(
             return
         }
         hero.moveDown()
-        view.draw()
+    }
+
+    override fun processEquip() {
+        mapModel.field[hero.coordinates.x][hero.coordinates.y].item?.let {
+            inventoryModel.addItem(it)
+        }
+        mapModel.field[hero.coordinates.x][hero.coordinates.y].item = null
     }
 
     /**

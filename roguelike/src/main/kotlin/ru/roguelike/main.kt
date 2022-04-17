@@ -3,19 +3,20 @@ package ru.roguelike
 import com.googlecode.lanterna.TerminalSize
 import com.googlecode.lanterna.screen.TerminalScreen
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory
-import ru.roguelike.logic.InputProcessor
-import ru.roguelike.logic.InstructionsLogic
-import ru.roguelike.logic.LogicFacade
-import ru.roguelike.logic.MapLogic
-import ru.roguelike.model.*
+import ru.roguelike.logic.*
+import ru.roguelike.model.Character
+import ru.roguelike.model.InstructionModel
+import ru.roguelike.model.InventoryModel
+import ru.roguelike.model.MapModel
 import ru.roguelike.util.Constants
 import ru.roguelike.view.*
 
 fun main() {
     val mapModel = MapModel()
+    val inventoryModel = InventoryModel()
     val defaultTerminalFactory = DefaultTerminalFactory().also {
         it.setInitialTerminalSize(
-            TerminalSize(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT + Constants.CHARACTER_VIEW_HEIGHT + Constants.ERROR_VIEW_HEIGHT)
+            TerminalSize(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT + Constants.CHARACTER_VIEW_HEIGHT)
         )
     }
     val terminal = defaultTerminalFactory.createTerminal()
@@ -28,7 +29,10 @@ fun main() {
     val character = Character(coordinates = coordinates)
     val characterView = CharacterView(character, screen)
     val mapView = MapView(mapModel, screen, characterView)
-    val mapLogic = MapLogic(character, mapModel, mapView)
+    val mapLogic = MapLogic(character, mapModel, inventoryModel, mapView)
+
+    val inventoryView = InventoryView(inventoryModel, screen)
+    val inventoryLogic = InventoryLogic(character, inventoryModel, mapModel, inventoryView)
 
     val instructionsModel = InstructionModel(
         INSTRUCTIONS,
@@ -39,15 +43,11 @@ fun main() {
     val instructionsView = InstructionsView(instructionsModel, screen)
     val instructionsLogic = InstructionsLogic(instructionsView)
 
-    val logicFacade = LogicFacade(map = mapLogic, instructions = instructionsLogic)
+    val logicFacade = LogicFacade(map = mapLogic, instructions = instructionsLogic, inventoryLogic)
     val inputProcessor = InputProcessor(logicFacade)
-
-
-//    val inventoryView = InventoryView(InventoryModel(listOf(Shield(2), Sword(3), Apple(4))), characterView, screen)
 
     terminal.use {
         screen.use {
-//            inventoryView.draw()
             mapView.draw()
             while (true) {
                 val keyStroke = it.readInput()

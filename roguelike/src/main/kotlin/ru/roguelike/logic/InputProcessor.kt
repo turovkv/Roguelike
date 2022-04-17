@@ -2,6 +2,7 @@ package ru.roguelike.logic
 
 import com.googlecode.lanterna.input.KeyStroke
 import com.googlecode.lanterna.input.KeyType
+import kotlin.math.log
 
 class InputProcessor(
     private val logicFacade: LogicFacade
@@ -19,7 +20,10 @@ class InputProcessor(
             KeyType.Character -> when (keyStroke.character.toChar()) {
                 'h' -> logicFacade.processHelp()
                 'm' -> logicFacade.processMap()
-//                'i' -> logicFacade.processInventory()
+                'i' -> logicFacade.processInventory()
+                'e' -> logicFacade.processEquip()
+                'u' -> logicFacade.processUnEquip()
+                'd' -> logicFacade.processDrop()
             }
             KeyType.EOF -> return false
             else -> return true

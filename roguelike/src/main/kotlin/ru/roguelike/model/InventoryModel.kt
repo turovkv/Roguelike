@@ -43,4 +43,12 @@ class InventoryModel(initialItems: List<Item> = listOf()) {
     fun dropCurrentItem() {
         items_.removeAt(currentItemIndex)
     }
+
+    fun addItem(item: Item) {
+        items_.add(item)
+    }
+
+    fun isCurrentItemEquipped(): Boolean {
+        return equippedItems_.contains(currentItemIndex)
+    }
 }
