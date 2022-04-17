@@ -14,7 +14,7 @@ class TextFileFieldGeneratorTest {
             mutableListOf(Cell(CellType.WALKABLE), Cell(CellType.WALKABLE), Cell(CellType.WALKABLE)),
             mutableListOf(Cell(CellType.NON_WALKABLE), Cell(CellType.WALKABLE), Cell(CellType.NON_WALKABLE))
         )
-        val path =  Paths.get("src", "test", "resources", "field.txt")
+        val path = Paths.get("src", "test", "resources", "field.txt")
 
         assertEquals(expected, TextFileFieldGenerator(path.toFile().absolutePath).generate())
     }

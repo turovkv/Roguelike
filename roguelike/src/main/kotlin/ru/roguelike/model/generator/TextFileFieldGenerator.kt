@@ -15,7 +15,7 @@ class TextFileFieldGenerator(private val path: String) : FieldGenerator {
         FileInputStream(path).use { input ->
             input.bufferedReader().use { reader ->
                 generateSequence(reader::readLine).map { line ->
-                    line.map {  char ->
+                    line.map { char ->
                         when (char) {
                             NON_WALKABLE_CHAR -> Cell(CellType.NON_WALKABLE)
                             WALKABLE_CHAR -> Cell(CellType.WALKABLE)
