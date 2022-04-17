@@ -31,7 +31,7 @@ fun main() {
     val mapView = MapView(mapModel, screen, characterView)
     val mapLogic = MapLogic(character, mapModel, inventoryModel, mapView)
 
-    val inventoryView = InventoryView(inventoryModel, screen)
+    val inventoryView = InventoryView(inventoryModel, characterView, screen)
     val inventoryLogic = InventoryLogic(character, inventoryModel, mapModel, inventoryView)
 
     val instructionsModel = InstructionModel(
