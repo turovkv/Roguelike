@@ -1,5 +1,9 @@
 package ru.roguelike.model
 
+import ru.roguelike.model.Character;
+import kotlin.math.max
+import kotlin.math.min
+
 /**
  * Class that stores information about main character
  */
@@ -11,8 +15,8 @@ abstract class Character {
     var damage: Int = 5
         protected set
     var hp: Int = 2
-        protected set
     val maxHp: Int = 5
+    var armor: Int = 0
 
     /**
      * Move character to one cell right
@@ -40,5 +44,10 @@ abstract class Character {
      */
     fun moveDown() {
         _coordinates = coordinates.getDown()
+    }
+
+    fun attack(character: Character) {
+        character.armor = max(0, character.armor - damage)
+        character.hp -= min(0, damage - character.armor)
     }
 }

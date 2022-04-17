@@ -4,9 +4,6 @@ package ru.roguelike.model
 class Hero(
     override var _coordinates: Coordinates,
 ) : Character() {
-    var armor: Int = 0
-        private set
-
     fun use(item: Item) {
         hp = minOf(maxHp, hp + item.getHpChange())
         damage += item.getDamageChange()
