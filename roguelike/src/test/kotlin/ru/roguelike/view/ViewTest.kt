@@ -18,7 +18,7 @@ import ru.roguelike.model.Sword
 import ru.roguelike.util.Constants
 
 class ViewTest {
-    @Disabled("Can't create terminal in CI")
+//    @Disabled("Can't create terminal in CI")
     @Test
     fun testLeft() {
         val mapModel = MapModel()
@@ -40,9 +40,9 @@ class ViewTest {
         terminal.use {
             screen.use {
                 mapView.draw()
-                for (row in 0 until screen.terminal.terminalSize.rows - 2) {
+                for (row in 1 until screen.terminal.terminalSize.rows - 3) {
                     for (column in 0 until screen.terminal.terminalSize.columns) {
-                        if (character.coordinates.x == column && character.coordinates.y == row)
+                        if (character.coordinates.x == column && character.coordinates.y + 1 == row)
                             Assertions.assertEquals(
                                 screen.getBackCharacter(column, row).characterString[0],
                                 CHARACTER_CHAR
@@ -50,7 +50,7 @@ class ViewTest {
                         else
                             Assertions.assertEquals(
                                 screen.getBackCharacter(column, row).characterString[0],
-                                constMap[mapModel.field[row][column].cellType]
+                                constMap[mapModel.field[row - 1][column].cellType]
                             )
                     }
                 }

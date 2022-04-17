@@ -20,4 +20,3 @@ const val CHARACTER_CHAR = '*'
 const val SWORD_CHAR = '$'
 const val SHIELD_CHAR = '#'
 const val APPLE_CHAR = '@'
-val INVENTORY_ITEM_NAME = mapOf(Pair(SWORD_CHAR, "SWORD"), Pair(SHIELD_CHAR, "SHIELD"), Pair(APPLE_CHAR, "APPLE"))
