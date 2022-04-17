@@ -7,24 +7,24 @@ class LogicFacade(
 ) {
 
     /**
-     * process Left Arrow
+     * process moving left
      */
-    fun processLeftArrow() = current.processLeftArrow()
+    fun moveLeft() = current.moveLeft()
 
     /**
-     * process Right Arrow
+     * process moving right
      */
-    fun processRightArrow() = current.processRightArrow()
+    fun moveRight() = current.moveRight()
 
     /**
-     * process Up Arrow
+     * process moving up
      */
-    fun processUpArrow() = current.processUpArrow()
+    fun moveUp() = current.moveUp()
 
     /**
-     * process Down Arrow
+     * process moving down
      */
-    fun processDownArrow() = current.processDownArrow()
+    fun moveDown() = current.moveDown()
 
     /**
      * change current logic onto instructions and draw it

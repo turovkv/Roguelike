@@ -2,24 +2,24 @@ package ru.roguelike.logic
 
 interface Logic {
     /**
-     * process Left Arrow
+     * process moving left
      */
-    fun processLeftArrow()
+    fun moveLeft()
 
     /**
-     * process Right Arrow
+     * process moving right
      **/
-    fun processRightArrow()
+    fun moveRight()
 
     /**
-     * process Up Arrow
+     * process moving up
      **/
-    fun processUpArrow()
+    fun moveUp()
 
     /**
-     * process Down Arrow
+     * process moving down
      **/
-    fun processDownArrow()
+    fun moveDown()
 
     /**
      * draw current logic

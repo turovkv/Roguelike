@@ -16,9 +16,9 @@ class MapLogic(
     }
 
     /**
-     * process Left Arrow, move character to the adjacent left cell
+     * process moving left, move character to the adjacent left cell
      */
-    override fun processLeftArrow() {
+    override fun moveLeft() {
         if (!checkCoordinates(character.coordinates.getLeft())) {
             return
         }
@@ -27,9 +27,9 @@ class MapLogic(
     }
 
     /**
-     * process Right Arrow, move character to the adjacent Right cell
+     * process moving right, move character to the adjacent Right cell
      **/
-    override fun processRightArrow() {
+    override fun moveRight() {
         if (!checkCoordinates(character.coordinates.getRight())) {
             return
         }
@@ -38,9 +38,9 @@ class MapLogic(
     }
 
     /**
-     * process Up Arrow, move character to the adjacent Up cell
+     * process moving up, move character to the adjacent Up cell
      **/
-    override fun processUpArrow() {
+    override fun moveUp() {
         if (!checkCoordinates(character.coordinates.getUp())) {
             return
         }
@@ -49,9 +49,9 @@ class MapLogic(
     }
 
     /**
-     * process Down Arrow, move character to the adjacent Down cell
+     * process moving down, move character to the adjacent Down cell
      **/
-    override fun processDownArrow() {
+    override fun moveDown() {
         if (!checkCoordinates(character.coordinates.getDown())) {
             return
         }

@@ -12,10 +12,10 @@ class InputProcessor(
      */
     fun process(keyStroke: KeyStroke): Boolean {
         when (keyStroke.keyType) {
-            KeyType.ArrowLeft -> logicFacade.processLeftArrow()
-            KeyType.ArrowRight -> logicFacade.processRightArrow()
-            KeyType.ArrowUp -> logicFacade.processUpArrow()
-            KeyType.ArrowDown -> logicFacade.processDownArrow()
+            KeyType.ArrowLeft -> logicFacade.moveLeft()
+            KeyType.ArrowRight -> logicFacade.moveRight()
+            KeyType.ArrowUp -> logicFacade.moveUp()
+            KeyType.ArrowDown -> logicFacade.moveDown()
             KeyType.Character -> when (keyStroke.character.toChar()) {
                 'h' -> logicFacade.processHelp()
                 'm' -> logicFacade.processMap()

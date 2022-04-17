@@ -6,30 +6,30 @@ class InstructionsLogic(
     private val view: InstructionsView
 ) : Logic {
     /**
-     * process Left Arrow, do nothing
+     * process moving left, do nothing
      */
-    override fun processLeftArrow() {
+    override fun moveLeft() {
         return
     }
 
     /**
-     * process Right Arrow, do nothing
+     * process moving right, do nothing
      **/
-    override fun processRightArrow() {
+    override fun moveRight() {
         return
     }
 
     /**
-     * process Up Arrow, do nothing
+     * process moving up, do nothing
      **/
-    override fun processUpArrow() {
+    override fun moveUp() {
         return
     }
 
     /**
-     * process Down Arrow, do nothing
+     * process moving down, do nothing
      **/
-    override fun processDownArrow() {
+    override fun moveDown() {
         return
     }
 
