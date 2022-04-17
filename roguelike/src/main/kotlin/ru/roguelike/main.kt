@@ -43,12 +43,12 @@ fun main() {
     val inputProcessor = InputProcessor(logicFacade)
 
 
-    val inventoryView = InventoryView(InventoryModel(listOf(Shield(2), Sword(3), Apple(4))), screen)
+//    val inventoryView = InventoryView(InventoryModel(listOf(Shield(2), Sword(3), Apple(4))), characterView, screen)
 
     terminal.use {
         screen.use {
-            inventoryView.draw()
-//            mapView.draw()
+//            inventoryView.draw()
+            mapView.draw()
             while (true) {
                 val keyStroke = it.readInput()
                 val isNotTerminated = inputProcessor.process(keyStroke)

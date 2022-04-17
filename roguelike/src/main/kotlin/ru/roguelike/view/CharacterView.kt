@@ -19,6 +19,15 @@ class CharacterView(
             character.coordinates.x, character.coordinates.y,
             TextCharacter.fromCharacter(CHARACTER_CHAR)[0]
         )
+        val armor = "ARMOR" + " " + character.armor.toString()
+        for (column in armor.indices) {
+            for (row in screen.terminalSize.rows - 3 until screen.terminalSize.rows - 2) {
+                screen.setCharacter(
+                    column, row,
+                    TextCharacter.fromCharacter(armor[column])[0]
+                )
+            }
+        }
         val health = "HEALTH" + " " + character.hp.toString() + "/" + character.maxHp.toString()
         for (column in health.indices) {
             for (row in screen.terminalSize.rows - 2 until screen.terminalSize.rows - 1) {

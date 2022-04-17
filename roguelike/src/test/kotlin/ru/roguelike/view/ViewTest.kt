@@ -51,7 +51,7 @@ class ViewTest {
         }
     }
 
-    @Disabled("Can't create terminal in CI")
+//    @Disabled("Can't create terminal in CI")
     @Test
     fun testInventoryView() {
         val defaultTerminalFactory = DefaultTerminalFactory().also {
@@ -64,7 +64,11 @@ class ViewTest {
             it.startScreen(); it.cursorPosition = null
         }
         val inventoryModel = InventoryModel(listOf(Shield(2), Sword(3), Apple(4)))
-        val inventoryView = InventoryView(inventoryModel, screen)
+        val mapModel = MapModel()
+        val coordinates = mapModel.getRandomWalkableCoordinates()
+        val character = Character(coordinates)
+        val characterView = CharacterView(character, screen)
+        val inventoryView = InventoryView(inventoryModel, characterView, screen)
         terminal.use {
             screen.use {
                 inventoryView.draw()

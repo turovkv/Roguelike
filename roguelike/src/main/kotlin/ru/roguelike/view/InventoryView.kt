@@ -8,6 +8,7 @@ import ru.roguelike.model.*
 
 class InventoryView(
     private val inventory: InventoryModel,
+    private val characterView: CharacterView,
     private val screen: Screen
 ) : Drawable {
     override fun draw() {
@@ -37,8 +38,7 @@ class InventoryView(
                 )
             }
         }
+        characterView.draw()
         screen.refresh()
     }
-
-
 }
