@@ -8,7 +8,6 @@ import ru.roguelike.util.Constants
 /**
  * This class provides one method which draws character
  */
-@kotlinx.serialization.Serializable
 class CharacterView(
     private val character: Hero,
     private val screen: Screen

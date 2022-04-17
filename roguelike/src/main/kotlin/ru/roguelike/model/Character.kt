@@ -1,11 +1,10 @@
 package ru.roguelike.model
 
-import ru.roguelike.model.Character;
 import kotlin.math.max
 import kotlin.math.min
 
 /**
- * Class that stores information about main character
+ * Class that stores information about characters
  */
 @kotlinx.serialization.Serializable
 abstract class Character {

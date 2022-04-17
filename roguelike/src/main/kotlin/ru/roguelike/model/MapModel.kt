@@ -7,7 +7,6 @@ typealias Field = MutableList<MutableList<Cell>>
 /**
  * Class that store information about map
  */
-@kotlinx.serialization.Serializable
 class MapModel(
     val field: Field = BSPFieldGenerator.generate()
 ) {

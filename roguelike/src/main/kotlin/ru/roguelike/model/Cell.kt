@@ -1,7 +1,7 @@
 package ru.roguelike.model
 
 /**
- * Specify wwhether character can walk on this cell
+ * Specify whether character can walk on this cell
  */
 enum class CellType {
     WALKABLE,

@@ -6,7 +6,6 @@ import com.googlecode.lanterna.screen.Screen
 /**
  * This class provides one method which draws error.
  */
-@kotlinx.serialization.Serializable
 class ErrorView(
     private val screen: Screen
 ) : Drawable {

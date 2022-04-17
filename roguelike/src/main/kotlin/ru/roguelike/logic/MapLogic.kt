@@ -8,14 +8,12 @@ import kotlin.math.min
 /**
  * Class that stores logic about map
  */
-@kotlinx.serialization.Serializable
 class MapLogic(
     private val hero: Hero,
     private val mapModel: MapModel,
     private val inventoryModel: InventoryModel,
     private val view: MapView
 ) : Logic {
-
     /**
      * Method that checks whether hero can move to the coordinates
      */
@@ -104,7 +102,7 @@ class MapLogic(
             for (cell in row) {
                 cell.enemy?.let { enemy: Enemy ->
                     val oldCoordinates = enemy.coordinates
-                    val newCoordinates = enemy.act(this, hero.coordinates)
+                    val newCoordinates = enemy.move(this, hero.coordinates)
                     if (oldCoordinates != newCoordinates) {
                         enemies.add(cell.enemy)
                         mapModel.field[oldCoordinates.y][oldCoordinates.x].enemy = null

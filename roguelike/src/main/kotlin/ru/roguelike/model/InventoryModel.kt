@@ -2,7 +2,6 @@ package ru.roguelike.model
 
 import ru.roguelike.util.Constants
 
-@kotlinx.serialization.Serializable
 /**
  *  Class that store information about inventory
  */
@@ -38,12 +37,16 @@ class InventoryModel(private val items_: MutableList<Item> = mutableListOf()) {
         return items_[currentItemIndex]
     }
 
-    // TODO(): инвариант при вызове, текущий предмет используется
+    /**
+     * UnUse current item in inventory. Invariant: current item is equipped
+     */
     fun unUseCurrentItem() {
         equippedItems_.remove(currentItemIndex)
     }
 
-    // TODO(): инвариант при вызове, текущий предмет не используется
+    /**
+     * Use current item in inventory. Invariant: current item is not equipped
+     */
     fun useCurrentItem() {
         when (items_[currentItemIndex]) {
             is DisposableItem -> dropCurrentItem()
@@ -51,7 +54,9 @@ class InventoryModel(private val items_: MutableList<Item> = mutableListOf()) {
         }
     }
 
-    // TODO(): инвариант при вызове, текущий предмет не используется
+    /**
+     * Drop current item from inventory to map. Invariant: current item is not equipped
+     */
     fun dropCurrentItem() {
         items_.removeAt(currentItemIndex)
     }

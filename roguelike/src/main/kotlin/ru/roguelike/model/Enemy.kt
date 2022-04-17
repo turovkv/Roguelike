@@ -17,19 +17,19 @@ class Enemy(
     private val strategy: CharacterStrategy,
 ) : Character() {
     /**
-     * Act with enemy
+     * Move
      */
-    fun act(mapLogic: MapLogic, heroCoordinates: Coordinates): Coordinates {
+    fun move(mapLogic: MapLogic, heroCoordinates: Coordinates): Coordinates {
         if (!mapLogic.isHeroVisible(coordinates)) {
-            return coordinates;
+            return coordinates
         }
 
         val newCoordinates = strategy.move(coordinates, heroCoordinates)
 
         if (mapLogic.checkCoordinates(newCoordinates)) {
-            return newCoordinates;
+            return newCoordinates
         }
-        return coordinates;
+        return coordinates
     }
 
     override fun toString(): String {
