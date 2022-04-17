@@ -19,51 +19,45 @@ class InstructionsView(
         screen.clear()
         val description = instructions.description
         var authors = ""
-        for (i in instructions.authors) {
+        for (author in instructions.authors) {
             authors += if (authors != "")
-                ", $i"
+                ", $author"
             else
-                i
+                author
         }
         val instructionPairs = MutableList(instructions.instructions.size) { "" }
-        for (i in instructions.instructions.keys) {
-            instructionPairs.add(i + ": " + instructions.instructions[i])
+        for (instructionName in instructions.instructions.keys) {
+            instructionPairs.add(instructionName + ": " + instructions.instructions[instructionName])
         }
-        var i = 0
-        i = addStringToScreen(i, 0, description) + 1
-        i = addStringToScreen(i, i, authors) + 1
+        var row = 0
+        row = addStringToScreen(row, description) + 1
+        row = addStringToScreen(row, authors) + 1
         for (str in instructionPairs) {
-            i = addStringToScreen(i, i, str)
+            row = addStringToScreen(row, str)
         }
         screen.refresh()
     }
 
-    private fun addStringToScreen(i: Int, begin_i: Int, str: String): Int {
-        var i1 = i
-        while ((i1 - begin_i) * screen.terminalSize.columns < str.length) {
-            for (
-                column in str.subSequence(
-                    (i1 - begin_i) * screen.terminalSize.columns,
-                    min((i1 - begin_i) * screen.terminalSize.columns + screen.terminalSize.columns, str.length)
-                ).indices
-            ) {
-                for (row in i1 until i1 + 1) {
-                    screen.setCharacter(
-                        column, row,
-                        TextCharacter.fromCharacter(
-                            str.subSequence(
-                                (i1 - begin_i) * screen.terminalSize.columns,
-                                min(
-                                    (i1 - begin_i) * screen.terminalSize.columns + screen.terminalSize.columns,
-                                    str.length
-                                )
-                            )[column]
-                        )[0]
-                    )
-                }
+    private fun addStringToScreen(beginRow: Int, str: String): Int {
+        var currentRow = beginRow
+        var stringPos = 0
+        val screenLen = screen.terminalSize.columns
+        while (stringPos < str.length) {
+            val currentString = str.subSequence(
+                stringPos,
+                min(stringPos + screenLen, str.length)
+            )
+            for (column in currentString.indices) {
+                screen.setCharacter(
+                    column, currentRow,
+                    TextCharacter.fromCharacter(
+                        currentString[column]
+                    )[0]
+                )
             }
-            i1 += 1
+            currentRow += 1
+            stringPos = (currentRow - beginRow) * screenLen
         }
-        return i1
+        return currentRow
     }
 }
