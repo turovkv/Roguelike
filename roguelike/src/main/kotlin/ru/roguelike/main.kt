@@ -15,7 +15,7 @@ fun main() {
     val mapModel = MapModel()
     val defaultTerminalFactory = DefaultTerminalFactory().also {
         it.setInitialTerminalSize(
-            TerminalSize(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT + Constants.CHARACTER_VIEW_HEIGHT)
+            TerminalSize(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT + Constants.CHARACTER_VIEW_HEIGHT + Constants.ERROR_VIEW_HEIGHT)
         )
     }
     val terminal = defaultTerminalFactory.createTerminal()
