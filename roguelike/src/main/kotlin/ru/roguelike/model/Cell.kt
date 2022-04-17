@@ -16,5 +16,5 @@ enum class CellType {
 data class Cell(
     val cellType: CellType,
     var item: Item? = null,
-    val enemy: Enemy? = null,
+    var enemy: Enemy? = null,
 )
