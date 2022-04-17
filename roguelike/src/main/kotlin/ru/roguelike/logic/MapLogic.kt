@@ -5,6 +5,9 @@ import ru.roguelike.view.MapView
 import kotlin.math.max
 import kotlin.math.min
 
+/**
+ * Class that stores logic about map
+ */
 @kotlinx.serialization.Serializable
 class MapLogic(
     private val hero: Hero,
@@ -13,10 +16,16 @@ class MapLogic(
     private val view: MapView
 ) : Logic {
 
+    /**
+     * Method that checks whether hero can move to the coordinates
+     */
     fun checkCoordinates(c: Coordinates): Boolean {
         return 0 <= c.x && c.x < mapModel.getX() && 0 <= c.y && c.y < mapModel.getY() && mapModel.isWalkable(c) && mapModel.isWithoutEnemy(c)
     }
 
+    /**
+     * Method that checks whether the point on map is visible
+     */
     private fun isVisible(c1: Coordinates, c2: Coordinates): Boolean {
         if (c1 == c2) {
             return true
@@ -80,8 +89,14 @@ class MapLogic(
         return true
     }
 
+    /**
+     * Method that checks whether the hero is visible
+     */
     fun isHeroVisible(c: Coordinates) = isVisible(hero.coordinates, c)
 
+    /**
+     * Method that updates NPCs positions and statuses
+     */
     private fun updateNPCs() {
         val enemies = mutableListOf<Enemy?>()
 

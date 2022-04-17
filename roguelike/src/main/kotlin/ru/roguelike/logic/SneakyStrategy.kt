@@ -3,7 +3,13 @@ package ru.roguelike.logic
 import ru.roguelike.model.Coordinates
 import kotlin.math.sign
 
+/**
+ * Class that stores information about sneaky strategy of enemy
+ */
 class SneakyStrategy: CharacterStrategy {
+    /**
+     * Method that moves enemy
+     */
     override fun move(enemyCoord: Coordinates, heroCoord: Coordinates): Coordinates {
         val vec =  Coordinates(
             sign((heroCoord.x - enemyCoord.x).toDouble()).toInt(),

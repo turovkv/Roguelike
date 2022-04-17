@@ -6,6 +6,9 @@ import ru.roguelike.model.MapModel
 import ru.roguelike.model.NonDisposableItem
 import ru.roguelike.view.Drawable
 
+/**
+ * Class that stores logic about inventory
+ */
 class InventoryLogic(
     private val character: Hero,
     private val inventoryModel: InventoryModel,
