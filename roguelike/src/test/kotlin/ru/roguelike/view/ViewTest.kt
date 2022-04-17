@@ -47,11 +47,29 @@ class ViewTest {
                                 screen.getBackCharacter(column, row).characterString[0],
                                 CHARACTER_CHAR
                             )
-                        else
-                            Assertions.assertEquals(
-                                screen.getBackCharacter(column, row).characterString[0],
-                                constMap[mapModel.field[row - 1][column].cellType]
-                            )
+                        else {
+                            if (mapModel.field[row - 1][column].item != null) {
+                                Assertions.assertEquals(
+                                    screen.getBackCharacter(column, row).characterString[0],
+                                    when (mapModel.field[row - 1][column].item) {
+                                        is Shield -> TextCharacter.fromCharacter(SHIELD_CHAR)[0].characterString[0]
+                                        is Sword -> TextCharacter.fromCharacter(SWORD_CHAR)[0].characterString[0]
+                                        is Apple -> TextCharacter.fromCharacter(APPLE_CHAR)[0].characterString[0]
+                                        else -> { TextCharacter.fromCharacter(NON_WALKABLE_CHAR)[0].characterString[0] }
+                                    }
+                                )
+                            } else if (mapModel.field[row - 1][column].enemy != null){
+                                Assertions.assertEquals(
+                                    screen.getBackCharacter(column, row).characterString[0],
+                                    TextCharacter.fromCharacter(mapModel.field[row - 1][column].enemy.toString()[0])[0].characterString[0]
+                                )
+                            } else {
+                                Assertions.assertEquals(
+                                    screen.getBackCharacter(column, row).characterString[0],
+                                    constMap[mapModel.field[row - 1][column].cellType]
+                                )
+                            }
+                        }
                     }
                 }
             }
