@@ -3,7 +3,7 @@ package ru.roguelike.model
 /**
  * Class that stores information about main character
  */
-class Character(coordinates: Coordinates) {
+open class Character(coordinates: Coordinates) {
     var coordinates: Coordinates = coordinates
         private set
     var damage: Int = 5
