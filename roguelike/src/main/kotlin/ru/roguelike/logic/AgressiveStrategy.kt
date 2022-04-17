@@ -6,13 +6,7 @@ class AgressiveStrategy(
     private val mapLogic: MapLogic,
 ) : CharacterStrategy(mapLogic = mapLogic) {
     override fun move(coord: Coordinates): Coordinates {
-        if (!mapLogic.isHeroVisible(coord)) {
-            return coord
-        }
-        val vec = mapLogic.directionVectorToHero(coord)
-        if (vec == Coordinates(0, 0)) {
-            return coord;
-        }
+        val vec = mapLogic.visibleDirVectorToHero(coord) ?: return coord
 
         val dxdy = listOf(
             Coordinates(vec.x, 0),

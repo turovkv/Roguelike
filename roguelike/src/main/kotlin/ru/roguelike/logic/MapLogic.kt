@@ -85,7 +85,11 @@ class MapLogic(
 
     fun isHeroVisible(c: Coordinates) = isVisible(hero.coordinates, c)
 
-    fun directionVectorToHero(c: Coordinates): Coordinates {
+    fun visibleDirVectorToHero(c: Coordinates): Coordinates? {
+        if (!isHeroVisible(c)) {
+            return null
+        }
+
         return Coordinates(
             sign((hero.coordinates.x - c.x).toDouble()).toInt(),
             sign((hero.coordinates.y - c.y).toDouble()).toInt()
