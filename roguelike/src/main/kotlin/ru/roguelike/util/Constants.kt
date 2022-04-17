@@ -11,4 +11,7 @@ object Constants {
     const val MIN_CELL_SIZE = 10
     const val MAX_CELL_SIZE = 15
     const val ROOM_SIZE = 4
+
+    const val INVENTORY_SIZE = 5
+    const val MAXIMUM_EQUIPPED_ITEMS = 2
 }
