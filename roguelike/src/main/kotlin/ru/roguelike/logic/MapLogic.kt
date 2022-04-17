@@ -86,7 +86,12 @@ class MapLogic(
         for (row in mapModel.field) {
             for (cell in row) {
                 cell.enemy?.let { enemy: Enemy ->
-                    enemy.act(this, hero.coordinates)
+                    val oldCoordinates = enemy.coordinates
+                    val newCoordinates = enemy.act(this, hero.coordinates)
+                    if (oldCoordinates != newCoordinates) {
+                        mapModel.field[newCoordinates.y][newCoordinates.x].enemy = cell.enemy
+                        mapModel.field[oldCoordinates.y][oldCoordinates.x].enemy = null
+                    }
                 }
             }
         }

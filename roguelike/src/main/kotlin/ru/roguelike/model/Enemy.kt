@@ -10,12 +10,17 @@ class Enemy(
     override var _coordinates: Coordinates,
     private val strategy: CharacterStrategy,
 ) : Character() {
-    fun act(mapLogic: MapLogic, heroCoordinates: Coordinates) {
+    fun act(mapLogic: MapLogic, heroCoordinates: Coordinates): Coordinates {
         if (!mapLogic.isHeroVisible(coordinates)) {
-            return
+            return coordinates;
         }
 
         val newCoordinates = strategy.move(coordinates, heroCoordinates)
+
+        if (mapLogic.checkCoordinates(newCoordinates)) {
+            return newCoordinates;
+        }
+        return coordinates;
     }
 
     override fun toString(): String {
