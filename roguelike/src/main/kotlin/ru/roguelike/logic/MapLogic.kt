@@ -123,10 +123,24 @@ class MapLogic(
         }
     }
 
+    fun checkCell(coordinates: Coordinates) {
+        if (mapModel.isWithoutEnemy(coordinates)) {
+            return
+        }
+
+        mapModel.field[coordinates.y][coordinates.x].enemy?.let { enemy: Enemy ->
+            hero.attack(enemy)
+            if (enemy.hp <= 0) {
+                mapModel.field[coordinates.y][coordinates.x].enemy = null
+            }
+        }
+    }
+
     /**
      * process moving left, move character to the adjacent left cell
      */
     override fun moveLeft() {
+        checkCell(hero.coordinates.getLeft())
         if (!checkCoordinates(hero.coordinates.getLeft())) {
             return
         }
@@ -138,6 +152,7 @@ class MapLogic(
      * process moving right, move character to the adjacent Right cell
      **/
     override fun moveRight() {
+        checkCell(hero.coordinates.getRight())
         if (!checkCoordinates(hero.coordinates.getRight())) {
             return
         }
@@ -149,6 +164,7 @@ class MapLogic(
      * process moving up, move character to the adjacent Up cell
      **/
     override fun moveUp() {
+        checkCell(hero.coordinates.getUp())
         if (!checkCoordinates(hero.coordinates.getUp())) {
             return
         }
@@ -160,6 +176,7 @@ class MapLogic(
      * process moving down, move character to the adjacent Down cell
      **/
     override fun moveDown() {
+        checkCell(hero.coordinates.getDown())
         if (!checkCoordinates(hero.coordinates.getDown())) {
             return
         }

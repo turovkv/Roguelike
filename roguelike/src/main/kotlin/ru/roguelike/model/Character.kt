@@ -52,6 +52,6 @@ abstract class Character {
      */
     fun attack(character: Character) {
         character.armor = max(0, character.armor - damage)
-        character.hp -= min(0, damage - character.armor)
+        character.hp -= max(0, damage - character.armor)
     }
 }
