@@ -5,7 +5,7 @@ package ru.roguelike.model
  */
 open class Character(coordinates: Coordinates) {
     var coordinates: Coordinates = coordinates
-        private set
+        protected set
     var damage: Int = 5
         private set
     var hp: Int = 2
