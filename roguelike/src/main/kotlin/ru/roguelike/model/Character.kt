@@ -11,6 +11,8 @@ class Character(coordinates: Coordinates) {
     var hp: Int = 2
         private set
     val maxHp: Int = 5
+    var armor: Int = 0
+        private set
 
     /**
      * Move character to one cell right
@@ -38,5 +40,17 @@ class Character(coordinates: Coordinates) {
      */
     fun moveDown() {
         coordinates = coordinates.getDown()
+    }
+
+    fun use(item: Item) {
+        hp = minOf(maxHp, hp + item.getHpChange())
+        damage += item.getDamageChange()
+        armor += item.getArmorChange()
+    }
+
+    fun unUse(item: NonDisposableItem) {
+        hp = maxOf(1, hp - item.getHpChange())
+        damage -= item.getDamageChange()
+        armor -= item.getArmorChange()
     }
 }
