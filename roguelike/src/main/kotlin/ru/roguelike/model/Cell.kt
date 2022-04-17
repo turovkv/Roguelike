@@ -1,7 +1,5 @@
 package ru.roguelike.model
 
-import ru.roguelike.model.Enemy;
-
 /**
  * Specify wwhether character can walk on this cell
  */

@@ -1,9 +1,8 @@
 package ru.roguelike.logic
 
-import ru.roguelike.model.Character
 import ru.roguelike.model.Coordinates
-import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.Hero
+import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.MapModel
 import ru.roguelike.view.MapView
 import kotlin.math.max
@@ -99,7 +98,6 @@ class MapLogic(
     }
 
     fun updateNPCs() {
-
     }
 
     /**

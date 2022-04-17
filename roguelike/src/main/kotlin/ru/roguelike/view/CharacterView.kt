@@ -2,7 +2,6 @@ package ru.roguelike.view
 
 import com.googlecode.lanterna.TextCharacter
 import com.googlecode.lanterna.screen.Screen
-import ru.roguelike.model.Character
 import ru.roguelike.model.Hero
 import ru.roguelike.util.Constants
 

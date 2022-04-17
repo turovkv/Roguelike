@@ -2,7 +2,6 @@ package ru.roguelike.logic
 
 import com.googlecode.lanterna.input.KeyStroke
 import com.googlecode.lanterna.input.KeyType
-import kotlin.math.log
 
 class InputProcessor(
     private val logicFacade: LogicFacade

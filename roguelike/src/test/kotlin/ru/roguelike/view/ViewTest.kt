@@ -7,7 +7,14 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import ru.roguelike.model.*
+import ru.roguelike.model.Apple
+import ru.roguelike.model.CellType
+import ru.roguelike.model.Hero
+import ru.roguelike.model.InventoryModel
+import ru.roguelike.model.Item
+import ru.roguelike.model.MapModel
+import ru.roguelike.model.Shield
+import ru.roguelike.model.Sword
 import ru.roguelike.util.Constants
 
 class ViewTest {
@@ -80,7 +87,8 @@ class ViewTest {
                             is Sword -> TextCharacter.fromCharacter(SWORD_CHAR)[0].characterString[0]
                             is Apple -> TextCharacter.fromCharacter(APPLE_CHAR)[0].characterString[0]
                             else -> {
-                                TextCharacter.fromCharacter(NON_WALKABLE_CHAR)[0].characterString[0]}
+                                TextCharacter.fromCharacter(NON_WALKABLE_CHAR)[0].characterString[0]
+                            }
                         }
                     )
                     for (column in 2 until inventoryModel.items[row].toString().length) {

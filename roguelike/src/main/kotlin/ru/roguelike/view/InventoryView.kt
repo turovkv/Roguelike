@@ -3,7 +3,10 @@ package ru.roguelike.view
 import com.googlecode.lanterna.TextCharacter
 import com.googlecode.lanterna.TextColor
 import com.googlecode.lanterna.screen.Screen
-import ru.roguelike.model.*
+import ru.roguelike.model.Apple
+import ru.roguelike.model.InventoryModel
+import ru.roguelike.model.Shield
+import ru.roguelike.model.Sword
 
 /**
  * This class provides one method which draws inventory.
@@ -24,7 +27,7 @@ class InventoryView(
                 is Shield -> TextCharacter.fromCharacter(SHIELD_CHAR)[0]
                 is Sword -> TextCharacter.fromCharacter(SWORD_CHAR)[0]
                 is Apple -> TextCharacter.fromCharacter(APPLE_CHAR)[0]
-                else -> {TextCharacter.fromCharacter(NON_WALKABLE_CHAR)[0]}
+                else -> { TextCharacter.fromCharacter(NON_WALKABLE_CHAR)[0] }
             }
             if (index in inventory.equippedItems) {
                 currentCharacter = currentCharacter.withBackgroundColor(TextColor.RGB(0, 255, 0))
@@ -36,7 +39,7 @@ class InventoryView(
                 0, index,
                 currentCharacter
             )
-            for ((characterIndex, character) in item.toString().withIndex()){
+            for ((characterIndex, character) in item.toString().withIndex()) {
                 screen.setCharacter(
                     characterIndex + 2, index,
                     TextCharacter.fromCharacter(character)[0]

@@ -1,7 +1,5 @@
 package ru.roguelike.model
 
-import ru.roguelike.logic.CharacterStrategy
-
 @kotlinx.serialization.Serializable
 class Hero(
     override var _coordinates: Coordinates,

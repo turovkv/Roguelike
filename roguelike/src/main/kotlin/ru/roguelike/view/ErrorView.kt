@@ -15,9 +15,9 @@ class ErrorView(
      */
     override fun draw() {
         for ((index, symbol) in error.withIndex())
-        screen.setCharacter(
-            index, 0,
-            TextCharacter.fromCharacter(symbol)[0]
-        )
+            screen.setCharacter(
+                index, 0,
+                TextCharacter.fromCharacter(symbol)[0]
+            )
     }
 }

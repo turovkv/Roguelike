@@ -3,10 +3,23 @@ package ru.roguelike
 import com.googlecode.lanterna.TerminalSize
 import com.googlecode.lanterna.screen.TerminalScreen
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory
-import ru.roguelike.logic.*
-import ru.roguelike.model.*
+import ru.roguelike.logic.InputProcessor
+import ru.roguelike.logic.InstructionsLogic
+import ru.roguelike.logic.InventoryLogic
+import ru.roguelike.logic.LogicFacade
+import ru.roguelike.logic.MapLogic
+import ru.roguelike.model.Hero
+import ru.roguelike.model.InstructionModel
+import ru.roguelike.model.InventoryModel
+import ru.roguelike.model.MapModel
 import ru.roguelike.util.Constants
-import ru.roguelike.view.*
+import ru.roguelike.view.AUTHORS
+import ru.roguelike.view.CharacterView
+import ru.roguelike.view.DESCRIPTION
+import ru.roguelike.view.INSTRUCTIONS
+import ru.roguelike.view.InstructionsView
+import ru.roguelike.view.InventoryView
+import ru.roguelike.view.MapView
 
 fun main() {
     val mapModel = MapModel()
