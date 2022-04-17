@@ -15,6 +15,10 @@ class MapView(
     private val screen: Screen,
     private val characterView: CharacterView
 ) : Drawable {
+    private val errorView = ErrorView(screen)
+    fun setError(message:String) {
+        errorView.message = message
+    }
     /**
      * This method draws map and character.
      */
@@ -33,6 +37,7 @@ class MapView(
         }
         characterView.type = "MAP"
         characterView.draw()
+        errorView.draw()
         screen.refresh()
     }
 }

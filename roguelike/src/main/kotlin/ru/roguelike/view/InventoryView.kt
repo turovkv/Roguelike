@@ -16,6 +16,10 @@ class InventoryView(
     private val characterView: CharacterView,
     private val screen: Screen
 ) : Drawable {
+    private val errorView = ErrorView(screen)
+    fun setError(message:String) {
+        errorView.message = message
+    }
     /**
      * This method draws inventory.
      */
@@ -48,6 +52,7 @@ class InventoryView(
         }
         characterView.type = "INVENTORY"
         characterView.draw()
+        errorView.draw()
         screen.refresh()
     }
 }
