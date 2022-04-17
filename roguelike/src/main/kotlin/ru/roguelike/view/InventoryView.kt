@@ -38,6 +38,7 @@ class InventoryView(
                 )
             }
         }
+        characterView.type = "INVENTORY"
         characterView.draw()
         screen.refresh()
     }

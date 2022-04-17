@@ -30,6 +30,7 @@ class MapView(
                 )
             }
         }
+        characterView.type = "MAP"
         characterView.draw()
         screen.refresh()
     }

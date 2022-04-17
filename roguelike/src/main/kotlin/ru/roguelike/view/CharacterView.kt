@@ -12,14 +12,18 @@ class CharacterView(
     private val character: Character,
     private val screen: Screen
 ) : Drawable {
+    var type = "MAP"
+
     /**
      * This method draws the character.
      */
     override fun draw() {
-        screen.setCharacter(
-            character.coordinates.x, character.coordinates.y + Constants.ERROR_VIEW_HEIGHT,
-            TextCharacter.fromCharacter(CHARACTER_CHAR)[0]
-        )
+        if (type == "MAP") {
+            screen.setCharacter(
+                character.coordinates.x, character.coordinates.y + Constants.ERROR_VIEW_HEIGHT,
+                TextCharacter.fromCharacter(CHARACTER_CHAR)[0]
+            )
+        }
         val armor = "ARMOR" + " " + character.armor.toString()
         for (column in armor.indices) {
             for (row in screen.terminalSize.rows - 3 until screen.terminalSize.rows - 2) {
