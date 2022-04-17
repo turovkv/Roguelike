@@ -3,13 +3,15 @@ package ru.roguelike.view
 import com.googlecode.lanterna.TextCharacter
 import com.googlecode.lanterna.screen.Screen
 import ru.roguelike.model.Character
+import ru.roguelike.model.Hero
 import ru.roguelike.util.Constants
 
 /**
  * This class provides one method which draws character
  */
+@kotlinx.serialization.Serializable
 class CharacterView(
-    private val character: Character,
+    private val character: Hero,
     private val screen: Screen
 ) : Drawable {
     var type = "MAP"

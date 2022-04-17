@@ -2,8 +2,8 @@ package ru.roguelike.model
 
 import ru.roguelike.util.Constants
 
-class InventoryModel(initialItems: List<Item> = listOf()) {
-    private val items_: MutableList<Item> = initialItems.toMutableList()
+@kotlinx.serialization.Serializable
+class InventoryModel(private val items_: MutableList<Item> = mutableListOf()) {
     val items: List<Item> get() = items_
     var currentItemIndex: Int = 0
         private set

@@ -25,7 +25,7 @@ class ViewTest {
             it.startScreen(); it.cursorPosition = null
         }
         val coordinates = mapModel.getRandomWalkableCoordinates()
-        val character = Character(coordinates)
+        val character = Hero(coordinates)
         val characterView = CharacterView(character, screen)
         val mapView = MapView(mapModel, screen, characterView)
 
@@ -63,10 +63,10 @@ class ViewTest {
         val screen = TerminalScreen(terminal).also {
             it.startScreen(); it.cursorPosition = null
         }
-        val inventoryModel = InventoryModel(listOf(Shield(2), Sword(3), Apple(4)))
+        val inventoryModel = InventoryModel(listOf(Shield(2), Sword(3), Apple(4)) as MutableList<Item>)
         val mapModel = MapModel()
         val coordinates = mapModel.getRandomWalkableCoordinates()
-        val character = Character(coordinates)
+        val character = Hero(coordinates)
         val characterView = CharacterView(character, screen)
         val inventoryView = InventoryView(inventoryModel, characterView, screen)
         terminal.use {

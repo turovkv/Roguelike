@@ -1,5 +1,7 @@
 package ru.roguelike.model
 
+import ru.roguelike.model.Enemy;
+
 /**
  * Specify wwhether character can walk on this cell
  */
@@ -13,4 +15,8 @@ enum class CellType {
  */
 @kotlinx.serialization.Serializable
 // TODO(): на клетке не больше одного предмета
-data class Cell(val cellType: CellType, var item: Item? = null)
+data class Cell(
+    val cellType: CellType,
+    val item: Item? = null,
+    val enemy: Enemy? = null,
+)

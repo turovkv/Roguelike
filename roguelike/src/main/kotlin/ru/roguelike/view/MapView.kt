@@ -9,6 +9,7 @@ import ru.roguelike.util.Constants.ERROR_VIEW_HEIGHT
 /**
  * This class provides one method which draws map and character.
  */
+@kotlinx.serialization.Serializable
 class MapView(
     private val map: MapModel,
     private val screen: Screen,

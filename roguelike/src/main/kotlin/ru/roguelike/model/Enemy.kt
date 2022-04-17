@@ -2,11 +2,12 @@ package ru.roguelike.model
 
 import ru.roguelike.logic.CharacterStrategy
 
+@kotlinx.serialization.Serializable
 class Enemy(
-    coordinates: Coordinates,
+    override var _coordinates: Coordinates,
     private val strategy: CharacterStrategy,
-) : Character(coordinates = coordinates) {
+) : Character() {
     fun act() {
-        coordinates = strategy.move(coordinates)
+        _coordinates = strategy.move(coordinates)
     }
 }

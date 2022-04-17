@@ -3,6 +3,7 @@ package ru.roguelike.model
 /**
  * Class that store coordinates and support operations with them
  */
+@kotlinx.serialization.Serializable
 data class Coordinates(private var _x: Int, private var _y: Int) {
     val x get() = _x
     val y get() = _y

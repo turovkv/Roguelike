@@ -4,10 +4,7 @@ import com.googlecode.lanterna.TerminalSize
 import com.googlecode.lanterna.screen.TerminalScreen
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory
 import ru.roguelike.logic.*
-import ru.roguelike.model.Character
-import ru.roguelike.model.InstructionModel
-import ru.roguelike.model.InventoryModel
-import ru.roguelike.model.MapModel
+import ru.roguelike.model.*
 import ru.roguelike.util.Constants
 import ru.roguelike.view.*
 
@@ -26,13 +23,13 @@ fun main() {
 
     val coordinates = mapModel.getRandomWalkableCoordinates()
 
-    val character = Character(coordinates = coordinates)
-    val characterView = CharacterView(character, screen)
+    val hero = Hero(_coordinates = coordinates)
+    val characterView = CharacterView(hero, screen)
     val mapView = MapView(mapModel, screen, characterView)
-    val mapLogic = MapLogic(character, mapModel, inventoryModel, mapView)
+    val mapLogic = MapLogic(hero, mapModel, inventoryModel, mapView)
 
     val inventoryView = InventoryView(inventoryModel, characterView, screen)
-    val inventoryLogic = InventoryLogic(character, inventoryModel, mapModel, inventoryView)
+    val inventoryLogic = InventoryLogic(hero, inventoryModel, mapModel, inventoryView)
 
     val instructionsModel = InstructionModel(
         INSTRUCTIONS,
