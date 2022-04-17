@@ -1,13 +1,13 @@
 package ru.roguelike.logic
 
-import ru.roguelike.model.Character
+import ru.roguelike.model.Hero
 import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.MapModel
 import ru.roguelike.model.NonDisposableItem
 import ru.roguelike.view.Drawable
 
 class InventoryLogic(
-    private val character: Character,
+    private val character: Hero,
     private val inventoryModel: InventoryModel,
     private val mapModel: MapModel,
     private val view: Drawable

@@ -15,6 +15,6 @@ enum class CellType {
 // TODO(): на клетке не больше одного предмета
 data class Cell(
     val cellType: CellType,
-    val item: Item? = null,
+    var item: Item? = null,
     val enemy: Enemy? = null,
 )
