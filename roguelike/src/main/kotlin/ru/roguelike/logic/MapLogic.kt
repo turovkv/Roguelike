@@ -111,8 +111,8 @@ class MapLogic(
         if (!checkCoordinates(hero.coordinates.getLeft())) {
             return
         }
-
         hero.moveLeft()
+        updateNPCs()
     }
 
     /**
@@ -123,6 +123,7 @@ class MapLogic(
             return
         }
         hero.moveRight()
+        updateNPCs()
     }
 
     /**
@@ -133,6 +134,7 @@ class MapLogic(
             return
         }
         hero.moveUp()
+        updateNPCs()
     }
 
     /**
@@ -143,6 +145,7 @@ class MapLogic(
             return
         }
         hero.moveDown()
+        updateNPCs()
     }
 
     override fun processEquip() {
