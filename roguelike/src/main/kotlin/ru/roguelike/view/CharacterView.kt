@@ -3,6 +3,7 @@ package ru.roguelike.view
 import com.googlecode.lanterna.TextCharacter
 import com.googlecode.lanterna.screen.Screen
 import ru.roguelike.model.Character
+import ru.roguelike.util.Constants
 
 /**
  * This class provides one method which draws character
@@ -16,7 +17,7 @@ class CharacterView(
      */
     override fun draw() {
         screen.setCharacter(
-            character.coordinates.x, character.coordinates.y,
+            character.coordinates.x, character.coordinates.y + Constants.ERROR_VIEW_HEIGHT,
             TextCharacter.fromCharacter(CHARACTER_CHAR)[0]
         )
         val armor = "ARMOR" + " " + character.armor.toString()

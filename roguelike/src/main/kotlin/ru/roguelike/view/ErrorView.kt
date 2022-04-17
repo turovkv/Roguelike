@@ -2,7 +2,6 @@ package ru.roguelike.view
 
 import com.googlecode.lanterna.TextCharacter
 import com.googlecode.lanterna.screen.Screen
-import ru.roguelike.model.InventoryModel
 
 class ErrorView(
     private val error: String,
