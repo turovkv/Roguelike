@@ -1,6 +1,7 @@
 package ru.roguelike.view
 
 import com.googlecode.lanterna.TextCharacter
+import com.googlecode.lanterna.TextColor
 import com.googlecode.lanterna.screen.Screen
 import ru.roguelike.model.Hero
 import ru.roguelike.util.Constants
@@ -21,7 +22,7 @@ class CharacterView(
         if (type == "MAP") {
             screen.setCharacter(
                 character.coordinates.x, character.coordinates.y + Constants.ERROR_VIEW_HEIGHT,
-                TextCharacter.fromCharacter(CHARACTER_CHAR)[0]
+                TextCharacter.fromCharacter(CHARACTER_CHAR)[0].withForegroundColor(TextColor.RGB(255, 0, 0))
             )
         }
         val armor = "ARMOR" + " " + character.armor.toString()
