@@ -8,11 +8,17 @@ import ru.roguelike.view.SNEAKY_CHAR
 import kotlin.random.Random
 import kotlin.random.nextInt
 
+/**
+ * Class that store information about enemy
+ */
 @kotlinx.serialization.Serializable
 class Enemy(
     override var _coordinates: Coordinates,
     private val strategy: CharacterStrategy,
 ) : Character() {
+    /**
+     * Act with enemy
+     */
     fun act(mapLogic: MapLogic, heroCoordinates: Coordinates): Coordinates {
         if (!mapLogic.isHeroVisible(coordinates)) {
             return coordinates;

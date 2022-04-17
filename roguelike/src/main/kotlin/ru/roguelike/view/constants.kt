@@ -1,7 +1,5 @@
 package ru.roguelike.view
 
-import ru.roguelike.logic.SneakyStrategy
-
 // INSTRUCTIONS
 val AUTHORS = listOf("Kirill", "Andrey", "Misha", "Vitya")
 const val DESCRIPTION = "Just nice game bro"
