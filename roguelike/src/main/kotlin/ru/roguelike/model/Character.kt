@@ -58,6 +58,9 @@ abstract class Character {
     }
 
     companion object {
+        /**
+         * The duel act for hero and enemy
+         */
         fun duel(hero: Hero, enemy: Enemy) {
             hero.attackedBy(enemy)
             enemy.attackedBy(hero)
