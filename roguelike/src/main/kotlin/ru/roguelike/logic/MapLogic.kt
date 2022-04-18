@@ -159,7 +159,7 @@ class MapLogic(
             cell.enemy = null
         }
         if (hero.isDead()) {
-            println("YOU DEAD")
+            view.setError("YOU DIED!!! NEXT ACTION WILL RESTART THE GAME")
         }
     }
 
