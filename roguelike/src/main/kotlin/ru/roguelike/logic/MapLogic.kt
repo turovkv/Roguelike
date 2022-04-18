@@ -31,10 +31,10 @@ class MapLogic(
      */
     private fun checkTransparent(c: Coordinates): Boolean {
         return 0 <= c.x &&
-                c.x < mapModel.getX() &&
-                0 <= c.y &&
-                c.y < mapModel.getY() &&
-                mapModel.isWalkable(c)
+            c.x < mapModel.getX() &&
+            0 <= c.y &&
+            c.y < mapModel.getY() &&
+            mapModel.isWalkable(c)
     }
 
     /**
