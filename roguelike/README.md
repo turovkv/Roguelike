@@ -15,6 +15,7 @@ For tests just run:
 ```
 
 ## Description
+`*` - main player
 ### Map
 `.` - cell's where player can run
 
@@ -48,3 +49,4 @@ For tests just run:
 `D` - drop item (item drops from inventory to field)
 
 To walk on map or navigate threw items in inventory use arrows
+
