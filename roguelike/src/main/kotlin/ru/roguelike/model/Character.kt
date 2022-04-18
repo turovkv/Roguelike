@@ -1,6 +1,6 @@
 package ru.roguelike.model
 
-import kotlin.math.max
+import kotlin.math.min
 
 /**
  * Class that stores information about characters
@@ -50,9 +50,17 @@ abstract class Character {
     /**
      * Attack another character
      */
-    open fun attack(character: Character) {
-        character.armor = max(0, character.armor - damage)
-        character.hp -= max(0, damage - character.armor)
+    open fun attackedBy(character: Character) {
+        val damageToArmor = min(armor, character.damage)
+        armor -= damageToArmor
+        hp -= damage - damageToArmor
+    }
+
+    companion object {
+        fun duel(ch1: Character, ch2: Character) {
+            ch1.attackedBy(ch2)
+            ch2.attackedBy(ch1)
+        }
     }
 
     /**

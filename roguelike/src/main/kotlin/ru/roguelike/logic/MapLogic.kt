@@ -6,6 +6,7 @@ import ru.roguelike.model.Hero
 import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.MapModel
 import ru.roguelike.view.Drawable
+import ru.roguelike.model.Character
 import kotlin.math.max
 import kotlin.math.min
 
@@ -145,28 +146,21 @@ class MapLogic(
         }
     }
 
-    fun checkCell(coordinates: Coordinates) {
+    private fun tryAttack(coordinates: Coordinates) {
         if (mapModel.isWithoutEnemy(coordinates)) {
             return
         }
-
-        mapModel.field[coordinates.y][coordinates.x].enemy?.let { enemy: Enemy ->
-            hero.attack(enemy)
-            if (enemy.hp <= 0) {
-                mapModel.field[coordinates.y][coordinates.x].enemy = null
-            }
-        }
+        Character.duel(hero, mapModel.field[coordinates.y][coordinates.x].enemy!!)
     }
 
     /**
      * process moving left, move character to the adjacent left cell
      */
     override fun moveLeft() {
-        checkCell(hero.coordinates.getLeft())
-        if (!checkCoordinates(hero.coordinates.getLeft())) {
-            return
+        tryAttack(hero.coordinates.getLeft())
+        if (checkCoordinates(hero.coordinates.getLeft())) {
+            hero.moveLeft()
         }
-        hero.moveLeft()
         updateNPCs()
     }
 
@@ -174,11 +168,10 @@ class MapLogic(
      * process moving right, move character to the adjacent Right cell
      **/
     override fun moveRight() {
-        checkCell(hero.coordinates.getRight())
-        if (!checkCoordinates(hero.coordinates.getRight())) {
-            return
+        tryAttack(hero.coordinates.getRight())
+        if (checkCoordinates(hero.coordinates.getRight())) {
+            hero.moveRight()
         }
-        hero.moveRight()
         updateNPCs()
     }
 
@@ -186,11 +179,10 @@ class MapLogic(
      * process moving up, move character to the adjacent Up cell
      **/
     override fun moveUp() {
-        checkCell(hero.coordinates.getUp())
-        if (!checkCoordinates(hero.coordinates.getUp())) {
-            return
+        tryAttack(hero.coordinates.getUp())
+        if (checkCoordinates(hero.coordinates.getUp())) {
+            hero.moveUp()
         }
-        hero.moveUp()
         updateNPCs()
     }
 
@@ -198,11 +190,10 @@ class MapLogic(
      * process moving down, move character to the adjacent Down cell
      **/
     override fun moveDown() {
-        checkCell(hero.coordinates.getDown())
-        if (!checkCoordinates(hero.coordinates.getDown())) {
-            return
+        tryAttack(hero.coordinates.getDown())
+        if (checkCoordinates(hero.coordinates.getDown())) {
+            hero.moveDown()
         }
-        hero.moveDown()
         updateNPCs()
     }
 
