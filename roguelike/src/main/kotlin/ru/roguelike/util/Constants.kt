@@ -6,7 +6,7 @@ package ru.roguelike.util
 object Constants {
     const val FIELD_WIDTH = 100
     const val FIELD_HEIGHT = 30
-    const val CHARACTER_VIEW_HEIGHT = 3
+    const val CHARACTER_VIEW_HEIGHT = 4
     const val ERROR_VIEW_HEIGHT = 1
 
     const val MIN_CELL_SIZE = 10
