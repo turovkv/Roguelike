@@ -18,7 +18,7 @@ class InventoryView(
     private val screen: Screen
 ) : Drawable {
     private val errorView = ErrorView(screen)
-    fun setError(message: String) {
+    override fun setError(message: String) {
         errorView.message = message
     }
     /**
