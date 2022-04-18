@@ -5,7 +5,7 @@ import ru.roguelike.model.Enemy
 import ru.roguelike.model.Hero
 import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.MapModel
-import ru.roguelike.view.MapView
+import ru.roguelike.view.Drawable
 import kotlin.math.max
 import kotlin.math.min
 
@@ -16,13 +16,24 @@ class MapLogic(
     private val hero: Hero,
     private val mapModel: MapModel,
     private val inventoryModel: InventoryModel,
-    private val view: MapView
+    private val view: Drawable
 ) : Logic {
     /**
      * Method that checks whether hero can move to the coordinates
      */
     fun checkCoordinates(c: Coordinates): Boolean {
-        return 0 <= c.x && c.x < mapModel.getX() && 0 <= c.y && c.y < mapModel.getY() && mapModel.isWalkable(c) && mapModel.isWithoutEnemy(c)
+        return checkTransparent(c) && mapModel.isWithoutEnemy(c)
+    }
+
+    /**
+     * Method that checks whether character can see through cell or not
+     */
+    private fun checkTransparent(c: Coordinates): Boolean {
+        return 0 <= c.x &&
+            c.x < mapModel.getX() &&
+            0 <= c.y &&
+            c.y < mapModel.getY() &&
+            mapModel.isWalkable(c)
     }
 
     /**
@@ -35,7 +46,7 @@ class MapLogic(
 
         if (c1.x == c2.x) {
             for (y in min(c1.y, c2.y)..max(c1.y, c2.y)) {
-                if (!checkCoordinates(Coordinates(c1.x, y))) {
+                if (!checkTransparent(Coordinates(c1.x, y))) {
                     return false
                 }
             }
@@ -44,7 +55,7 @@ class MapLogic(
 
         if (c1.y == c2.y) {
             for (x in min(c1.x, c2.x)..max(c1.x, c2.x)) {
-                if (!checkCoordinates(Coordinates(x, c1.y))) {
+                if (!checkTransparent(Coordinates(x, c1.y))) {
                     return false
                 }
             }
@@ -52,37 +63,50 @@ class MapLogic(
         }
 
         // c1.x != c2.x && c1.y != c2.y
-        for (x in min(c1.x, c2.x) until max(c1.x, c2.x)) {
-            val y = (x - c1.x) * (c2.y - c1.y) * 1.0 / (c2.x - c1.x) + c1.y
-            if (!checkCoordinates(Coordinates(x - 1, y.toInt()))) {
+        var cc1: Coordinates
+        var cc2: Coordinates
+
+        if (c1.x < c2.x) {
+            cc1 = c1; cc2 = c2
+        } else {
+            cc1 = c2; cc2 = c1
+        }
+        for (x in cc1.x + 1..cc2.x) {
+            val y = (x - cc1.x - 0.5) * (cc2.y - cc1.y) * 1.0 / (cc2.x - cc1.x) + cc1.y + 0.5
+            if (!checkTransparent(Coordinates(x - 1, y.toInt()))) {
                 return false
             }
-            if (!checkCoordinates(Coordinates(x, y.toInt()))) {
+            if (!checkTransparent(Coordinates(x, y.toInt()))) {
                 return false
             }
             if (y.toInt().toDouble() == y) {
-                if (!checkCoordinates(Coordinates(x - 1, y.toInt() - 1))) {
+                if (!checkTransparent(Coordinates(x - 1, y.toInt() - 1))) {
                     return false
                 }
-                if (!checkCoordinates(Coordinates(x, y.toInt() - 1))) {
+                if (!checkTransparent(Coordinates(x, y.toInt() - 1))) {
                     return false
                 }
             }
         }
 
-        for (y in min(c1.y, c2.y) until max(c1.y, c2.y)) {
-            val x = (y - c1.y) * (c2.x - c1.x) * 1.0 / (c2.y - c1.y) + c1.x
-            if (!checkCoordinates(Coordinates(x.toInt(), y - 1))) {
+        if (c1.y < c2.y) {
+            cc1 = c1; cc2 = c2
+        } else {
+            cc1 = c2; cc2 = c1
+        }
+        for (y in cc1.y + 1..cc2.y) {
+            val x = (y - cc1.y - 0.5) * (cc2.x - cc1.x) * 1.0 / (cc2.y - cc1.y) + cc1.x + 0.5
+            if (!checkTransparent(Coordinates(x.toInt(), y - 1))) {
                 return false
             }
-            if (!checkCoordinates(Coordinates(x.toInt(), y))) {
+            if (!checkTransparent(Coordinates(x.toInt(), y))) {
                 return false
             }
             if (x.toInt().toDouble() == x) {
-                if (!checkCoordinates(Coordinates(x.toInt() - 1, y - 1))) {
+                if (!checkTransparent(Coordinates(x.toInt() - 1, y - 1))) {
                     return false
                 }
-                if (!checkCoordinates(Coordinates(x.toInt() - 1, y))) {
+                if (!checkTransparent(Coordinates(x.toInt() - 1, y))) {
                     return false
                 }
             }
@@ -100,7 +124,7 @@ class MapLogic(
      * Method that updates NPCs positions and statuses
      */
     private fun updateNPCs() {
-        val enemies = mutableListOf<Enemy?>()
+        val enemies = mutableListOf<Enemy>()
 
         for (row in mapModel.field) {
             for (cell in row) {
@@ -108,7 +132,7 @@ class MapLogic(
                     val oldCoordinates = enemy.coordinates
                     val newCoordinates = enemy.move(this, hero.coordinates)
                     if (oldCoordinates != newCoordinates) {
-                        enemies.add(cell.enemy)
+                        enemies.add(enemy)
                         mapModel.field[oldCoordinates.y][oldCoordinates.x].enemy = null
                     }
                 }
@@ -116,10 +140,8 @@ class MapLogic(
         }
 
         for (enemy in enemies) {
-            enemy?.let { enemy: Enemy ->
-                val coordinates = enemy.coordinates
-                mapModel.field[coordinates.y][coordinates.x].enemy = enemy
-            }
+            val coordinates = enemy.coordinates
+            mapModel.field[coordinates.y][coordinates.x].enemy = enemy
         }
     }
 
