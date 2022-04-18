@@ -147,10 +147,13 @@ class MapLogic(
     }
 
     private fun tryAttack(coordinates: Coordinates) {
-        if (mapModel.isWithoutEnemy(coordinates)) {
-            return
+        val enemy = mapModel.field[coordinates.y][coordinates.x].enemy
+        enemy?.let {
+            Character.duel(hero, it)
+            if (it.isDead()) {
+                mapModel.field[coordinates.y][coordinates.x].enemy = null
+            }
         }
-        Character.duel(hero, mapModel.field[coordinates.y][coordinates.x].enemy!!)
     }
 
     /**
