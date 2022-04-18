@@ -40,12 +40,18 @@ class Enemy(
         return coordinates
     }
 
+    /**
+     * Self-confusion with the specified probability
+     */
     fun confuse() {
         if (Random.nextDouble() <= Constants.CONFUSE_PROBABILITY) {
             strategy = ConfusedCharacterDecorator(strategy)
         }
     }
 
+    /**
+     * String representation of the enemy
+     */
     override fun toString(): String {
         if (strategy.getStrategy() is AgressiveStrategy) {
             return AGRESSIVE_CHAR.toString()
