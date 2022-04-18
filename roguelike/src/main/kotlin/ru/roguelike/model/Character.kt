@@ -60,6 +60,7 @@ abstract class Character {
         fun duel(hero: Hero, enemy: Enemy) {
             hero.attackedBy(enemy)
             enemy.attackedBy(hero)
+            enemy.confuse()
             if (enemy.isDead()) {
                 hero.tryLevelUp(enemy.exp)
             }

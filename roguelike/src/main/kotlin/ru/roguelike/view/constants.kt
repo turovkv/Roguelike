@@ -27,6 +27,7 @@ const val APPLE_CHAR = '@'
 const val AGRESSIVE_CHAR = 'A'
 const val PASSIVE_CHAR = 'P'
 const val SNEAKY_CHAR = 'S'
+const val CONFUSED_CHAR = 'C'
 
 const val DESCRIPTION =
     "Main character  " + CHARACTER_CHAR +
