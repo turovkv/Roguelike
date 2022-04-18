@@ -1,12 +1,12 @@
 package ru.roguelike.logic
 
+import ru.roguelike.model.Character
 import ru.roguelike.model.Coordinates
 import ru.roguelike.model.Enemy
 import ru.roguelike.model.Hero
 import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.MapModel
 import ru.roguelike.view.Drawable
-import ru.roguelike.model.Character
 import kotlin.math.max
 import kotlin.math.min
 
@@ -31,10 +31,10 @@ class MapLogic(
      */
     private fun checkTransparent(c: Coordinates): Boolean {
         return 0 <= c.x &&
-            c.x < mapModel.getX() &&
-            0 <= c.y &&
-            c.y < mapModel.getY() &&
-            mapModel.isWalkable(c)
+                c.x < mapModel.getX() &&
+                0 <= c.y &&
+                c.y < mapModel.getY() &&
+                mapModel.isWalkable(c)
     }
 
     /**
@@ -129,20 +129,25 @@ class MapLogic(
 
         for (row in mapModel.field) {
             for (cell in row) {
-                cell.enemy?.let { enemy: Enemy ->
-                    val oldCoordinates = enemy.coordinates
-                    val newCoordinates = enemy.move(this, hero.coordinates)
-                    if (oldCoordinates != newCoordinates) {
-                        enemies.add(enemy)
-                        mapModel.field[oldCoordinates.y][oldCoordinates.x].enemy = null
-                    }
+                cell.enemy?.let {
+                    enemies.add(it)
                 }
             }
         }
 
         for (enemy in enemies) {
-            val coordinates = enemy.coordinates
-            mapModel.field[coordinates.y][coordinates.x].enemy = enemy
+            val oldCoordinates = enemy.coordinates
+            val newCoordinates = enemy.move(this, hero.coordinates)
+
+            if (newCoordinates == hero.coordinates) {
+                tryAttack(enemy.coordinates)
+                if (hero.isDead()) {
+                    println("YOU DEAD")
+                }
+            } else if (oldCoordinates != newCoordinates) {
+                mapModel.field[oldCoordinates.y][oldCoordinates.x].enemy = null
+                mapModel.field[newCoordinates.y][newCoordinates.x].enemy = enemy
+            }
         }
     }
 
