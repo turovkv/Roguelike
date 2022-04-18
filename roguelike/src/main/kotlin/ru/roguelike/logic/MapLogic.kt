@@ -151,6 +151,9 @@ class MapLogic(
         }
     }
 
+    /**
+     * Try to attack some enemy on the specified coordinates
+     */
     private fun tryAttack(coordinates: Coordinates) {
         val cell = mapModel.field[coordinates.y][coordinates.x]
         val enemy = cell.enemy ?: return
@@ -207,6 +210,9 @@ class MapLogic(
         updateNPCs()
     }
 
+    /**
+     * Try to take some item on the cell
+     */
     override fun processEquip() {
         mapModel.field[hero.coordinates.y][hero.coordinates.x].item?.let {
             inventoryModel.addItem(it)
