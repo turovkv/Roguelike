@@ -200,7 +200,7 @@ class MapLogic(
     override fun processEquip() {
         mapModel.field[hero.coordinates.y][hero.coordinates.x].item?.let {
             inventoryModel.addItem(it)
-        }
+        } ?: view.setError("There is no item")
         mapModel.field[hero.coordinates.y][hero.coordinates.x].item = null
     }
 

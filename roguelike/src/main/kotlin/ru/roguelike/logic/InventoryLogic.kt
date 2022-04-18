@@ -21,12 +21,15 @@ class InventoryLogic(
      */
     override fun processEquip() {
         if (inventoryModel.equippedItems.size >= Constants.MAXIMUM_EQUIPPED_ITEMS) {
+            view.setError("You already equip too much items")
             return
         }
         inventoryModel.getCurrentItem()?.let { item ->
             if (!inventoryModel.isCurrentItemEquipped()) {
                 character.use(item)
                 inventoryModel.useCurrentItem()
+            } else {
+                view.setError("Current item already equipped")
             }
         }
     }
@@ -39,6 +42,8 @@ class InventoryLogic(
             if (item is NonDisposableItem && inventoryModel.isCurrentItemEquipped()) {
                 character.unUse(item)
                 inventoryModel.unUseCurrentItem()
+            } else {
+                view.setError("Item is disposable or is not equipped")
             }
         }
     }
@@ -48,6 +53,7 @@ class InventoryLogic(
      */
     override fun processDrop() {
         if (mapModel.field[character.coordinates.y][character.coordinates.x].item != null) {
+            view.setError("Item already exists on current map cell")
             return
         }
 
@@ -55,6 +61,8 @@ class InventoryLogic(
             if (!inventoryModel.isCurrentItemEquipped()) {
                 inventoryModel.dropCurrentItem()
                 mapModel.field[character.coordinates.y][character.coordinates.x].item = item
+            } else {
+                view.setError("You can't drop equipped item")
             }
         }
     }
