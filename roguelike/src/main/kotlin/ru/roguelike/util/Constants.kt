@@ -25,4 +25,5 @@ object Constants {
 
     const val HP_INCREASE_FOR_LEVEL = 10
     const val DAMAGE_INCREASE_FOR_LEVEL = 5
+    const val EXP_FOR_LEVEL_UP = 500
 }

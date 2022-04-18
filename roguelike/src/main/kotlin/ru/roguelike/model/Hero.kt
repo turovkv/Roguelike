@@ -1,11 +1,17 @@
 package ru.roguelike.model
 
+import ru.roguelike.util.Constants
+
 /**
  * Class that store information about hero
  */
 class Hero(
     override var _coordinates: Coordinates,
 ) : Character() {
+    private var _exp: Int = 0
+
+    override val exp: Int
+        get() = _exp
     /**
      * Begin to use the item
      */
@@ -22,5 +28,22 @@ class Hero(
         hp = maxOf(1, hp - item.getHpChange())
         damage -= item.getDamageChange()
         armor -= item.getArmorChange()
+    }
+
+    override fun attack(character: Character) {
+        super.attack(character)
+        if (character.isDead()) {
+            _exp += character.exp
+            tryLevelUp()
+        }
+    }
+
+    private fun tryLevelUp() {
+        if (exp >= Constants.EXP_FOR_LEVEL_UP) {
+            val levels = exp / Constants.EXP_FOR_LEVEL_UP
+            hp += levels * Constants.HP_INCREASE_FOR_LEVEL
+            damage += levels * Constants.DAMAGE_INCREASE_FOR_LEVEL
+            _exp = exp % Constants.EXP_FOR_LEVEL_UP
+        }
     }
 }

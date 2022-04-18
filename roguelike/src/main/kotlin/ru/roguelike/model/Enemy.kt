@@ -61,4 +61,7 @@ class Enemy(
             return enemy
         }
     }
+
+    override val exp: Int
+        get() = hp + damage
 }

@@ -17,6 +17,7 @@ abstract class Character {
     val maxHp: Int = 5
     var armor: Int = 0
         protected set
+    abstract val exp: Int
 
     /**
      * Move character to one cell right
@@ -49,8 +50,10 @@ abstract class Character {
     /**
      * Attack another character
      */
-    fun attack(character: Character) {
+    open fun attack(character: Character) {
         character.armor = max(0, character.armor - damage)
         character.hp -= max(0, damage - character.armor)
     }
+
+    fun isDead(): Boolean = hp <= 0
 }
