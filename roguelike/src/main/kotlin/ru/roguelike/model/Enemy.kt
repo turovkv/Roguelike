@@ -41,7 +41,9 @@ class Enemy(
     }
 
     fun confuse() {
-        strategy = ConfusedCharacterDecorator(strategy)
+        if (Random.nextInt(10) == 0) {
+            strategy = ConfusedCharacterDecorator(strategy)
+        }
     }
 
     override fun toString(): String {
