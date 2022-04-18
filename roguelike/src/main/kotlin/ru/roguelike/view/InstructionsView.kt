@@ -42,6 +42,9 @@ class InstructionsView(
         screen.refresh()
     }
 
+    /**
+     * Add string to the user screen
+     */
     private fun addStringToScreen(beginRow: Int, str: String): Int {
         var currentRow = beginRow
         var stringPos = 0
