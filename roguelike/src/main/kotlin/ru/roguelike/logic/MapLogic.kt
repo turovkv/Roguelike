@@ -227,6 +227,9 @@ class MapLogic(
         view.draw()
     }
 
+    /**
+     * Check the deadness of hero
+     */
     override fun isHeroDead(): Boolean {
         return hero.isDead()
     }

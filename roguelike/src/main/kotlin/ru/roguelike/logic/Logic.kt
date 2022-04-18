@@ -44,6 +44,7 @@ interface Logic {
     fun draw()
 
     /**
-     * */
+     * Check the deadness of hero
+     */
     fun isHeroDead(): Boolean = false
 }
