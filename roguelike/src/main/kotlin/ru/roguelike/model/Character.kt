@@ -55,5 +55,8 @@ abstract class Character {
         character.hp -= max(0, damage - character.armor)
     }
 
+    /**
+     * Check whether we dead or not
+     */
     fun isDead(): Boolean = hp <= 0
 }

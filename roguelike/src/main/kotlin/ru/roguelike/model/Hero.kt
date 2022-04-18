@@ -30,6 +30,9 @@ class Hero(
         armor -= item.getArmorChange()
     }
 
+    /**
+     * Attack another character
+     */
     override fun attack(character: Character) {
         super.attack(character)
         if (character.isDead()) {
@@ -38,6 +41,9 @@ class Hero(
         }
     }
 
+    /**
+     * try level up our hero
+     */
     private fun tryLevelUp() {
         if (exp >= Constants.EXP_FOR_LEVEL_UP) {
             val levels = exp / Constants.EXP_FOR_LEVEL_UP
