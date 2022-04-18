@@ -86,6 +86,9 @@ class LogicFacade(
         current.draw()
     }
 
+    /**
+     * Check the deadness of hero
+     */
     fun isHeroDead(): Boolean {
         return current.isHeroDead()
     }
