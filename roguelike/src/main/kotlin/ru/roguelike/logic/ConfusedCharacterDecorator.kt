@@ -11,9 +11,10 @@ class ConfusedCharacterDecorator(
     private var contusionTimer: Int = 10,
 ) : CharacterStrategy {
     override fun move(enemyCoord: Coordinates, heroCoord: Coordinates): Coordinates {
-        if (--contusionTimer < 0) {
+        if (contusionTimer <= 0) {
             return characterStrategy.move(enemyCoord, heroCoord)
         }
+        contusionTimer -= 1
 
         val possible = arrayOf(
             Coordinates(enemyCoord.x - 1, enemyCoord.y),
@@ -22,5 +23,12 @@ class ConfusedCharacterDecorator(
             Coordinates(enemyCoord.x + 1, enemyCoord.y),
         )
         return possible[Random.nextInt(possible.size)]
+    }
+
+    override fun getStrategy(): CharacterStrategy {
+        if (contusionTimer <= 0) {
+            return characterStrategy.getStrategy()
+        }
+        return this
     }
 }

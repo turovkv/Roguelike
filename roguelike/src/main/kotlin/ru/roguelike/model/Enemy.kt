@@ -45,16 +45,16 @@ class Enemy(
     }
 
     override fun toString(): String {
-        if (strategy is AgressiveStrategy) {
+        if (strategy.getStrategy() is AgressiveStrategy) {
             return AGRESSIVE_CHAR.toString()
         }
-        if (strategy is SneakyStrategy) {
+        if (strategy.getStrategy() is SneakyStrategy) {
             return SNEAKY_CHAR.toString()
         }
-        if (strategy is PassiveStrategy) {
+        if (strategy.getStrategy() is PassiveStrategy) {
             return PASSIVE_CHAR.toString()
         }
-        if (strategy is ConfusedCharacterDecorator) {
+        if (strategy.getStrategy() is ConfusedCharacterDecorator) {
             return CONFUSED_CHAR.toString()
         }
         throw Exception("")

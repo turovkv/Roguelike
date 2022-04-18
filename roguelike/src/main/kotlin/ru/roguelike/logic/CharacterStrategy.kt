@@ -7,4 +7,7 @@ import ru.roguelike.model.Coordinates
  */
 interface CharacterStrategy {
     fun move(enemyCoord: Coordinates, heroCoord: Coordinates): Coordinates
+    fun getStrategy(): CharacterStrategy {
+        return this
+    }
 }
