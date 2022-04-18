@@ -18,6 +18,7 @@ import kotlin.random.nextInt
 @kotlinx.serialization.Serializable
 class Enemy(
     override var _coordinates: Coordinates,
+    override val maxHp: Int,
     private val strategy: CharacterStrategy,
 ) : Character() {
     /**
@@ -54,8 +55,9 @@ class Enemy(
         private val strategies = listOf(AgressiveStrategy(), SneakyStrategy(), PassiveStrategy())
 
         fun createRandomEnemy(x: Int, y: Int): Enemy {
-            val enemy = Enemy(Coordinates(x, y), strategies.random())
-            enemy.hp = Random.nextInt(1..Constants.MAX_HP)
+            val hp = Random.nextInt(1..Constants.MAX_HP)
+            val enemy = Enemy(Coordinates(x, y), hp, strategies.random())
+            enemy.hp = hp
             enemy.damage = Random.nextInt(1..Constants.MAX_DAMAGE)
 
             return enemy
@@ -63,5 +65,5 @@ class Enemy(
     }
 
     override val exp: Int
-        get() = hp + damage
+        get() = maxHp + damage
 }

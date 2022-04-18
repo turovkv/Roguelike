@@ -14,7 +14,7 @@ abstract class Character {
         protected set
     var hp: Int = 2
         protected set
-    val maxHp: Int = 5
+    abstract val maxHp: Int
     var armor: Int = 0
         protected set
     abstract val exp: Int
