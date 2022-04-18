@@ -85,4 +85,8 @@ class LogicFacade(
         current.processDrop()
         current.draw()
     }
+
+    fun isHeroDead(): Boolean {
+        return current.isHeroDead()
+    }
 }

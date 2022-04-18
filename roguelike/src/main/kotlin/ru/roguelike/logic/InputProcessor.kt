@@ -10,7 +10,10 @@ class InputProcessor(
     /**
      *  process user actions
      */
-    fun process(keyStroke: KeyStroke): Boolean {
+    fun process(keyStroke: KeyStroke): GameState {
+        if (logicFacade.isHeroDead()) {
+            return GameState.DEAD_HERO
+        }
         when (keyStroke.keyType) {
             KeyType.ArrowLeft -> logicFacade.moveLeft()
             KeyType.ArrowRight -> logicFacade.moveRight()
@@ -24,9 +27,9 @@ class InputProcessor(
                 'u' -> logicFacade.processUnEquip()
                 'd' -> logicFacade.processDrop()
             }
-            KeyType.EOF -> return false
-            else -> return true
+            KeyType.EOF -> return GameState.TERMINATED
+            else -> return GameState.GOOD
         }
-        return true
+        return GameState.GOOD
     }
 }

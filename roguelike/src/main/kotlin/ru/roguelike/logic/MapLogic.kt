@@ -152,12 +152,14 @@ class MapLogic(
     }
 
     private fun tryAttack(coordinates: Coordinates) {
-        val enemy = mapModel.field[coordinates.y][coordinates.x].enemy
-        enemy?.let {
-            Character.duel(hero, it)
-            if (it.isDead()) {
-                mapModel.field[coordinates.y][coordinates.x].enemy = null
-            }
+        val cell = mapModel.field[coordinates.y][coordinates.x]
+        val enemy = cell.enemy ?: return
+        Character.duel(hero, enemy)
+        if (enemy.isDead()) {
+            cell.enemy = null
+        }
+        if (hero.isDead()) {
+            println("YOU DEAD")
         }
     }
 
@@ -217,5 +219,9 @@ class MapLogic(
      **/
     override fun draw() {
         view.draw()
+    }
+
+    override fun isHeroDead(): Boolean {
+        return hero.isDead()
     }
 }

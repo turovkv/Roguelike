@@ -42,4 +42,8 @@ interface Logic {
      * draw current logic
      **/
     fun draw()
+
+    /**
+     * */
+    fun isHeroDead(): Boolean = false
 }
