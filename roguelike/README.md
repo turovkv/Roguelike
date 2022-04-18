@@ -35,6 +35,8 @@ For tests just run:
 
 `S` - sneaky enemy, when he can see player, trys to run away from him
 
+`C` - confused enemy, when you attack enemy, he becomes confused and begin to walk randomly 
+
 ## Control
 `H` - open instructions
 
