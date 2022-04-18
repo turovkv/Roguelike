@@ -31,20 +31,10 @@ class Hero(
     }
 
     /**
-     * Attack another character
-     */
-    override fun attack(character: Character) {
-        super.attack(character)
-        if (character.isDead()) {
-            _exp += character.exp
-            tryLevelUp()
-        }
-    }
-
-    /**
      * try level up our hero
      */
-    private fun tryLevelUp() {
+    fun tryLevelUp(addedExp: Int) {
+        _exp += addedExp
         if (exp >= Constants.EXP_FOR_LEVEL_UP) {
             val levels = exp / Constants.EXP_FOR_LEVEL_UP
             hp += levels * Constants.HP_INCREASE_FOR_LEVEL

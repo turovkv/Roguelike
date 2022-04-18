@@ -57,9 +57,12 @@ abstract class Character {
     }
 
     companion object {
-        fun duel(ch1: Character, ch2: Character) {
-            ch1.attackedBy(ch2)
-            ch2.attackedBy(ch1)
+        fun duel(hero: Hero, enemy: Enemy) {
+            hero.attackedBy(enemy)
+            enemy.attackedBy(hero)
+            if (enemy.isDead()) {
+                hero.tryLevelUp(enemy.exp)
+            }
         }
     }
 
