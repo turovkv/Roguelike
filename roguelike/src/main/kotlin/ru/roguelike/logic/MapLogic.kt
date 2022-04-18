@@ -137,14 +137,14 @@ class MapLogic(
 
         for (enemy in enemies) {
             val oldCoordinates = enemy.coordinates
-            val newCoordinates = enemy.move(this, hero.coordinates)
-
+            val newCoordinates = enemy.wantedMove(this, hero.coordinates)
             if (newCoordinates == hero.coordinates) {
                 tryAttack(enemy.coordinates)
                 if (hero.isDead()) {
                     println("YOU DEAD")
                 }
             } else if (oldCoordinates != newCoordinates) {
+                enemy.move(this, hero.coordinates)
                 mapModel.field[oldCoordinates.y][oldCoordinates.x].enemy = null
                 mapModel.field[newCoordinates.y][newCoordinates.x].enemy = enemy
             }

@@ -24,17 +24,14 @@ class Enemy(
     private var strategy: CharacterStrategy,
 ) : Character() {
     /**
-     * Move
+     * wantedMove
      */
-    fun move(mapLogic: MapLogic, heroCoordinates: Coordinates): Coordinates {
+    fun wantedMove(mapLogic: MapLogic, heroCoordinates: Coordinates): Coordinates {
         if (!mapLogic.isHeroVisible(coordinates)) {
             return coordinates
         }
-
         val newCoordinates = strategy.move(coordinates, heroCoordinates)
-
         if (mapLogic.checkCoordinates(newCoordinates)) {
-            _coordinates = newCoordinates
             return newCoordinates
         }
         return coordinates
@@ -43,6 +40,15 @@ class Enemy(
     /**
      * Self-confusion with the specified probability
      */
+    /**
+     * Move
+     */
+    fun move(mapLogic: MapLogic, heroCoordinates: Coordinates): Coordinates {
+        _coordinates = wantedMove(mapLogic, heroCoordinates)
+        return _coordinates
+    }
+
+
     fun confuse() {
         if (Random.nextDouble() <= Constants.CONFUSE_PROBABILITY) {
             strategy = ConfusedCharacterDecorator(strategy)

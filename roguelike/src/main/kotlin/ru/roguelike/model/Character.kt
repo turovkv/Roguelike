@@ -54,7 +54,7 @@ abstract class Character {
     open fun attackedBy(character: Character) {
         val damageToArmor = min(armor, character.damage)
         armor -= damageToArmor
-        hp -= damage - damageToArmor
+        hp -= character.damage - damageToArmor
     }
 
     companion object {
