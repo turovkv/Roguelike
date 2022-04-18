@@ -1,12 +1,12 @@
 package ru.roguelike.logic
 
-import ru.roguelike.view.InstructionsView
+import ru.roguelike.view.Drawable
 
 /**
  * Class that stores logic about instructions
  */
 class InstructionsLogic(
-    private val view: InstructionsView
+    private val view: Drawable
 ) : Logic {
     /**
      * draw help

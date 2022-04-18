@@ -19,7 +19,7 @@ class InventoryLogic(
      * processing equip current item
      */
     override fun processEquip() {
-        inventoryModel.getCurrentItem().let { item ->
+        inventoryModel.getCurrentItem()?.let { item ->
             if (!inventoryModel.isCurrentItemEquipped()) {
                 character.use(item)
                 inventoryModel.useCurrentItem()
@@ -31,7 +31,7 @@ class InventoryLogic(
      * processing unequip current item
      */
     override fun processUnEquip() {
-        inventoryModel.getCurrentItem().let { item ->
+        inventoryModel.getCurrentItem()?.let { item ->
             if (item is NonDisposableItem && inventoryModel.isCurrentItemEquipped()) {
                 character.unUse(item)
                 inventoryModel.unUseCurrentItem()
@@ -47,7 +47,7 @@ class InventoryLogic(
             return
         }
 
-        inventoryModel.getCurrentItem().let { item ->
+        inventoryModel.getCurrentItem()?.let { item ->
             if (!inventoryModel.isCurrentItemEquipped()) {
                 inventoryModel.dropCurrentItem()
                 mapModel.field[character.coordinates.y][character.coordinates.x].item = item

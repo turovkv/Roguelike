@@ -22,4 +22,7 @@ object Constants {
     const val MAX_HP = 70
     const val MAX_DAMAGE = 30
     const val MAX_ARMOR = 50
+
+    const val HP_INCREASE_FOR_LEVEL = 10
+    const val DAMAGE_INCREASE_FOR_LEVEL = 5
 }

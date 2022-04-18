@@ -33,8 +33,8 @@ class InventoryModel(private val items_: MutableList<Item> = mutableListOf()) {
     /**
      * Choose the current element
      */
-    fun getCurrentItem(): Item {
-        return items_[currentItemIndex]
+    fun getCurrentItem(): Item? {
+        return if (currentItemIndex < items_.size) items_[currentItemIndex] else null
     }
 
     /**
