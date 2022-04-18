@@ -4,6 +4,7 @@ import ru.roguelike.model.Hero
 import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.MapModel
 import ru.roguelike.model.NonDisposableItem
+import ru.roguelike.util.Constants
 import ru.roguelike.view.Drawable
 
 /**
@@ -19,6 +20,9 @@ class InventoryLogic(
      * processing equip current item
      */
     override fun processEquip() {
+        if (inventoryModel.equippedItems.size >= Constants.MAXIMUM_EQUIPPED_ITEMS) {
+            return
+        }
         inventoryModel.getCurrentItem()?.let { item ->
             if (!inventoryModel.isCurrentItemEquipped()) {
                 character.use(item)
