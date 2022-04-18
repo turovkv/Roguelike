@@ -7,6 +7,7 @@ import ru.roguelike.model.Apple
 import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.Shield
 import ru.roguelike.model.Sword
+import ru.roguelike.util.Constants.ERROR_VIEW_HEIGHT
 
 /**
  * This class provides one method which draws inventory.
@@ -25,7 +26,7 @@ class InventoryView(
      */
     override fun draw() {
         screen.clear()
-
+        var currentIndexInItems = false
         for ((index, item) in inventory.items.withIndex()) {
             var currentCharacter = when (item) {
                 is Shield -> TextCharacter.fromCharacter(SHIELD_CHAR)[0]
@@ -37,18 +38,25 @@ class InventoryView(
                 currentCharacter = currentCharacter.withBackgroundColor(TextColor.RGB(0, 255, 0))
             }
             if (index == inventory.currentItemIndex) {
+                currentIndexInItems = true
                 currentCharacter = currentCharacter.withBackgroundColor(TextColor.RGB(0, 0, 255))
             }
             screen.setCharacter(
-                0, index,
+                0, index + ERROR_VIEW_HEIGHT,
                 currentCharacter
             )
             for ((characterIndex, character) in item.toString().withIndex()) {
                 screen.setCharacter(
-                    characterIndex + 2, index,
+                    characterIndex + 2, index + ERROR_VIEW_HEIGHT,
                     TextCharacter.fromCharacter(character)[0]
                 )
             }
+        }
+        if (!currentIndexInItems) {
+            screen.setCharacter(
+                0, inventory.currentItemIndex + ERROR_VIEW_HEIGHT,
+                TextCharacter.fromCharacter(' ')[0].withBackgroundColor(TextColor.RGB(0, 0, 255))
+            )
         }
         characterView.type = "INVENTORY"
         characterView.draw()
