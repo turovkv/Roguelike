@@ -8,13 +8,13 @@ import kotlin.random.Random
  */
 class ConfusedCharacterDecorator(
     private val characterStrategy: CharacterStrategy,
-    private var contusionTimer: Int = 10,
+    private var confusionTimer: Int = 10,
 ) : CharacterStrategy {
     override fun move(enemyCoord: Coordinates, heroCoord: Coordinates): Coordinates {
-        if (contusionTimer <= 0) {
+        if (confusionTimer <= 0) {
             return characterStrategy.move(enemyCoord, heroCoord)
         }
-        contusionTimer -= 1
+        confusionTimer -= 1
 
         val possible = arrayOf(
             Coordinates(enemyCoord.x - 1, enemyCoord.y),
@@ -26,7 +26,7 @@ class ConfusedCharacterDecorator(
     }
 
     override fun getStrategy(): CharacterStrategy {
-        if (contusionTimer <= 0) {
+        if (confusionTimer <= 0) {
             return characterStrategy.getStrategy()
         }
         return this
