@@ -16,11 +16,16 @@ class SneakyStrategy : CharacterStrategy {
             sign((heroCoord.y - enemyCoord.y).toDouble()).toInt()
         )
 
-        val dxdy = listOf(
+        val dxdys = listOf(
             Coordinates(vec.x, 0),
             Coordinates(0, vec.y)
-        ).filter { it != Coordinates(0, 0) }.random()
+        ).filter { it != Coordinates(0, 0) }
 
+        if (dxdys.isEmpty()) {
+            return enemyCoord
+        }
+
+        val dxdy = dxdys.random()
         return Coordinates(enemyCoord.x - dxdy.x, enemyCoord.y - dxdy.y)
     }
 }
