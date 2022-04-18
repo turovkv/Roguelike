@@ -7,7 +7,7 @@ import ru.roguelike.util.Constants
  */
 class Hero(
     override var _coordinates: Coordinates,
-    override val maxHp: Int = 5,
+    override val maxHp: Int = Constants.MAX_HP,
 ) : Character() {
     private var _exp: Int = 0
 

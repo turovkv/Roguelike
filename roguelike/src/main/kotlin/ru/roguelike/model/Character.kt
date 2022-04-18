@@ -1,5 +1,6 @@
 package ru.roguelike.model
 
+import ru.roguelike.util.Constants
 import kotlin.math.min
 
 /**
@@ -10,9 +11,9 @@ abstract class Character {
     protected abstract var _coordinates: Coordinates
     val coordinates get() = _coordinates
 
-    var damage: Int = 5
+    var damage: Int = Constants.MAX_DAMAGE
         protected set
-    var hp: Int = 2
+    var hp: Int = Constants.MAX_HP
         protected set
     abstract val maxHp: Int
     var armor: Int = 0

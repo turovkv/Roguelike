@@ -19,11 +19,13 @@ object Constants {
     var ROOM_ENEMY_COUNT = 2
     var ROOM_ITEMS_COUNT = 3
 
-    const val MAX_HP = 70
-    const val MAX_DAMAGE = 30
-    const val MAX_ARMOR = 50
+    var MAX_HP = 70
+    var MAX_DAMAGE = 30
+    var MAX_ARMOR = 50
 
-    const val HP_INCREASE_FOR_LEVEL = 10
-    const val DAMAGE_INCREASE_FOR_LEVEL = 5
-    const val EXP_FOR_LEVEL_UP = 500
+    var HP_INCREASE_FOR_LEVEL = 10
+    var DAMAGE_INCREASE_FOR_LEVEL = 5
+    var EXP_FOR_LEVEL_UP = 500
+
+    var CONFUSE_PROBABILITY = 0.1
 }

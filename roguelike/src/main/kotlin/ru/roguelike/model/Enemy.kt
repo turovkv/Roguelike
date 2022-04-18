@@ -41,7 +41,7 @@ class Enemy(
     }
 
     fun confuse() {
-        if (Random.nextInt(10) == 0) {
+        if (Random.nextDouble() <= Constants.CONFUSE_PROBABILITY) {
             strategy = ConfusedCharacterDecorator(strategy)
         }
     }
