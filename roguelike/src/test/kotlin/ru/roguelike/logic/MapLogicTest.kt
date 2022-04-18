@@ -10,7 +10,7 @@ import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.MapModel
 import ru.roguelike.view.Drawable
 
-class LogicTest {
+class MapLogicTest {
 
     private fun getMapLogic(mapModelStr: String, N: Int, M: Int, hero: Hero = Hero(Coordinates(1, 1))): MapLogic {
         val field = MutableList(N) { MutableList(M) { Cell(CellType.NON_WALKABLE) } }
