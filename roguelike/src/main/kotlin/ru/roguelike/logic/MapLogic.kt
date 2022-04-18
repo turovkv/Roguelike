@@ -141,10 +141,10 @@ class MapLogic(
             if (newCoordinates == hero.coordinates) {
                 tryAttack(enemy.coordinates)
                 if (hero.isDead()) {
-                    println("YOU DEAD")
+                    view.setError("YOU DIED!!! NEXT ACTION WILL RESTART THE GAME")
                 }
             } else if (oldCoordinates != newCoordinates) {
-                enemy.move(this, hero.coordinates)
+                enemy.move(newCoordinates)
                 mapModel.field[oldCoordinates.y][oldCoordinates.x].enemy = null
                 mapModel.field[newCoordinates.y][newCoordinates.x].enemy = enemy
             }
