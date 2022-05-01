@@ -59,6 +59,13 @@ class InventoryModel(private val items_: MutableList<Item> = mutableListOf()) {
      */
     fun dropCurrentItem() {
         items_.removeAt(currentItemIndex)
+        equippedItems_ = equippedItems_.map {
+            if (it > currentItemIndex) {
+                it - 1
+            } else {
+                it
+            }
+        }.toMutableSet()
     }
 
     /**
