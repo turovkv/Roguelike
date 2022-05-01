@@ -28,7 +28,17 @@ class Hero(
     fun unUse(item: NonDisposableItem) {
         hp = maxOf(1, hp - item.getHpChange())
         damage -= item.getDamageChange()
-        armor -= item.getArmorChange()
+
+        val armorChange = item.getArmorChange()
+
+        if (armorChange >= armorLoss) {
+            armor -= armorChange - armorLoss
+            item.reduceArmor(armorLoss)
+            armorLoss = 0
+        } else {
+            item.reduceArmor(armorChange)
+            armorLoss -= armorChange
+        }
     }
 
     /**

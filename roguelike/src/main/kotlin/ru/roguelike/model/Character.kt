@@ -19,6 +19,7 @@ abstract class Character {
     var armor: Int = 0
         protected set
     abstract val exp: Int
+    protected var armorLoss: Int = 0
 
     /**
      * Move character to one cell right
@@ -53,6 +54,7 @@ abstract class Character {
      */
     open fun attackedBy(character: Character) {
         val damageToArmor = min(armor, character.damage)
+        armorLoss += damageToArmor
         armor -= damageToArmor
         hp -= character.damage - damageToArmor
     }

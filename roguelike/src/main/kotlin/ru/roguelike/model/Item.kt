@@ -17,6 +17,9 @@ interface Item {
      */
     fun getArmorChange(): Int = 0
     override fun toString(): String
+
+    fun reduceArmor(armorLoss: Int) {
+    }
 }
 
 /**

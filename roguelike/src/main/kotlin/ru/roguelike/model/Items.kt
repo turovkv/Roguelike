@@ -22,7 +22,11 @@ object Items {
 /**
  * Class for shield.
  */
-data class Shield(private val armor: Int) : NonDisposableItem {
+data class Shield(private var armor: Int) : NonDisposableItem {
+    override fun reduceArmor(armorLoss: Int) {
+        armor -= armorLoss
+    }
+
     override fun getArmorChange(): Int = armor
     /**
      * Method returns armour of object
