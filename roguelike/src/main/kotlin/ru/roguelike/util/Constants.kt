@@ -28,4 +28,6 @@ object Constants {
     var EXP_FOR_LEVEL_UP = 500
 
     var CONFUSE_PROBABILITY = 0.1
+
+    var CLONE_PROBABILITY = 0.5
 }
