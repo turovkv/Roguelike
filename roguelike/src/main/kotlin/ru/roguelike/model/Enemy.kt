@@ -22,6 +22,7 @@ class Enemy(
     override var _coordinates: Coordinates,
     override val maxHp: Int,
     private var strategy: CharacterStrategy,
+    private val style: EnemyStyle
 ) : Character() {
     /**
      * WantedMove
@@ -76,9 +77,9 @@ class Enemy(
     companion object {
         private val strategies = listOf(AgressiveStrategy(), SneakyStrategy(), PassiveStrategy())
 
-        fun createRandomEnemy(x: Int, y: Int): Enemy {
+        fun createRandomEnemy(x: Int, y: Int, style: EnemyStyle): Enemy {
             val hp = Random.nextInt(1..Constants.MAX_HP)
-            val enemy = Enemy(Coordinates(x, y), hp, strategies.random())
+            val enemy = Enemy(Coordinates(x, y), hp, strategies.random(), style)
             enemy.hp = hp
             enemy.damage = Random.nextInt(1..Constants.MAX_DAMAGE)
 
