@@ -79,7 +79,11 @@ open class Enemy(
 
         fun createRandomEnemy(x: Int, y: Int, style: EnemyStyle): Enemy {
             val hp = Random.nextInt(1..Constants.MAX_HP)
-            val enemy = Enemy(Coordinates(x, y), hp, strategies.random(), style)
+            val enemy = if (style == EnemyStyle.SKELETON) {
+                CloneableEnemy(Coordinates(x, y), hp, strategies.random(), style)
+            } else {
+                Enemy(Coordinates(x, y), hp, strategies.random(), style)
+            }
             enemy.hp = hp
             enemy.damage = Random.nextInt(1..Constants.MAX_DAMAGE)
 
