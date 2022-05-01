@@ -2,6 +2,9 @@ package ru.roguelike.model
 
 import ru.roguelike.logic.CharacterStrategy
 
+/**
+ * Enemy that can be cloned
+ */
 class CloneableEnemy(
     _coordinates: Coordinates,
     maxHp: Int,

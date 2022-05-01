@@ -94,6 +94,9 @@ open class Enemy(
     override val exp: Int
         get() = maxHp + damage
 
+    /**
+     * Method for clone our enemy
+     */
     open fun clone(coordinates: Coordinates): Enemy? {
         return null
     }
