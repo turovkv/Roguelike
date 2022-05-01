@@ -30,6 +30,7 @@ class Enemy(
         if (!mapLogic.isHeroVisible(coordinates)) {
             return coordinates
         }
+        strategy = strategy.getStrategy()
         val newCoordinates = strategy.move(coordinates, heroCoordinates)
         if (mapLogic.checkCoordinates(newCoordinates)) {
             return newCoordinates
