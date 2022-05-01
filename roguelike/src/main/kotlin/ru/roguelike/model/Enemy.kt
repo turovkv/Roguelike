@@ -22,7 +22,7 @@ class Enemy(
     override var _coordinates: Coordinates,
     override val maxHp: Int,
     private var strategy: CharacterStrategy,
-    private val style: EnemyStyle
+    val style: EnemyStyle
 ) : Character() {
     /**
      * WantedMove
