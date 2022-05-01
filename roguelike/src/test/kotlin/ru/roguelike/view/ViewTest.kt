@@ -9,19 +9,22 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import ru.roguelike.model.Apple
 import ru.roguelike.model.CellType
+import ru.roguelike.model.EnemyFactoryImpl
 import ru.roguelike.model.Hero
 import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.Item
 import ru.roguelike.model.MapModel
 import ru.roguelike.model.Shield
 import ru.roguelike.model.Sword
+import ru.roguelike.model.generator.FieldBuilder
 import ru.roguelike.util.Constants
 
 class ViewTest {
     @Disabled("Can't create terminal in CI")
     @Test
     fun testMapView() {
-        val mapModel = MapModel()
+        val field = FieldBuilder(EnemyFactoryImpl()).build()
+        val mapModel = MapModel(field)
         val defaultTerminalFactory = DefaultTerminalFactory().also {
             it.setInitialTerminalSize(
                 TerminalSize(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT + Constants.CHARACTER_VIEW_HEIGHT)
@@ -79,6 +82,7 @@ class ViewTest {
     @Disabled("Can't create terminal in CI")
     @Test
     fun testInventoryView() {
+        val field = FieldBuilder(EnemyFactoryImpl()).build()
         val defaultTerminalFactory = DefaultTerminalFactory().also {
             it.setInitialTerminalSize(
                 TerminalSize(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT + Constants.CHARACTER_VIEW_HEIGHT)
@@ -89,7 +93,7 @@ class ViewTest {
             it.startScreen(); it.cursorPosition = null
         }
         val inventoryModel = InventoryModel(listOf(Shield(2), Sword(3), Apple(4)) as MutableList<Item>)
-        val mapModel = MapModel()
+        val mapModel = MapModel(field)
         val coordinates = mapModel.getRandomWalkableCoordinates()
         val character = Hero(coordinates)
         val characterView = CharacterView(character, screen)
