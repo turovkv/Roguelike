@@ -6,6 +6,7 @@ import ru.roguelike.model.Enemy
 import ru.roguelike.model.Hero
 import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.MapModel
+import ru.roguelike.util.Constants
 import ru.roguelike.view.Drawable
 import kotlin.math.max
 import kotlin.math.min
@@ -215,9 +216,13 @@ class MapLogic(
      */
     override fun processEquip() {
         mapModel.field[hero.coordinates.y][hero.coordinates.x].item?.let {
+            if (inventoryModel.items.size >= Constants.INVENTORY_SIZE) {
+                view.setError("You already take maximum number of elements")
+                return
+            }
             inventoryModel.addItem(it)
+            mapModel.field[hero.coordinates.y][hero.coordinates.x].item = null
         } ?: view.setError("There is no item")
-        mapModel.field[hero.coordinates.y][hero.coordinates.x].item = null
     }
 
     /**
