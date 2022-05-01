@@ -18,10 +18,10 @@ import kotlin.random.nextInt
  * Class that store information about enemy
  */
 @kotlinx.serialization.Serializable
-class Enemy(
+open class Enemy(
     override var _coordinates: Coordinates,
     override val maxHp: Int,
-    private var strategy: CharacterStrategy,
+    protected var strategy: CharacterStrategy,
     val style: EnemyStyle
 ) : Character() {
     /**
@@ -89,4 +89,8 @@ class Enemy(
 
     override val exp: Int
         get() = maxHp + damage
+
+    open fun clone(coordinates: Coordinates): Enemy? {
+        return null
+    }
 }
