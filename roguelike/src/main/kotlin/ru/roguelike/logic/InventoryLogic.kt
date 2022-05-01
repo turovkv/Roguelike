@@ -1,5 +1,6 @@
 package ru.roguelike.logic
 
+import ru.roguelike.model.DisposableItem
 import ru.roguelike.model.Hero
 import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.MapModel
@@ -20,12 +21,12 @@ class InventoryLogic(
      * processing equip current item
      */
     override fun processEquip() {
-        if (inventoryModel.equippedItems.size >= Constants.MAXIMUM_EQUIPPED_ITEMS) {
-            view.setError("You already equip too much items")
-            return
-        }
         inventoryModel.getCurrentItem()?.let { item ->
             if (!inventoryModel.isCurrentItemEquipped()) {
+                if (inventoryModel.equippedItems.size >= Constants.MAXIMUM_EQUIPPED_ITEMS && item !is DisposableItem) {
+                    view.setError("You already equip too much items")
+                    return
+                }
                 character.use(item)
                 inventoryModel.useCurrentItem()
             } else {
