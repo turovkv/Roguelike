@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import ru.roguelike.model.EnemyFactoryImpl
 import ru.roguelike.model.generator.FieldBuilder
 import java.io.FileInputStream
-import java.util.*
+import java.util.Properties
 
 class BuildFielderTest {
     @Test
@@ -22,9 +22,11 @@ class BuildFielderTest {
 
     @Test
     fun propertiesTest() {
-        val field = FieldBuilder(EnemyFactoryImpl()).withProperties(Properties().also {
-            it.load(FileInputStream("src/test/resources/map.properties"))
-        }).build()
+        val field = FieldBuilder(EnemyFactoryImpl()).withProperties(
+            Properties().also {
+                it.load(FileInputStream("src/test/resources/map.properties"))
+            }
+        ).build()
 
         Assertions.assertEquals(1000, field[0].size)
         Assertions.assertEquals(1000, field.size)
