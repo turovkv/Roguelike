@@ -26,8 +26,10 @@ class FieldBuilder(private val factory: EnemyFactory) {
     /**
      * Creates field with parameters, which were specified earlier
      */
-    fun build(): Field =
-        if (filePath == null) {
+    fun build(): Field {
+        Constants.FIELD_HEIGHT = height
+        Constants.FIELD_WIDTH = width
+        return if (filePath == null) {
             BSPFieldGenerator(factory).generate()
         } else {
             filePath?.let {
@@ -37,6 +39,7 @@ class FieldBuilder(private val factory: EnemyFactory) {
                 }
             } ?: throw IllegalStateException("File path is not specified")
         }
+    }
 
     /**
      * Specify width of field
