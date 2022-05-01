@@ -1,6 +1,10 @@
 package ru.roguelike.model.generator.bsp
 
-import ru.roguelike.model.*
+import ru.roguelike.model.Coordinates
+import ru.roguelike.model.Enemy
+import ru.roguelike.model.EnemyFactory
+import ru.roguelike.model.Item
+import ru.roguelike.model.Items
 import ru.roguelike.util.Constants
 import kotlin.random.Random
 

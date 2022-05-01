@@ -3,7 +3,14 @@ package ru.roguelike.model.generator
 import ru.roguelike.logic.AgressiveStrategy
 import ru.roguelike.logic.PassiveStrategy
 import ru.roguelike.logic.SneakyStrategy
-import ru.roguelike.model.*
+import ru.roguelike.model.Apple
+import ru.roguelike.model.Cell
+import ru.roguelike.model.CellType
+import ru.roguelike.model.Coordinates
+import ru.roguelike.model.Enemy
+import ru.roguelike.model.EnemyStyle
+import ru.roguelike.model.Shield
+import ru.roguelike.model.Sword
 import ru.roguelike.util.Constants
 import ru.roguelike.view.AGRESSIVE_CHAR
 import ru.roguelike.view.APPLE_CHAR
