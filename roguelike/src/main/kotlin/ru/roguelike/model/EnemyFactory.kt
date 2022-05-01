@@ -1,5 +1,8 @@
 package ru.roguelike.model
 
+/**
+ * EnemyFactory which can create dragons, skeletons, cyborgs
+ * */
 interface EnemyFactory {
     fun createDragon(x: Int, y: Int): Enemy
     fun createSkeleton(x: Int, y: Int): Enemy

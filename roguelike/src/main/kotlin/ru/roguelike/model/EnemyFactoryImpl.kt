@@ -1,5 +1,8 @@
 package ru.roguelike.model
 
+/**
+ * simple implementation of EnemyFactory
+ * */
 class EnemyFactoryImpl : EnemyFactory {
     override fun createDragon(x: Int, y: Int): Enemy {
         return Enemy.createRandomEnemy(x, y, EnemyStyle.DRAGON)
