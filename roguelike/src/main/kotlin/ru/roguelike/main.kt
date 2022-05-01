@@ -9,10 +9,8 @@ import ru.roguelike.logic.InstructionsLogic
 import ru.roguelike.logic.InventoryLogic
 import ru.roguelike.logic.LogicFacade
 import ru.roguelike.logic.MapLogic
-import ru.roguelike.model.Hero
-import ru.roguelike.model.InstructionModel
-import ru.roguelike.model.InventoryModel
-import ru.roguelike.model.MapModel
+import ru.roguelike.model.*
+import ru.roguelike.model.generator.FieldBuilder
 import ru.roguelike.util.Constants
 import ru.roguelike.view.AUTHORS
 import ru.roguelike.view.CharacterView
@@ -21,6 +19,8 @@ import ru.roguelike.view.INSTRUCTIONS
 import ru.roguelike.view.InstructionsView
 import ru.roguelike.view.InventoryView
 import ru.roguelike.view.MapView
+import java.io.FileInputStream
+import java.util.*
 
 fun main() {
     val defaultTerminalFactory = DefaultTerminalFactory().also {
@@ -54,7 +54,11 @@ fun main() {
 }
 
 private fun getInputProcessor(screen: TerminalScreen): InputProcessor {
-    val mapModel = MapModel()
+    val field = FieldBuilder(EnemyFactoryImpl())
+        .withProperties(Properties().also { it.load(FileInputStream("src/main/resources/map.properties")) })
+        .build()
+
+    val mapModel = MapModel(field)
     val inventoryModel = InventoryModel()
     val coordinates = mapModel.getRandomWalkableCoordinates()
     val hero = Hero(_coordinates = coordinates)

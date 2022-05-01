@@ -45,11 +45,11 @@ class MapView(
                     screen.setCharacter(
                         column, row,
                         TextCharacter.fromCharacter(cell.enemy.toString()[0])[0].withBackgroundColor(
-                         when (cell.enemy!!.style) {
-                             EnemyStyle.CYBORG -> TextColor.RGB(0, 255, 0)
-                             EnemyStyle.DRAGON -> TextColor.RGB(0, 0, 255)
-                             EnemyStyle.SKELETON -> TextColor.RGB(255, 0, 0)
-                         }
+                            when (cell.enemy!!.style) {
+                                EnemyStyle.CYBORG -> TextColor.RGB(0, 255, 0)
+                                EnemyStyle.DRAGON -> TextColor.RGB(0, 0, 255)
+                                EnemyStyle.SKELETON -> TextColor.RGB(255, 0, 0)
+                            }
                         )
                     )
                 } else {

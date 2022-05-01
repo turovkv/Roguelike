@@ -3,13 +3,7 @@ package ru.roguelike.model.generator
 import ru.roguelike.logic.AgressiveStrategy
 import ru.roguelike.logic.PassiveStrategy
 import ru.roguelike.logic.SneakyStrategy
-import ru.roguelike.model.Apple
-import ru.roguelike.model.Cell
-import ru.roguelike.model.CellType
-import ru.roguelike.model.Coordinates
-import ru.roguelike.model.Enemy
-import ru.roguelike.model.Shield
-import ru.roguelike.model.Sword
+import ru.roguelike.model.*
 import ru.roguelike.util.Constants
 import ru.roguelike.view.AGRESSIVE_CHAR
 import ru.roguelike.view.APPLE_CHAR
@@ -30,9 +24,9 @@ fun Char.toCell(c: Coordinates): Cell =
         SWORD_CHAR -> Cell(CellType.WALKABLE, Sword(Random.nextInt(1..Constants.MAX_DAMAGE)))
         APPLE_CHAR -> Cell(CellType.WALKABLE, Apple(Random.nextInt(1..Constants.MAX_HP)))
         SHIELD_CHAR -> Cell(CellType.WALKABLE, Shield(Random.nextInt(1..Constants.MAX_ARMOR)))
-        AGRESSIVE_CHAR -> Cell(CellType.WALKABLE, null, Enemy(c, Random.nextInt(1..Constants.MAX_HP), AgressiveStrategy()))
-        PASSIVE_CHAR -> Cell(CellType.WALKABLE, null, Enemy(c, Random.nextInt(1..Constants.MAX_HP), PassiveStrategy()))
-        SNEAKY_CHAR -> Cell(CellType.WALKABLE, null, Enemy(c, Random.nextInt(1..Constants.MAX_HP), SneakyStrategy()))
+        AGRESSIVE_CHAR -> Cell(CellType.WALKABLE, null, Enemy(c, Random.nextInt(1..Constants.MAX_HP), AgressiveStrategy(), EnemyStyle.DRAGON))
+        PASSIVE_CHAR -> Cell(CellType.WALKABLE, null, Enemy(c, Random.nextInt(1..Constants.MAX_HP), PassiveStrategy(), EnemyStyle.DRAGON))
+        SNEAKY_CHAR -> Cell(CellType.WALKABLE, null, Enemy(c, Random.nextInt(1..Constants.MAX_HP), SneakyStrategy(), EnemyStyle.DRAGON))
         else -> error("unsupported character")
     }
 

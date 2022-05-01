@@ -1,9 +1,6 @@
 package ru.roguelike.model.generator.bsp
 
-import ru.roguelike.model.Coordinates
-import ru.roguelike.model.Enemy
-import ru.roguelike.model.Item
-import ru.roguelike.model.Items
+import ru.roguelike.model.*
 import ru.roguelike.util.Constants
 import kotlin.random.Random
 
@@ -31,7 +28,7 @@ internal data class Room(
     )
 
     companion object {
-        fun createRandomRoom(width: Int, height: Int, x: Int, y: Int): Room {
+        fun createRandomRoom(width: Int, height: Int, x: Int, y: Int, enemyFactory: EnemyFactory): Room {
             val roomWidth = Random.nextInt(Constants.ROOM_SIZE, width - 1)
             val roomHeight = Random.nextInt(Constants.ROOM_SIZE, height - 1)
             val roomCoordinates = Coordinates(
@@ -48,7 +45,7 @@ internal data class Room(
                     coordinates = Coordinates.createRandomCoordinates(roomCoordinates.x, roomCoordinates.y, roomWidth, roomHeight)
                 }
                 coordinates += Coordinates(x, y)
-                enemies.add(Enemy.createRandomEnemy(coordinates.x, coordinates.y))
+                enemies.add(enemyFactory.createRandomEnemy(coordinates.x, coordinates.y))
             }
 
             (1..Constants.ROOM_ITEMS_COUNT).forEach { _ ->
