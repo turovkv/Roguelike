@@ -91,9 +91,12 @@
 
 
 ### Input
+https://drive.google.com/file/d/1wt8P4O_gBL7xdB4iXXCHCbRvJtD7d0rX/view?usp=sharing
+
 - Считываем ввод пользователя
 - С помощью CommandFactory создаем команду, соответствующую кнопке, нажатой пользователем 
 - У этой команды вызываем метод `execute()`, который будет выполнять сценарий рассматриваемой кнопки 
+
 ### Logic
 https://drive.google.com/file/d/1bV6EcTbEd8aW0aVcDHciq7vDdPQQ3i6G/view?usp=sharing
 
