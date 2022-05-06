@@ -1,8 +1,5 @@
 package ru.roguelike.logic
 
-import kotlin.math.max
-import kotlin.math.min
-import kotlin.random.Random
 import ru.roguelike.model.Character
 import ru.roguelike.model.Coordinates
 import ru.roguelike.model.Enemy
@@ -11,6 +8,9 @@ import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.MapModel
 import ru.roguelike.util.Constants
 import ru.roguelike.view.Drawable
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.random.Random
 
 /**
  * Class that stores logic about map
@@ -33,10 +33,10 @@ class MapLogic(
      */
     private fun checkTransparent(c: Coordinates): Boolean {
         return 0 <= c.x &&
-                c.x < mapModel.getX() &&
-                0 <= c.y &&
-                c.y < mapModel.getY() &&
-                mapModel.isWalkable(c)
+            c.x < mapModel.getX() &&
+            0 <= c.y &&
+            c.y < mapModel.getY() &&
+            mapModel.isWalkable(c)
     }
 
     /**

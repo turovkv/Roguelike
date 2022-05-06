@@ -30,7 +30,7 @@ class MoveLeftCommand(logicFacade: LogicFacade) : CommandImpl(logicFacade) {
 /**
  * Command, which processing right move
  */
-class MoveRightCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
+class MoveRightCommand(logicFacade: LogicFacade) : CommandImpl(logicFacade) {
     override fun executeImpl(): GameState {
         logicFacade.moveRight()
         return GameState.GOOD
@@ -40,7 +40,7 @@ class MoveRightCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
 /**
  * Command, which processing up move
  */
-class MoveUpCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
+class MoveUpCommand(logicFacade: LogicFacade) : CommandImpl(logicFacade) {
     override fun executeImpl(): GameState {
         logicFacade.moveUp()
         return GameState.GOOD
@@ -50,7 +50,7 @@ class MoveUpCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
 /**
  * Command, which processing down move
  */
-class MoveDownCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
+class MoveDownCommand(logicFacade: LogicFacade) : CommandImpl(logicFacade) {
     override fun executeImpl(): GameState {
         logicFacade.moveDown()
         return GameState.GOOD
@@ -60,7 +60,7 @@ class MoveDownCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
 /**
  * Command, which change current logic on help
  */
-class TurnHelpCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
+class TurnHelpCommand(logicFacade: LogicFacade) : CommandImpl(logicFacade) {
     override fun executeImpl(): GameState {
         logicFacade.processHelp()
         return GameState.GOOD
@@ -70,7 +70,7 @@ class TurnHelpCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
 /**
  * Command, which change current logic on map
  */
-class TurnMapCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
+class TurnMapCommand(logicFacade: LogicFacade) : CommandImpl(logicFacade) {
     override fun executeImpl(): GameState {
         logicFacade.processMap()
         return GameState.GOOD
@@ -80,7 +80,7 @@ class TurnMapCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
 /**
  * Command, which change current logic on inventory
  */
-class TurnInventoryCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
+class TurnInventoryCommand(logicFacade: LogicFacade) : CommandImpl(logicFacade) {
     override fun executeImpl(): GameState {
         logicFacade.processInventory()
         return GameState.GOOD
@@ -90,7 +90,7 @@ class TurnInventoryCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
 /**
  * Command, which processing equip
  */
-class EquipCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
+class EquipCommand(logicFacade: LogicFacade) : CommandImpl(logicFacade) {
     override fun executeImpl(): GameState {
         logicFacade.processEquip()
         return GameState.GOOD
@@ -100,7 +100,7 @@ class EquipCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
 /**
  * Command, which processing unequip
  */
-class UnEquipCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
+class UnEquipCommand(logicFacade: LogicFacade) : CommandImpl(logicFacade) {
     override fun executeImpl(): GameState {
         logicFacade.processUnEquip()
         return GameState.GOOD
@@ -110,7 +110,7 @@ class UnEquipCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
 /**
  * Command, which processing drop
  */
-class DropCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
+class DropCommand(logicFacade: LogicFacade) : CommandImpl(logicFacade) {
     override fun executeImpl(): GameState {
         logicFacade.processDrop()
         return GameState.GOOD
@@ -120,13 +120,13 @@ class DropCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
 /**
  * Command, which processing end of input
  */
-class EOFCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
+class EOFCommand(logicFacade: LogicFacade) : CommandImpl(logicFacade) {
     override fun executeImpl(): GameState = GameState.TERMINATED
 }
 
 /**
  * Unknown command always returns good
  */
-class UnknownCommand(logicFacade: LogicFacade): CommandImpl(logicFacade) {
+class UnknownCommand(logicFacade: LogicFacade) : CommandImpl(logicFacade) {
     override fun executeImpl(): GameState = GameState.GOOD
 }

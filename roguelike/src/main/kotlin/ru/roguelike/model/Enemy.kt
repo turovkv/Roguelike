@@ -1,7 +1,5 @@
 package ru.roguelike.model
 
-import kotlin.random.Random
-import kotlin.random.nextInt
 import ru.roguelike.logic.AgressiveStrategy
 import ru.roguelike.logic.CharacterStrategy
 import ru.roguelike.logic.ConfusedCharacterDecorator
@@ -18,6 +16,8 @@ import ru.roguelike.view.AGRESSIVE_CHAR
 import ru.roguelike.view.CONFUSED_CHAR
 import ru.roguelike.view.PASSIVE_CHAR
 import ru.roguelike.view.SNEAKY_CHAR
+import kotlin.random.Random
+import kotlin.random.nextInt
 
 /**
  * Class that store information about enemy
