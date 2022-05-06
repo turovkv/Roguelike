@@ -1,5 +1,8 @@
 package ru.roguelike.logic
 
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.random.Random
 import ru.roguelike.model.Character
 import ru.roguelike.model.Coordinates
 import ru.roguelike.model.Enemy
@@ -8,9 +11,6 @@ import ru.roguelike.model.InventoryModel
 import ru.roguelike.model.MapModel
 import ru.roguelike.util.Constants
 import ru.roguelike.view.Drawable
-import kotlin.math.max
-import kotlin.math.min
-import kotlin.random.Random
 
 /**
  * Class that stores logic about map
@@ -33,10 +33,10 @@ class MapLogic(
      */
     private fun checkTransparent(c: Coordinates): Boolean {
         return 0 <= c.x &&
-            c.x < mapModel.getX() &&
-            0 <= c.y &&
-            c.y < mapModel.getY() &&
-            mapModel.isWalkable(c)
+                c.x < mapModel.getX() &&
+                0 <= c.y &&
+                c.y < mapModel.getY() &&
+                mapModel.isWalkable(c)
     }
 
     /**
@@ -145,7 +145,7 @@ class MapLogic(
                 if (hero.isDead()) {
                     view.setError("YOU DIED!!! NEXT ACTION WILL RESTART THE GAME")
                 }
-            } else if (oldCoordinates != newCoordinates) {
+            } else {
                 enemy.move(newCoordinates)
                 mapModel.field[oldCoordinates.y][oldCoordinates.x].enemy = null
                 mapModel.field[newCoordinates.y][newCoordinates.x].enemy = enemy
@@ -157,7 +157,11 @@ class MapLogic(
                     Coordinates(newCoordinates.x + 1, newCoordinates.y),
                 )
                 val randomPossible = possible.random()
-                if (checkCoordinates(randomPossible) && Random.nextDouble() < Constants.CLONE_PROBABILITY) {
+                if (
+                    checkCoordinates(randomPossible) &&
+                    isHeroVisible(oldCoordinates) &&
+                    Random.nextDouble() < Constants.CLONE_PROBABILITY
+                ) {
                     mapModel.field[randomPossible.y][randomPossible.x].enemy = enemy.clone(randomPossible)
                 }
             }
