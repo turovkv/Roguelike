@@ -1,5 +1,6 @@
 package ru.roguelike.model
 
+import kotlin.math.min
 import ru.roguelike.util.Constants
 
 /**
@@ -13,13 +14,26 @@ class Hero(
 
     override val exp: Int
         get() = _exp
+
+    private var shield: Shield? = null
+
     /**
      * Begin to use the item
      */
-    fun use(item: Item) {
+    fun use(item: Item): Boolean {
+        if (shield != null && item is Shield) {
+            println("1")
+            return false
+        }
         hp = minOf(maxHp, hp + item.getHpChange())
         damage += item.getDamageChange()
         armor += item.getArmorChange()
+        println("2")
+        if (item is Shield) {
+            println("3")
+            shield = item
+        }
+        return true
     }
 
     /**
@@ -39,6 +53,9 @@ class Hero(
             item.reduceArmor(armorChange)
             armorLoss -= armorChange
         }
+        if (item is Shield) {
+            shield = null
+        }
     }
 
     /**
@@ -52,5 +69,10 @@ class Hero(
             damage += levels * Constants.DAMAGE_INCREASE_FOR_LEVEL
             _exp = exp % Constants.EXP_FOR_LEVEL_UP
         }
+    }
+
+    override fun attackedBy(character: Character) {
+        shield?.reduceArmor(min(armor, character.damage))
+        super.attackedBy(character)
     }
 }
