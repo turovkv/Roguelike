@@ -1,7 +1,7 @@
 package ru.roguelike.model
 
-import kotlin.math.min
 import ru.roguelike.util.Constants
+import kotlin.math.min
 
 /**
  * Class that store information about hero
