@@ -19,8 +19,8 @@ object Constants {
     var ROOM_ENEMY_COUNT = 2
     var ROOM_ITEMS_COUNT = 3
 
-    var MAX_HP = 70
-    var MAX_DAMAGE = 30
+    var MAX_ENEMY_HP = 70
+    var MAX_ENEMY_DAMAGE = 30
     var MAX_ARMOR = 50
 
     var HP_INCREASE_FOR_LEVEL = 10
