@@ -7,15 +7,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import ru.roguelike.model.Apple
-import ru.roguelike.model.CellType
-import ru.roguelike.model.EnemyFactoryImpl
-import ru.roguelike.model.Hero
-import ru.roguelike.model.InventoryModel
-import ru.roguelike.model.Item
-import ru.roguelike.model.MapModel
-import ru.roguelike.model.Shield
-import ru.roguelike.model.Sword
+import ru.roguelike.model.*
 import ru.roguelike.model.generator.FieldBuilder
 import ru.roguelike.util.Constants
 
@@ -23,7 +15,7 @@ class ViewTest {
     @Disabled("Can't create terminal in CI")
     @Test
     fun testMapView() {
-        val field = FieldBuilder(EnemyFactoryImpl()).build()
+        val field = FieldBuilder(RandomEnemyFactory()).build()
         val mapModel = MapModel(field)
         val defaultTerminalFactory = DefaultTerminalFactory().also {
             it.setInitialTerminalSize(
@@ -82,7 +74,7 @@ class ViewTest {
     @Disabled("Can't create terminal in CI")
     @Test
     fun testInventoryView() {
-        val field = FieldBuilder(EnemyFactoryImpl()).build()
+        val field = FieldBuilder(RandomEnemyFactory()).build()
         val defaultTerminalFactory = DefaultTerminalFactory().also {
             it.setInitialTerminalSize(
                 TerminalSize(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT + Constants.CHARACTER_VIEW_HEIGHT)

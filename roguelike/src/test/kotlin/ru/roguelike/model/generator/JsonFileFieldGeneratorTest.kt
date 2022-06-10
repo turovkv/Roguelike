@@ -4,8 +4,8 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import ru.roguelike.model.EnemyFactoryImpl
 import ru.roguelike.model.Field
+import ru.roguelike.model.RandomEnemyFactory
 import java.nio.file.Paths
 
 internal class JsonFileFieldGeneratorTest {
@@ -16,6 +16,6 @@ internal class JsonFileFieldGeneratorTest {
             Json.decodeFromString(it.readText())
         }
 
-        Assertions.assertEquals(expectedField, FieldBuilder(EnemyFactoryImpl()).fromFile(fieldPath.toFile().absolutePath).build())
+        Assertions.assertEquals(expectedField, FieldBuilder(RandomEnemyFactory()).fromFile(fieldPath.toFile().absolutePath).build())
     }
 }

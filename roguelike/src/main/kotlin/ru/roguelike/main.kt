@@ -9,11 +9,7 @@ import ru.roguelike.logic.InstructionsLogic
 import ru.roguelike.logic.InventoryLogic
 import ru.roguelike.logic.LogicFacade
 import ru.roguelike.logic.MapLogic
-import ru.roguelike.model.EnemyFactoryImpl
-import ru.roguelike.model.Hero
-import ru.roguelike.model.InstructionModel
-import ru.roguelike.model.InventoryModel
-import ru.roguelike.model.MapModel
+import ru.roguelike.model.*
 import ru.roguelike.model.generator.FieldBuilder
 import ru.roguelike.util.Constants
 import ru.roguelike.view.AUTHORS
@@ -58,7 +54,7 @@ fun main() {
 }
 
 private fun getInputProcessor(screen: TerminalScreen): InputProcessor {
-    val field = FieldBuilder(EnemyFactoryImpl())
+    val field = FieldBuilder(RandomEnemyFactory())
         .withProperties(Properties().also { it.load(FileInputStream("src/main/resources/map.properties")) })
         .build()
 
