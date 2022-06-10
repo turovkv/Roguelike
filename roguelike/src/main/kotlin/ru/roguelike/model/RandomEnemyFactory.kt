@@ -3,20 +3,23 @@ package ru.roguelike.model
 import ru.roguelike.util.Constants.CYBORG_PROBABILITY
 import ru.roguelike.util.Constants.DRAGON_PROBABILITY
 import ru.roguelike.util.Constants.SKELETON_PROBABILITY
+import kotlin.random.Random
 
 class RandomEnemyFactory : EnemyFactory {
     override fun create(x: Int, y: Int): Enemy {
-        val indList = mutableListOf<Int>()
-        repeat((100 * DRAGON_PROBABILITY).toInt()) {
-            indList.add(EnemyStyle.DRAGON.ordinal)
+        val probList = mutableListOf(0.0)
+        probList.add(probList.last() + DRAGON_PROBABILITY)
+        probList.add(probList.last() + SKELETON_PROBABILITY)
+        probList.add(probList.last() + CYBORG_PROBABILITY)
+
+        val randVal = Random.nextDouble()
+        var ind = 0
+        for (i in 0 until probList.lastIndex) {
+            if (probList[i] < randVal && randVal <= probList[i + 1]) {
+                ind = i
+            }
         }
-        repeat((100 * SKELETON_PROBABILITY).toInt()) {
-            indList.add(EnemyStyle.SKELETON.ordinal)
-        }
-        repeat((100 * CYBORG_PROBABILITY).toInt()) {
-            indList.add(EnemyStyle.CYBORG.ordinal)
-        }
-        return when (EnemyStyle.values()[indList.random()]) {
+        return when (EnemyStyle.values()[ind]) {
             EnemyStyle.DRAGON -> DragonFactory().create(x, y)
             EnemyStyle.SKELETON -> SkeletonFactory().create(x, y)
             EnemyStyle.CYBORG -> CyborgFactory().create(x, y)

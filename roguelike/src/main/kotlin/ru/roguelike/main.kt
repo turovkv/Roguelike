@@ -9,7 +9,11 @@ import ru.roguelike.logic.InstructionsLogic
 import ru.roguelike.logic.InventoryLogic
 import ru.roguelike.logic.LogicFacade
 import ru.roguelike.logic.MapLogic
-import ru.roguelike.model.*
+import ru.roguelike.model.Hero
+import ru.roguelike.model.InstructionModel
+import ru.roguelike.model.InventoryModel
+import ru.roguelike.model.MapModel
+import ru.roguelike.model.RandomEnemyFactory
 import ru.roguelike.model.generator.FieldBuilder
 import ru.roguelike.util.Constants
 import ru.roguelike.view.AUTHORS

@@ -7,7 +7,15 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import ru.roguelike.model.*
+import ru.roguelike.model.Apple
+import ru.roguelike.model.CellType
+import ru.roguelike.model.Hero
+import ru.roguelike.model.InventoryModel
+import ru.roguelike.model.Item
+import ru.roguelike.model.MapModel
+import ru.roguelike.model.RandomEnemyFactory
+import ru.roguelike.model.Shield
+import ru.roguelike.model.Sword
 import ru.roguelike.model.generator.FieldBuilder
 import ru.roguelike.util.Constants
 
@@ -50,7 +58,9 @@ class ViewTest {
                                         is Shield -> TextCharacter.fromCharacter(SHIELD_CHAR)[0].characterString[0]
                                         is Sword -> TextCharacter.fromCharacter(SWORD_CHAR)[0].characterString[0]
                                         is Apple -> TextCharacter.fromCharacter(APPLE_CHAR)[0].characterString[0]
-                                        else -> { TextCharacter.fromCharacter(NON_WALKABLE_CHAR)[0].characterString[0] }
+                                        else -> {
+                                            TextCharacter.fromCharacter(NON_WALKABLE_CHAR)[0].characterString[0]
+                                        }
                                     }
                                 )
                             } else if (mapModel.field[row - 1][column].enemy != null) {
